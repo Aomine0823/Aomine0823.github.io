@@ -94,9 +94,13 @@
 <h2 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h2><p>sos以为自己会快排了，结果写出来的全是bug，整了一上午终于搞出来了呜呜呜</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package SortArry;</span><br><span class="line">public class QuickSort &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] a = &#123;2,3,4,1,5&#125;;</span><br><span class="line">        quickSort(a,0,4);</span><br><span class="line">        for (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">            System.out.println(a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void quickSort(int[] nums, int low, int high)&#123;</span><br><span class="line">            if(low &gt;= high)</span><br><span class="line">                return;</span><br><span class="line">            int pivot = partition(nums,low,high);</span><br><span class="line">            quickSort(nums, low, pivot-1);</span><br><span class="line">            quickSort(nums, pivot+1, high);</span><br><span class="line">    &#125;</span><br><span class="line">    public static int partition(int[] nums, int low, int high)&#123;</span><br><span class="line">        int l = low;</span><br><span class="line">        int h = high;</span><br><span class="line">        int pivot = nums[low];</span><br><span class="line">        while(l &lt; h)&#123;</span><br><span class="line">            while(l &lt; h &amp;&amp; nums[h] &gt;= pivot)</span><br><span class="line">                h --;</span><br><span class="line">            while(l &lt; h &amp;&amp; nums[l] &lt;= pivot)</span><br><span class="line">                l ++;</span><br><span class="line">            if(l &lt; h)</span><br><span class="line">            swap(nums,l,h);</span><br><span class="line">        &#125;</span><br><span class="line">        swap(nums,low,h);</span><br><span class="line">        return h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void swap(int[] nums, int i, int j) &#123;</span><br><span class="line">        int temp = nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
+<h2 id="失温"><a href="#失温" class="headerlink" title="失温"></a>失温</h2><p>算是今天新了解到的一个词语吧，害，宁愿没了解到，或者说不是以热搜的形式知晓。</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>一般来说，失温是指人体热量流失大于热量补给，从而造成人体核心区温度降低，并产生一系列寒颤、迷茫、心肺功能衰竭等症状，甚至最终造成死亡的病症。这里所谓的人体核心区主要是指大脑和躯干内的心、肺等维持生命的主要器官，这一概念是相对于人体四肢和表层皮肤而言的。</p>
+<p>夏天到了，一定要及时看天气预报，下雨天多穿点……</p>
 <h2 id="小记"><a href="#小记" class="headerlink" title="小记"></a>小记</h2><p>今天大猪蹄子说：“你是不是吃了很多盐啊，要不然怎么让我闲着就想你呢。”</p>
+<img src="../pic/5-23/image-20210524152738919.png" alt="image-20210524152738919" style="zoom: 50%;" />
+
+<p>还有这个杰尼龟骂人，拿出小本本记上一笔</p>
 
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
@@ -129,6 +133,9 @@
         
         
         <div class="article-prev-next">
+            
+                <a href="/2021/05/24/5-24/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/05/24/5-24/" title="发布于 2021-05-24 02:28">5-24</a>
+                <br>
             
             
                 <a href="/2021/05/22/5-22/" class="next-prefix">» </a> 下一篇：    <a href="/2021/05/22/5-22/" title="发布于 2021-05-22 09:24">5-22</a>
