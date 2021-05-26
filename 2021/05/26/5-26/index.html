@@ -57,7 +57,35 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        
+        <h1 id="5-26-周三-晴-西风-14℃-25℃-坐标图书馆"><a href="#5-26-周三-晴-西风-14℃-25℃-坐标图书馆" class="headerlink" title="5-26 周三 晴 西风 14℃-25℃  坐标图书馆"></a>5-26 周三 晴 西风 14℃-25℃  坐标图书馆</h1><p>好累哦，不算昨天，今天排班就排了三个小时，昨天估摸也有两个小时吧，难过。</p>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="Java中的内存划分"><a href="#Java中的内存划分" class="headerlink" title="Java中的内存划分"></a>Java中的内存划分</h3><p>1.栈（Stack）：存放的都是方法中的局部变量。<strong>方法运行一定要在栈当中。</strong></p>
+<p>​            局部变量：方法的参数，或者是方法{}内部的变量</p>
+<p>​            作用域：一旦超过作用域，立刻从栈内存当中消失。</p>
+<p>2.堆（Heap）：<strong>凡是new出来的东西，都在堆当中</strong>。</p>
+<p>​            堆内存里的东西都有一个地址值：16进制</p>
+<p>​            堆内存里面的数据，都有默认值，规则：</p>
+<p>​                        如果是整数类型，那么默认为0；</p>
+<p>​                        如果是浮点类型，那么默认为0.0；</p>
+<p>​                        如果是字符类型，那么默认为’\u0000’；</p>
+<p>​                        如果是布尔类型，那么默认为false；</p>
+<p>​                        如果是引用类型，那么默认为null。</p>
+<p>3.方法区（Method Area）：存储.class相关信息，包含方法的信息。</p>
+<p>4.本地方法栈（Native Method Stack）：与操作系统相关。</p>
+<p>5.寄存器（pc Register）：与CPU相关。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    int[] array1 = new int[3];</span><br><span class="line">    System.out.println(array1);//[I@28d93b30</span><br><span class="line">    System.out.println(array1[0]);//0</span><br><span class="line">    System.out.println(array1[1]);//0</span><br><span class="line">    System.out.println(array1[2]);//0</span><br><span class="line">    System.out.println(&quot;================&quot;);</span><br><span class="line">    array1[1] = 10;</span><br><span class="line">    array1[2] = 20;</span><br><span class="line">    System.out.println(array1);//[I@28d93b30</span><br><span class="line">    System.out.println(array1[0]);//0</span><br><span class="line">    System.out.println(array1[1]);//10</span><br><span class="line">    System.out.println(array1[2]);//20</span><br><span class="line">    System.out.println(&quot;================&quot;);</span><br><span class="line">    int[] array2 = array1;</span><br><span class="line">    System.out.println(array2);//[I@28d93b30</span><br><span class="line">    System.out.println(array2[0]);//0</span><br><span class="line">    System.out.println(array2[1]);//10</span><br><span class="line">    System.out.println(array2[2]);//20</span><br><span class="line">    System.out.println(&quot;================&quot;);</span><br><span class="line">    array2[1] = 100;</span><br><span class="line">    array2[2] = 200;</span><br><span class="line">    System.out.println(array2);//[I@28d93b30</span><br><span class="line">    System.out.println(array2[0]);//0</span><br><span class="line">    System.out.println(array2[1]);//100</span><br><span class="line">    System.out.println(array2[2]);//200</span><br><span class="line">    System.out.println(&quot;================&quot;);</span><br><span class="line">    System.out.println(array1);//[I@28d93b30</span><br><span class="line">    System.out.println(array1[0]);//0</span><br><span class="line">    System.out.println(array1[1]);//100</span><br><span class="line">    System.out.println(array1[2]);//200</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这波是共享内存地址</p>
+<p>所有的引用类型都可以赋值为null。</p>
+<p>数组必须进行new初始化才能使用其中的元素，如果数组没有new初始化，只是赋值null，那么将发生空指针异常：NullPointerException。</p>
+<p>数组一旦创建，程序运行期间，长度不可改变。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    int[] arrayC = new int[3];</span><br><span class="line">    arrayC[1] = 10;</span><br><span class="line">    arrayC[2] = 20;</span><br><span class="line">    arrayC = new int[5];</span><br><span class="line">    arrayC[1] = 100;</span><br><span class="line">    arrayC[2] = 200;</span><br><span class="line">    System.out.println(arrayC[1]);//100</span><br><span class="line">    System.out.println(arrayC[2]);//200</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>arrayC只是个名字，new出来的才是数组</p>
+<p>任何数据类型都可以作为方法的参数类型，或者返回值。</p>
+<p>数组可以作为方法的参数，当调用方法的时候，想方法的小括号进行传参，传递进去的就是数组的<strong>地址值</strong>，返回的其实也是地址值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    int[] r = calculate(10,20,30);</span><br><span class="line">    System.out.println(&quot;sum&quot; + r[0]);</span><br><span class="line">    System.out.println(&quot;avg&quot; + r[1]);</span><br><span class="line">&#125;</span><br><span class="line">public static int[] calculate(int a,int b,int c)&#123;</span><br><span class="line">    int sum = a + b + c;</span><br><span class="line">    int avg = sum /3;</span><br><span class="line">    /*int[] array = new int [2];</span><br><span class="line">    array[0] = sum;</span><br><span class="line">    array[1] = avg;</span><br><span class="line">    return array;*/</span><br><span class="line">    return new int[]&#123;sum, avg&#125; ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
             <div class="suffix-box-left">
@@ -79,6 +107,13 @@
         </div>
     </div>
     <div class="article-footer">
+        
+            <div class="category">
+                分类：
+                
+                    <a href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">日常随笔</a>
+                
+            </div>
         
         
         <div class="article-prev-next">
