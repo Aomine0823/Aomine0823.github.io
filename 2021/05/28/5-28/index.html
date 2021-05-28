@@ -6,8 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    
-    <title>分类</title>
+    <title>5-28</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -18,12 +17,13 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/page.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css">
     
         <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css">
     
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js"></script>
+
 </head>
 <body>
     <a id="cover"></a>
@@ -31,10 +31,21 @@
     <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-subtitle">分类</h1>
+                <h1 class="header-subtitle">5-28</h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text Chinese"></p>
-                    <p class="article-info-text English"></p>                  
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2021-05-28
+                        </span>
+                        
+                            <span id="/2021/05/28/5-28/" class="leancloud_visitors" data-flag-title="5-28">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/05/28/5-28/"></span>
+                        </span>  
+                    </p>                 
                 </div>
             </div>
         </div>
@@ -43,14 +54,129 @@
 </div>
     <div id="container">
     <div id="content">
-        <div class="categories">
-    <div class="categories-title">
-        目前共计 1 个分类
+        <div id="article">
+    <div class="toc"></div>
+    <div class="article-body">
+        <h1 id="5-28-周四-多云-西北风-14℃-23℃-坐标教学楼"><a href="#5-28-周四-多云-西北风-14℃-23℃-坐标教学楼" class="headerlink" title="5-28 周四 多云 西北风 14℃-23℃  坐标教学楼"></a>5-28 周四 多云 西北风 14℃-23℃  坐标教学楼</h1><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="适配器模式（Adapter-Pattern）"><a href="#适配器模式（Adapter-Pattern）" class="headerlink" title="适配器模式（Adapter Pattern）"></a>适配器模式（Adapter Pattern）</h3><p>意图：将目标类型的接口转换成客户端期望的接口，从而使接口不兼容的类一起协作</p>
+<p>应用场景：</p>
+<p>1.当某个已存在类提供的接口不是客户端期望的接口</p>
+<p>2.当想在不必提供兼容接口的客户类中重用目标类</p>
+<p>参与者：</p>
+<p>Client</p>
+<p>Target（满足client的需求）、</p>
+<p>Adaptee（将Adapter转换成Target的子类）、</p>
+<p>Adapter（将Adaptee提供的接口转换成Client需要的接口）</p>
+<p>实例一</p>
+<p><img src="../pic/5-28/image-20210528183721190.png" alt="image-20210528183721190"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package Robot;</span><br><span class="line">public interface Robot &#123;</span><br><span class="line">    public void cry();</span><br><span class="line">    public void move();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package Dog;</span><br><span class="line">public class Dog&#123;</span><br><span class="line">    public void wang() &#123;</span><br><span class="line">        System.out.println(&quot;狗汪汪叫！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(&quot;狗快快跑！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package Dog;</span><br><span class="line">import Robot.Robot;</span><br><span class="line">public class DogAdapter extends Dog implements Robot&#123;</span><br><span class="line">    public void cry()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.print(&quot;机器人模仿：&quot;);</span><br><span class="line">        super.wang();</span><br><span class="line">    &#125;</span><br><span class="line">    public void move()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.print(&quot;机器人模仿：&quot;);</span><br><span class="line">        super.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package Bird;</span><br><span class="line">public class Bird &#123;</span><br><span class="line">    public void tweedle() &#123;</span><br><span class="line">        System.out.println(&quot;鸟儿叽叽叫！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void fly() &#123;</span><br><span class="line">        System.out.println(&quot;鸟儿快快飞！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package Bird;</span><br><span class="line">import Robot.Robot;</span><br><span class="line">public class BirdAdapter extends Bird implements Robot &#123;</span><br><span class="line">    public void cry() &#123;</span><br><span class="line">        System.out.print(&quot;机器人模仿：&quot;);</span><br><span class="line">        super.tweedle();</span><br><span class="line">    &#125;</span><br><span class="line">    public void move() &#123;</span><br><span class="line">        System.out.print(&quot;机器人模仿：&quot;);</span><br><span class="line">        super.fly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import Bird.BirdAdapter;</span><br><span class="line">import Dog.DogAdapter;</span><br><span class="line">import Robot.Robot;</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String args[])</span><br><span class="line">    &#123;</span><br><span class="line">        Robot robot1 = new DogAdapter();</span><br><span class="line">        robot1.cry();</span><br><span class="line">        robot1.move();</span><br><span class="line">        Robot robot2 = new BirdAdapter();</span><br><span class="line">        robot2.cry();</span><br><span class="line">        robot2.move();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<p>机器人模仿：狗汪汪叫！<br>        机器人模仿：狗快快跑！<br>        机器人模仿：鸟儿叽叽叫！<br>        机器人模仿：鸟儿快快飞！</p>
+<p>Client体现了多态，实际应用里两个类结合的话对应函数名或者一些约束不一致，就要用一个中间层适配器来适配。接口也相当于父类，这才是多态。这样表示都是机器人在操作，具体的事情却不同，是多态的体现</p>
+<h3 id="桥接模式（Bridge-Pattern）"><a href="#桥接模式（Bridge-Pattern）" class="headerlink" title="桥接模式（Bridge Pattern）"></a>桥接模式（Bridge Pattern）</h3><p>意图：</p>
+<p>使抽象与现实分离，以便两者可以自由变化</p>
+<p>应用场景：</p>
+<p>1.解耦合抽象和实现</p>
+<p>2.抽象和实现需要分别自由拓展</p>
+<p>参与者：</p>
+<p>Abstraction：抽象层</p>
+<p>RefinedAbstarction：抽象层的拓展</p>
+<p>Implementor：实现层</p>
+<p>Concretelmplementor：实现层的拓展</p>
+<p>实例：模拟毛笔</p>
+<p><img src="../pic/5-28/image-20210528111252804.png" alt="image-20210528111252804"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package Color;</span><br><span class="line">public interface Color &#123;</span><br><span class="line">        String Color = null;</span><br><span class="line">        public void bepaint(String penType,String name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package Color;</span><br><span class="line">public class Black implements Color&#123;</span><br><span class="line">    String Color = &quot;黑色&quot;;</span><br><span class="line">    public void bepaint(String penTyoe, String name)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.print(penTyoe + Color + name );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package Color;</span><br><span class="line">public class Blue implements Color &#123;</span><br><span class="line">    String Color = &quot;蓝色&quot;;</span><br><span class="line">    public void bepaint(String penTyoe, String name) &#123;</span><br><span class="line">        System.out.print(penTyoe + Color + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package Color;</span><br><span class="line">public class Green implements Color&#123;</span><br><span class="line">    String Color = &quot;绿色&quot;;</span><br><span class="line">    public void bepaint(String penTyoe, String name)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.print(penTyoe + Color + name );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package Color;</span><br><span class="line">public class Red implements Color &#123;</span><br><span class="line">    String Color = &quot;红色&quot;;</span><br><span class="line">    public void bepaint(String penTyoe, String name)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.print(penTyoe + Color + name );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package Color;</span><br><span class="line">public class White implements Color&#123;</span><br><span class="line">    String Color = &quot;白色&quot;;</span><br><span class="line">    public void bepaint(String penTyoe, String name)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.print(penTyoe + Color + name );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package Pen;</span><br><span class="line">import Color.Color;</span><br><span class="line">public abstract class  Pen &#123;</span><br><span class="line">    protected Color color;</span><br><span class="line">    public void setColor(Color color)&#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line">    public abstract void draw(String name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package Pen;</span><br><span class="line">import Color.Color;</span><br><span class="line">public class SmallPen extends Pen&#123;</span><br><span class="line">    public void draw(String name) &#123;</span><br><span class="line">        String penType=&quot;小号毛笔绘制的&quot;;</span><br><span class="line">        this.color.bepaint(penType,name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package Pen;</span><br><span class="line">public class MiddlePen extends Pen&#123;</span><br><span class="line">    public void draw(String name) &#123;</span><br><span class="line">        String penType=&quot;中号毛笔绘制的&quot;;</span><br><span class="line">        this.color.bepaint(penType,name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package Pen;</span><br><span class="line">public class BigPen extends Pen &#123;</span><br><span class="line">    public void draw(String name) &#123;</span><br><span class="line">        String penType = &quot;大号毛笔绘制的&quot;;</span><br><span class="line">        this.color.bepaint(penType,name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import Color.Red;</span><br><span class="line">import Pen.Pen;</span><br><span class="line">import Pen.BigPen;</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String a[])&#123;</span><br><span class="line">        Pen pen = new BigPen();</span><br><span class="line">        pen.setColor(new Red());</span><br><span class="line">        pen.draw(&quot;鲜花&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：大号毛笔绘画的红色鲜花</p>
+<p>这个代码的关键就在于，pen里面的color成员函数，所谓聚合。</p>
+<p>写设计模式还是要多看类图啊，在成员变量的引用上还需要加强，Client类里面真的卡了好久。</p>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2>
+        <p class="suffix-end">__END__</p>
+        <div class="suffix-box">
+            <div class="suffix-box-left">
+                <img src="/image/avatar.jpg" alt="Aomine Daiki">
+            </div>
+            <div class="suffix-box-right">
+                <span class="suffix-box-title">文章作者</span>：Aomine Daiki
+                <br>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/05/28/5-28/" target="_blank">5-28</a>
+                <br>
+                <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
+                <br>
+                <span class="suffix-box-title">关于主题</span>：<a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+                <br>
+                <span class="suffix-box-title">版权声明</span>：文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+                <br>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
     </div>
-    <div class="categories-content">
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">日常随笔</a><span class="category-list-count">10</span></li></ul>
+    <div class="article-footer">
+        
+            <div class="category">
+                分类：
+                
+                    <a href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">日常随笔</a>
+                
+            </div>
+        
+        
+        <div class="article-prev-next">
+            
+            
+                <a href="/2021/05/27/5-27/" class="next-prefix">» </a> 下一篇：    <a href="/2021/05/27/5-27/" title="发布于 2021-05-27 04:39">5-27</a>
+            
+        </div>
     </div>
+    
+    <div class="article-comments">
+        <div class="comments-title">
+            评论列表
+        </div>
+        <div class="comments-content">
+        </div>
+    </div>
+
 </div>
+
     </div>
 </div>
     <div id="footer"></div>
