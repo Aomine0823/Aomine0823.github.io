@@ -57,7 +57,7 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        <h1 id="5-28-周四-多云-西北风-14℃-23℃-坐标教学楼"><a href="#5-28-周四-多云-西北风-14℃-23℃-坐标教学楼" class="headerlink" title="5-28 周四 多云 西北风 14℃-23℃  坐标教学楼"></a>5-28 周四 多云 西北风 14℃-23℃  坐标教学楼</h1><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="适配器模式（Adapter-Pattern）"><a href="#适配器模式（Adapter-Pattern）" class="headerlink" title="适配器模式（Adapter Pattern）"></a>适配器模式（Adapter Pattern）</h3><p>意图：将目标类型的接口转换成客户端期望的接口，从而使接口不兼容的类一起协作</p>
+        <h1 id="5-28-周五-多云-西北风-14℃-23℃-坐标教学楼"><a href="#5-28-周五-多云-西北风-14℃-23℃-坐标教学楼" class="headerlink" title="5-28 周五 多云 西北风 14℃-23℃  坐标教学楼"></a>5-28 周五 多云 西北风 14℃-23℃  坐标教学楼</h1><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="适配器模式（Adapter-Pattern）"><a href="#适配器模式（Adapter-Pattern）" class="headerlink" title="适配器模式（Adapter Pattern）"></a>适配器模式（Adapter Pattern）</h3><p>意图：将目标类型的接口转换成客户端期望的接口，从而使接口不兼容的类一起协作</p>
 <p>应用场景：</p>
 <p>1.当某个已存在类提供的接口不是客户端期望的接口</p>
 <p>2.当想在不必提供兼容接口的客户类中重用目标类</p>
@@ -67,7 +67,7 @@
 <p>Adaptee（将Adapter转换成Target的子类）、</p>
 <p>Adapter（将Adaptee提供的接口转换成Client需要的接口）</p>
 <p>实例一</p>
-<p><img src="../pic/5-28/image-20210528183721190.png" alt="image-20210528183721190"></p>
+<p><img src="/pic/5-28/image-20210528183721190.png" alt="image-20210528183721190"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package Robot;</span><br><span class="line">public interface Robot &#123;</span><br><span class="line">    public void cry();</span><br><span class="line">    public void move();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package Dog;</span><br><span class="line">public class Dog&#123;</span><br><span class="line">    public void wang() &#123;</span><br><span class="line">        System.out.println(&quot;狗汪汪叫！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(&quot;狗快快跑！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -94,7 +94,7 @@
 <p>Implementor：实现层</p>
 <p>Concretelmplementor：实现层的拓展</p>
 <p>实例：模拟毛笔</p>
-<p><img src="../pic/5-28/image-20210528111252804.png" alt="image-20210528111252804"></p>
+<p><img src="/pic/5-28/image-20210528111252804.png" alt="image-20210528111252804"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package Color;</span><br><span class="line">public interface Color &#123;</span><br><span class="line">        String Color = null;</span><br><span class="line">        public void bepaint(String penType,String name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package Color;</span><br><span class="line">public class Black implements Color&#123;</span><br><span class="line">    String Color = &quot;黑色&quot;;</span><br><span class="line">    public void bepaint(String penTyoe, String name)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.print(penTyoe + Color + name );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -128,7 +128,20 @@
 <p>输出：大号毛笔绘画的红色鲜花</p>
 <p>这个代码的关键就在于，pen里面的color成员函数，所谓聚合。</p>
 <p>写设计模式还是要多看类图啊，在成员变量的引用上还需要加强，Client类里面真的卡了好久。</p>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p>1.成员变量是直接定义在类当中的，在方法外边。</p>
+<p>2.成员方法不要写static关键字。</p>
+<p>3.导包（import）</p>
+<p>+创建（类名称 对象名 = new 类名称（））</p>
+<p>+使用（对象名.成员变量名/对象名.成员方法名（参数））</p>
+<p>实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package Student;</span><br><span class="line">public class Student &#123;</span><br><span class="line">    String name;</span><br><span class="line">    int age;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;吃饭饭&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void sleep()&#123;</span><br><span class="line">        System.out.println(&quot;睡觉觉&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void study()&#123;</span><br><span class="line">        System.out.println(&quot;打游戏&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package Student;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Student stu = new Student();</span><br><span class="line">        System.out.println(stu.name);</span><br><span class="line">        System.out.println(stu.age);</span><br><span class="line">        stu.eat();</span><br><span class="line">        stu.sleep();</span><br><span class="line">        stu.study();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果成员变量没有赋值那么将会有一个默认值，规则和数组一样</p>
+<h3 id="一个对象的内存图"><a href="#一个对象的内存图" class="headerlink" title="一个对象的内存图"></a>一个对象的内存图</h3><p><img src="/pic/5-28/image-20210528213428133.png" alt="image-20210528213428133"></p>
+<p>截图干啥，愣着啊</p>
+
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
             <div class="suffix-box-left">
@@ -160,6 +173,9 @@
         
         
         <div class="article-prev-next">
+            
+                <a href="/2021/05/29/5-29/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/05/29/5-29/" title="发布于 2021-05-29 09:15">5-29</a>
+                <br>
             
             
                 <a href="/2021/05/27/5-27/" class="next-prefix">» </a> 下一篇：    <a href="/2021/05/27/5-27/" title="发布于 2021-05-27 04:39">5-27</a>
