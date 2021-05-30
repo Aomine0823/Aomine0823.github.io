@@ -58,6 +58,39 @@
     <div class="toc"></div>
     <div class="article-body">
         <h1 id="5-30-周日-阴-东南风-14℃-20℃-坐标图书馆"><a href="#5-30-周日-阴-东南风-14℃-20℃-坐标图书馆" class="headerlink" title="5-30 周日 阴 东南风 14℃-20℃  坐标图书馆"></a>5-30 周日 阴 东南风 14℃-20℃  坐标图书馆</h1><p>健康真好啊，昨天下午眼睛好痛不得不回宿舍睡觉呜呜呜，都忘记deploy了。今天怎么舌头又好痛，是我睡觉的时候饿得吃舌头了吗？？疑惑</p>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="Randm"><a href="#Randm" class="headerlink" title="Randm"></a>Randm</h3><p>Random是用来生成随机数字的，用法如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Random r = new Random();//创建</span><br><span class="line">int num1 = r.nextInt();//范围是int所有范围</span><br><span class="line">System.out.println(&quot;随机数是：&quot;+ num1);</span><br><span class="line">int num2 = r.nextInt(3);//范围是左闭右开区间 [0,3);nextInt(int)只能生成[0,int)的正整数</span><br><span class="line">System.out.println(&quot;随机数是：&quot;+ num2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组对象"><a href="#数组对象" class="headerlink" title="数组对象"></a>数组对象</h3><p>和数字没啥子大区别啦，数组和对象的结合体</p>
+<h3 id="动态数组ArrayList"><a href="#动态数组ArrayList" class="headerlink" title="动态数组ArrayList"></a>动态数组ArrayList<E></h3><p><strong><E>代表泛型：也就是装在集合当中的所有元素，全部是统一的什么类型。</strong></p>
+<p>注意：泛型只能是引用类型，不能是基本类型</p>
+<p>备注：</p>
+<p>1.从JDK 1.7+开始，右侧的&lt;&gt;内部可以不写内容，但是&lt;&gt;本身还是要写的<br>        2.对于ArrayList集合来说，直接打印得到的不是地址值，而是内容。<br>        3.如果内容为空，得到的是空的中括号：[]</p>
+<p>创建和添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();//创建了一个ArrayList集合，集合名称是List，里面装的全都是String字符串类型的数据</span><br><span class="line">System.out.println(list);//[]</span><br><span class="line">list.add(&quot;Aomine&quot;);</span><br><span class="line">list.add(&quot;Tom&quot;);</span><br><span class="line">list.add(&quot;Jerry&quot;);</span><br><span class="line">System.out.println(list);//[Aomine, Tom, Jerry]</span><br></pre></td></tr></table></figure>
+
+<p>public boolean add(E e);向集合中添加元素，参数的类型和泛型一致<br>        备注：对于ArrayList集合来说，add添加动作一定是成功的，所以返回值可用可不用<br>        public E get(int index);从集合中获取元素，参数是索引编号，返回值就是对应位置的元素。从0开始。<br>        public E remove(int index);从集合当中删除元素，参数就是索引编号，返回值就是被删除掉的元素。<br>        备注：E remove = list.remove();返回的是被删除的对象的对容，不是编号哦！！<br>        public int size();获取集合的尺寸长度，返回值就是集合中包含的元素个数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">list.add(&quot;Aomine&quot;);</span><br><span class="line">list.add(&quot;Tom&quot;);</span><br><span class="line">list.add(&quot;Jerry&quot;);</span><br><span class="line">String remove = list.remove(0);//返回的居然是被删除的对象内容</span><br><span class="line">System.out.println(&quot;被删除的人是：&quot;+ remove);//被删除的人是：Aomine</span><br><span class="line">System.out.println(list);//[Tom,Jerry]</span><br><span class="line">System.out.println(list.size());//2</span><br></pre></td></tr></table></figure>
+
+<p>如果希望向集合ArrayList当中存储基本类型数据，必须使用基本类型对应的包装类</p>
+<p>基本类型                包装类（引用类型，包装类都位于java.lang包下，不用导包）</p>
+<p>byte                        Byte</p>
+<p>short                      Short</p>
+<p>int                           Integer            [特殊]</p>
+<p>long                        Long</p>
+<p>float                        Float</p>
+<p>double                   Double</p>
+<p>char                        Character        [特殊]</p>
+<p>boolean                 Boolean</p>
+<p>从JDK 1.5开始，支持自动装箱、自动拆箱</p>
+<p>自动装箱：基本类型 –&gt; 包装类型</p>
+<p>自动拆箱：包装类型 –&gt; 基本类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Student&gt; array = new ArrayList&lt;Student&gt;();</span><br><span class="line">Student stu1 = new Student(&quot;杨欣瑜&quot;,20);</span><br><span class="line">Student stu2 = new Student(&quot;郑莹&quot;,19);</span><br><span class="line">array.add(stu1);</span><br><span class="line">array.add(stu2);</span><br><span class="line">for (int i = 0; i &lt; array.size(); i++) &#123;</span><br><span class="line">    Student stu = array.get(i);</span><br><span class="line">    System.out.println(&quot;存储学生所在的地址：&quot; + array.get(i));</span><br><span class="line">    System.out.println(&quot;学生的姓名：&quot; + stu.getName() + &quot;,学生的年龄：&quot; + stu.getAge());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当泛型是复杂的类的时候，get(int index)得到的将是地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">随机存储20个数字，并输出其偶数部分</span><br><span class="line">*/</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; array = new ArrayList&lt;&gt;();</span><br><span class="line">    Random r = new Random();</span><br><span class="line">    for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">        array.add(r.nextInt(100));</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(array);</span><br><span class="line">    ArrayList&lt;Integer&gt; result = small(array);</span><br><span class="line">    System.out.println(&quot;偶数总共有&quot; + result.size() + &quot;个，分别是：&quot;);</span><br><span class="line">    System.out.println(result);</span><br><span class="line">&#125;</span><br><span class="line">public static ArrayList&lt;Integer&gt; small(ArrayList&lt;Integer&gt; array)&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i = 0; i &lt; array.size(); i++) &#123;</span><br><span class="line">        if (0 == array.get(i) % 2) &#123;</span><br><span class="line">            result.add(array.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ArrayList<E>作为参数或者返回值的时候不要忘记<E>这个小尾巴呀</p>
 
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
