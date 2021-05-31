@@ -91,6 +91,79 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">随机存储20个数字，并输出其偶数部分</span><br><span class="line">*/</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; array = new ArrayList&lt;&gt;();</span><br><span class="line">    Random r = new Random();</span><br><span class="line">    for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">        array.add(r.nextInt(100));</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(array);</span><br><span class="line">    ArrayList&lt;Integer&gt; result = small(array);</span><br><span class="line">    System.out.println(&quot;偶数总共有&quot; + result.size() + &quot;个，分别是：&quot;);</span><br><span class="line">    System.out.println(result);</span><br><span class="line">&#125;</span><br><span class="line">public static ArrayList&lt;Integer&gt; small(ArrayList&lt;Integer&gt; array)&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i = 0; i &lt; array.size(); i++) &#123;</span><br><span class="line">        if (0 == array.get(i) % 2) &#123;</span><br><span class="line">            result.add(array.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>ArrayList<E>作为参数或者返回值的时候不要忘记<E>这个小尾巴呀</p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>字符串的特点：</p>
+<p><u>1.字符串是常量，一旦创建出来之后字符串的内容永不可变[重点]</u></p>
+<p>2.正是因为字符串不可改变，所以字符串是可以共享使用</p>
+<p>3.字符串效果上相当于是char[]字符数组，但是底层原理是byte[]字节数组</p>
+<p>创建字符串的3+1种方式</p>
+<p>三种构造方法</p>
+<p>public String()：创建一个空白字符串，不含有任何内容</p>
+<p>public String(char[] array)：根据字符数组的内容，来创建对应的字符串</p>
+<p>public String(byte[] array)：根据字符数组的内容，来创建对应的字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String str1 = new String();</span><br><span class="line">System.out.println(str1);//</span><br><span class="line">char[] charArray = &#123;&#x27;A&#x27;,&#x27;B&#x27;,&#x27;C&#x27;&#125;;</span><br><span class="line">String str2 = new String(charArray);</span><br><span class="line">System.out.println(str2);//ABC</span><br><span class="line">byte[] byteArray = &#123;97,98,99&#125;;</span><br><span class="line">String str3 = new String(byteArray);</span><br><span class="line">System.out.println(str3);//abc</span><br></pre></td></tr></table></figure>
+
+<p>一种直接构造</p>
+<p>String str = “Hello”;//右边直接用双引号</p>
+<p>注意：直接写上双引号，就是字符串对象。jvm帮你new了嘻嘻</p>
+<p>字符串的常量池</p>
+<p>程序中直接写上的双引号字符串，就在字符串常量池中。</p>
+<p>对于基本类型中，==是进行数值的比较</p>
+<p>对于引用类型说，==是进行地址的比较</p>
+<p><img src="/pic/5-30/image-20210530154625240.png" alt="image-20210530154625240"></p>
+<p>字符串的比较相关方法</p>
+<p><strong>public boolean equals(Object obj</strong>)：参数可以是任何对象，</p>
+<p>注意事项：</p>
+<p>1.任何对象都能用Object进行接收</p>
+<p>2.equals具有对称性</p>
+<p>3.但是如果比较双方一个常量一个变量，推荐把常量字符串写在前面</p>
+<p>​    推荐：”abc”.equals(str)          不推荐：str.equals(“abc”)</p>
+<p>调用方法的时候，”.”之前不能有null，会出现空指针异常</p>
+<p><strong>public boolean equalsIgnoreCase(String str</strong>)：参数就是字符串哦</p>
+<p>1.不区分大小写</p>
+<p>**public int length()**：获取字符串当中含有的字符个数，拿到字符串长度/</p>
+<p>**public String concat(String str)**：将当前字符串和参数字符串拼接成为返回值新的字符串</p>
+<p>**public char charAt(int index)**：获取指定索引位置的单个字符</p>
+<p>**public int indexOf(String str)**：查找参数字符在本字符串当中首次出现的索引位置，如果没有就返回-1</p>
+<p>字符串中的截取办法</p>
+<p>**public String substring(int index)**：截取从参数位置一直到字符串末尾，返回新字符串</p>
+<p><strong>public String substring(int begin, int end)</strong>:截取从begin开始，一直到end结束，中间的字符串。</p>
+<p>备注</p>
+<p>1.[begin，end)。</p>
+<p>2.如果越界的话会报错</p>
+<p>字符串的转换相关方法</p>
+<p>**public char[] toCharArray()**：将当前字符串拆分成为字符数组作为返回值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = &quot;abcde&quot;;</span><br><span class="line">char[] array2 = str.toCharArray();</span><br><span class="line">System.out.println(array2);//abcde????????why</span><br></pre></td></tr></table></figure>
+
+<p>**public byte[] getBytes()**：获得当前字符串底层的字节数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = &quot;abcde&quot;;</span><br><span class="line">byte[] array3 = str.getBytes();</span><br><span class="line">System.out.println(array3);//[B@28d93b30</span><br></pre></td></tr></table></figure>
+
+<p>**public String replace(CharSequence oldString, CharSequence newString)**：将所有出现的老字符串替换成为新的字符串，返回替换之后的结果新字符串</p>
+<p>备注：CharSequence表示可以接受字符串类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str1 = &quot;how do you do&quot;;</span><br><span class="line">String str3 = str1.replace(&quot;o&quot;,&quot;*&quot;);</span><br><span class="line">System.out.println(str3);//h*w d* y*u d*</span><br></pre></td></tr></table></figure>
+
+<p>字符串的分割方法</p>
+<p>public String[] split(String regex)：按照参数的规则，将字符串切分成为若干部分。</p>
+<p>split方法的参数其实是一个“正则表达式”，如果按照英文句点”.”进行切分，必须写”\.”（两个反斜杠）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String str1 = &quot;aaa,bbb,ccc&quot;;</span><br><span class="line">String[] str = str1.split(&quot;,&quot;);</span><br><span class="line">for (int i = 0; i &lt; str.length; i++) &#123;</span><br><span class="line">    System.out.println(str[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<p>aaa</p>
+<p>bbb</p>
+<p>ccc</p>
+<h3 id="Static"><a href="#Static" class="headerlink" title="Static"></a>Static</h3><p>一旦使用了static关键字，那么这样的内容不再属于对象自己，而是属于类的，凡是本类的对象，都共享同一份。</p>
+<h4 id="static用来修饰成员变量"><a href="#static用来修饰成员变量" class="headerlink" title="static用来修饰成员变量"></a>static用来修饰成员变量</h4><p>如果一个成员变量是用了static关键字，那么这个变量不再属于对象自己，而是属于所在的类，多个对象共享同一份数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private int id;//学号</span><br><span class="line">private String name;//姓名</span><br><span class="line">private int age;//年龄</span><br><span class="line">static String room;//所在教室</span><br><span class="line">private static int idCounter = 0;//学好计数器，每当new了一个新对象的时候，计数器++</span><br></pre></td></tr></table></figure>
+
+<p>学生类的成员变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Student one = new Student(&quot;青峰大辉&quot;,18);</span><br><span class="line">one.room = &quot;101教室&quot;;</span><br><span class="line">System.out.println(&quot;姓名：&quot; + one.getName() +&quot; 学号：&quot; + one.getId() + &quot; 年龄&quot; + one.getAge() + &quot; 教室&quot; + one.room);</span><br><span class="line">Student two = new Student(&quot;赤司征太郎&quot;,18);</span><br><span class="line">System.out.println(&quot;姓名：&quot; + two.getName() +&quot; 学号：&quot; + two.getId() + &quot; 年龄&quot; + two.getAge() + &quot; 教室&quot; + one.room);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<p>构造方法运行了<br>        姓名：青峰大辉 学号：1 年龄18 教室101教室<br>        构造方法运行了<br>        姓名：赤司征太郎 学号：2 年龄18 教室101教室</p>
+<h4 id="static修饰成员方法"><a href="#static修饰成员方法" class="headerlink" title="static修饰成员方法"></a>static修饰成员方法</h4><p>一旦使用static修饰成员方法，那么这就成为了静态方法。静态方法不属于对象，而是属于类的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class TwoMethod &#123;</span><br><span class="line">    public void method()&#123;</span><br><span class="line">        System.out.println(&quot;这是一个成员方法&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void methodStatic()&#123;</span><br><span class="line">        System.out.println(&quot;这是一个静态方法&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有static关键字，那么必须首先创建对象，然后通过对象才能使用他。</p>
+<p>对于静态方法来说，可以通过对象名进行调用，也可以直接通过类名称来调用。</p>
 
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
