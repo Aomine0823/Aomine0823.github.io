@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>6-1</title>
+    <title>存储技术相关</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -31,19 +31,19 @@
     <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-subtitle">6-1</h1>
+                <h1 class="header-subtitle">存储技术相关</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text">
                         <span>
-                            <i class="iconfont icon-time"></i> 发表时间：2021-06-01
+                            <i class="iconfont icon-time"></i> 发表时间：2021-06-02
                         </span>
                         
-                            <span id="/2021/06/01/6-1/" class="leancloud_visitors" data-flag-title="6-1">
+                            <span id="/2021/06/02/存储技术相关/" class="leancloud_visitors" data-flag-title="存储技术相关">
                                 <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                             </span>
                         
                         <span>
-                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/01/6-1/"></span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/02/存储技术相关/"></span>
                         </span>  
                     </p>                 
                 </div>
@@ -57,50 +57,7 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="装饰者模式（Decorator-Pattern）"><a href="#装饰者模式（Decorator-Pattern）" class="headerlink" title="装饰者模式（Decorator Pattern）"></a>装饰者模式（Decorator Pattern）</h2><p>意图：动态地向对象添加功能/职责</p>
-<p>应用场景：</p>
-<p>1.子类拓展功能不可行</p>
-<p>2.向同一类型对象中地某个对象动态添加或者删除功能职责，而不影响其他对象。</p>
-<p>参与者：</p>
-<p>Component：目标对象。在其中定义目标对象的行为</p>
-<p>ConcreteComponent：是Component的提供者，真正的实现者</p>
-<p>Decorator:装饰者（组合模式）</p>
-<p>ConcreteDecorator：</p>
-<p>示例：变形金刚</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package Transform;</span><br><span class="line"></span><br><span class="line">public abstract class Transform &#123;</span><br><span class="line">    public void move()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package Transform;</span><br><span class="line"></span><br><span class="line">public class Car extends Transform&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void move() &#123;</span><br><span class="line">        System.out.println(&quot;目前状态：汽车本体&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package Transform;</span><br><span class="line"></span><br><span class="line">public class Changer extends Transform&#123;</span><br><span class="line">    Transform transform;</span><br><span class="line">    public void move()&#123;</span><br><span class="line">        transform.move();</span><br><span class="line">    &#125;</span><br><span class="line">    public Changer(Transform transform)&#123;</span><br><span class="line">        this.transform = transform;</span><br><span class="line">        System.out.println(&quot;目前状态：正在变身&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><figcaption><span>Transform;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package Transform;</span><br><span class="line"></span><br><span class="line">public class Robot extends Changer&#123;</span><br><span class="line"></span><br><span class="line">    public void say()&#123;</span><br><span class="line">        System.out.println(&quot;目前状态：正在说话&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public Robot(Transform transform)&#123;</span><br><span class="line">        super(transform);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package Transform;</span><br><span class="line"></span><br><span class="line">public class Airplane extends Changer&#123;</span><br><span class="line"></span><br><span class="line">    public void fly()&#123;</span><br><span class="line">        System.out.println(&quot;目前状态：正在飞行&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public  Airplane(Transform transform)&#123;</span><br><span class="line">        super(transform);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import Transform.Transform;</span><br><span class="line">import Transform.Car;</span><br><span class="line">import Transform.Airplane;</span><br><span class="line">import Transform.Robot;</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;生成一个机器人&quot;);</span><br><span class="line">        Transform transform = new Car();</span><br><span class="line">        transform.move();</span><br><span class="line">        Robot robot = new Robot(transform);</span><br><span class="line">        robot.say();</span><br><span class="line">        Airplane airplane = new Airplane(transform);</span><br><span class="line">        airplane.fly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><p>意图：将聚合对象分解成树结构，客户对象使用统一的方式对待聚合体和组成元素</p>
-<p>应用场景：</p>
-<p>1.使客户端忽略聚合体和组件的不同点，使用统一方式对待它们</p>
-<p>2.客户端使用聚合对象及其组件时，想简化客户端使用行为</p>
-<p>参与者：</p>
-<p>Component</p>
-<p>Leaf</p>
-<p>Composite</p>
-<p>Client</p>
-<p>示例：水果盘</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package Fruit;</span><br><span class="line"></span><br><span class="line">public abstract class MyElement &#123;</span><br><span class="line">    public void eat()&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package Fruit;</span><br><span class="line"></span><br><span class="line">public class Apple extends MyElement&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;eat an apple&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package Fruit;</span><br><span class="line"></span><br><span class="line">public class Banana extends MyElement&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;eat a banana&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package Fruit;</span><br><span class="line"></span><br><span class="line">public class Pear extends MyElement&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;eat a pear&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package Fruit;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">public class Plate extends MyElement&#123;</span><br><span class="line">    private ArrayList&lt;MyElement&gt; list = new ArrayList&lt;&gt;();//聚合链表</span><br><span class="line">    MyElement element;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        for (int i = 0; i &lt; list.size(); i++) &#123;</span><br><span class="line">            list.get(i).eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void add(MyElement element)&#123;</span><br><span class="line">        list.add(element);</span><br><span class="line">        System.out.println(&quot;add successfully&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void remove(MyElement element)&#123;</span><br><span class="line">        list.remove(element);</span><br><span class="line">        System.out.println(&quot;remove successfully&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import Fruit.*;</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Plate plate = new Plate();</span><br><span class="line">        plate.add(new Apple());</span><br><span class="line">        plate.add(new Banana());</span><br><span class="line">        plate.add(new Pear());</span><br><span class="line">        plate.eat();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
             <div class="suffix-box-left">
@@ -109,7 +66,7 @@
             <div class="suffix-box-right">
                 <span class="suffix-box-title">文章作者</span>：Aomine Daiki
                 <br>
-                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/01/6-1/" target="_blank">6-1</a>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/" target="_blank">存储技术相关</a>
                 <br>
                 <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
                 <br>
@@ -123,21 +80,11 @@
     </div>
     <div class="article-footer">
         
-            <div class="category">
-                分类：
-                
-                    <a href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">日常随笔</a>
-                
-            </div>
-        
         
         <div class="article-prev-next">
             
-                <a href="/2021/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/" title="发布于 2021-06-02 09:14">存储技术相关</a>
-                <br>
             
-            
-                <a href="/2021/05/31/5-31/" class="next-prefix">» </a> 下一篇：    <a href="/2021/05/31/5-31/" title="发布于 2021-05-31 12:24">5-31</a>
+                <a href="/2021/06/01/6-1/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/01/6-1/" title="发布于 2021-06-01 01:36">6-1</a>
             
         </div>
     </div>
