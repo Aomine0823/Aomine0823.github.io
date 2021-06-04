@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>存储技术相关</title>
+    <title>6-2</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -31,19 +31,19 @@
     <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-subtitle">存储技术相关</h1>
+                <h1 class="header-subtitle">6-2</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text">
                         <span>
                             <i class="iconfont icon-time"></i> 发表时间：2021-06-02
                         </span>
                         
-                            <span id="/2021/06/02/存储技术相关/" class="leancloud_visitors" data-flag-title="存储技术相关">
+                            <span id="/2021/06/02/6-2/" class="leancloud_visitors" data-flag-title="6-2">
                                 <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                             </span>
                         
                         <span>
-                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/02/存储技术相关/"></span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/02/6-2/"></span>
                         </span>  
                     </p>                 
                 </div>
@@ -57,90 +57,170 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        <h1 id="课后习题"><a href="#课后习题" class="headerlink" title="课后习题"></a>课后习题</h1><h2 id="数据的两种总类"><a href="#数据的两种总类" class="headerlink" title="数据的两种总类"></a>数据的两种总类</h2><p>根据存储和管理方式，可以将数据划分为<strong>结构化数据</strong>和<strong>非结构化数据</strong>，结构化数据按照行和列这种严格的格式组织，以便用户能够高效的检索和处理，结构化数据通常用于数据库管理系统存储。如果数据无法按行和列进行存储，那么该数据就是非结构化数据，这种数据比较难于被商业应用检索和查询。</p>
-<h2 id="数据中心5个核心"><a href="#数据中心5个核心" class="headerlink" title="数据中心5个核心"></a>数据中心5个核心</h2><p>应用、数据库管理系统、主机、网络、存储</p>
-<h2 id="存储技术7个要求"><a href="#存储技术7个要求" class="headerlink" title="存储技术7个要求"></a>存储技术7个要求</h2><p>数据完整性、可用性、安全性、性能、可拓展性、容量、可管理性</p>
-<h1 id="ILM-信息生命周期管理？-的优点"><a href="#ILM-信息生命周期管理？-的优点" class="headerlink" title="ILM(信息生命周期管理？)的优点"></a>ILM(信息生命周期管理？)的优点</h1><p>更高的资源利用率，简化的管理，更广泛的选择，维护约定，更低的总拥有成本</p>
-<h2 id="主机的物理组成和逻辑组成"><a href="#主机的物理组成和逻辑组成" class="headerlink" title="主机的物理组成和逻辑组成"></a>主机的物理组成和逻辑组成</h2><p>物理组成：CPU、IOS设备、存储</p>
-<p>逻辑组成：应用、操作系统、文件系统、磁盘控制、设备驱动器</p>
-<h2 id="常用连接协议"><a href="#常用连接协议" class="headerlink" title="常用连接协议"></a>常用连接协议</h2><p>PCI IDE/ATA SCSI USB IP</p>
-<h2 id="寻道时间和旋转延迟的区别"><a href="#寻道时间和旋转延迟的区别" class="headerlink" title="寻道时间和旋转延迟的区别"></a>寻道时间和旋转延迟的区别</h2><p>寻道时间是指读写头在盘面上移动进行定位的时间，也就是移动驱动臂将读写头移动到正确的磁道所需的时间。旋转延迟是指盘片旋转以定位读写头下方的数据所用的时间为旋转延迟时间。</p>
-<h2 id="主机举例"><a href="#主机举例" class="headerlink" title="主机举例"></a>主机举例</h2><p>笔记本、台式pc、服务器集群</p>
-<h2 id="内外部传输速率的区别"><a href="#内外部传输速率的区别" class="headerlink" title="内外部传输速率的区别"></a>内外部传输速率的区别</h2><p>内部传输速率是指的是数据从一个盘面上的单个磁道传输到内部缓冲区的速率</p>
-<p>外部传输速率指的是数据从接口移动到 HBA 的速率</p>
-<h2 id="闪盘的好处"><a href="#闪盘的好处" class="headerlink" title="闪盘的好处"></a>闪盘的好处</h2><p>低IO延迟 节约能源 高吞吐率</p>
-<h2 id="闪盘如何使用与维护"><a href="#闪盘如何使用与维护" class="headerlink" title="闪盘如何使用与维护"></a>闪盘如何使用与维护</h2><p>不使用碎片管理软件<br>        小分区和少分区<br>        保留足够剩余空间<br>        时常恢复</p>
-<h2 id="什么是RAID-Array"><a href="#什么是RAID-Array" class="headerlink" title="什么是RAID Array"></a>什么是RAID Array</h2><p>由独立的磁盘组成的具有冗余特性的阵列</p>
-<p>RAID 阵列是一个有许多硬盘以及支撑 RAID 功能的相关软硬件所组成的封闭模块。</p>
-<h2 id="RAID的好处"><a href="#RAID的好处" class="headerlink" title="RAID的好处"></a>RAID的好处</h2><p>磁盘损坏时提供数据保护<br>        更高的数据可用性<br>        改进的 I/O 性能<br>        精简的存储设备管理</p>
-<h2 id="什么方法可以提高RAID数据可用性"><a href="#什么方法可以提高RAID数据可用性" class="headerlink" title="什么方法可以提高RAID数据可用性"></a>什么方法可以提高RAID数据可用性</h2><p>RAID技术将多个磁盘组合为单一的虚拟磁盘， 通过数据条带化、数据校验等方式提供数据存储的高性能和高可靠性。<br>        RAID 通过在多个磁盘上同时存储和读取数据来大幅提高存储系统的数据吞吐量。<br>        通过数据校验，RAID 可以提供容错功能。利用同位检查，在硬盘故障时，仍然可以通过计算得到数据。</p>
-<h2 id="RAID3和RAID5的主要区别"><a href="#RAID3和RAID5的主要区别" class="headerlink" title="RAID3和RAID5的主要区别"></a>RAID3和RAID5的主要区别</h2><p>RAID3 有校验值写瓶颈 RAID5克服了<br>        RAID3 校验值存在一个盘上 RAID5 存在不同的盘上<br>        RAID3 在所有磁盘上并行读取和写入数据 RAID5 可以单独访问数据块</p>
-<h2 id="RAID6的优势"><a href="#RAID6的优势" class="headerlink" title="RAID6的优势"></a>RAID6的优势</h2><p>安全，允许坏了两块硬盘</p>
-<h2 id="读命中和读未命中的区别"><a href="#读命中和读未命中的区别" class="headerlink" title="读命中和读未命中的区别"></a>读命中和读未命中的区别</h2><p>在缓存中找到数据称为读命中， 在缓存中找不到数据成为“读未命中”。</p>
-<h2 id="写通过缓存和写透过缓存的区别"><a href="#写通过缓存和写透过缓存的区别" class="headerlink" title="写通过缓存和写透过缓存的区别"></a>写通过缓存和写透过缓存的区别</h2><p>回写缓存：数据被存入缓存，主机立刻得到响应，一段时 间后，多个写操作的数据被一起提交到磁盘，写响应时间加快，因为写操作和磁盘的机械延迟被分开了。然而，如果缓存遇到故障，未被提交 的数据有丢失的危险。</p>
-<p>透写缓存：数据被存入缓存并立即写到磁盘中，然后响应被送到主机，因为数据在收到时就被写入磁盘，数据丢失的危险性很小，但是因为需要磁盘操作，写响应的时间会比较长</p>
-<h2 id="智能系统的组成"><a href="#智能系统的组成" class="headerlink" title="智能系统的组成"></a>智能系统的组成</h2><p>前端、缓存、后端、磁盘</p>
-<h2 id="高中端存储系统的区别"><a href="#高中端存储系统的区别" class="headerlink" title="高中端存储系统的区别"></a>高中端存储系统的区别</h2><p>高端存储系统：主要针对大型企业应用，配备了大量的控制器和缓存内存。主机可以利用任何可用的路径去访问它的 LUN</p>
-<p>中端存储系统：适合中小企业的应用，在较低的成本下实现了很好的性能。主机只能通过到该 LUN 的控制器的路径进行访问 两个控制器，可扩展性差</p>
-<h2 id="SAN三个核心特征"><a href="#SAN三个核心特征" class="headerlink" title="SAN三个核心特征"></a>SAN三个核心特征</h2><p>光纤通道、SAN、IP SAN</p>
-<h2 id="什么是fabric"><a href="#什么是fabric" class="headerlink" title="什么是fabric"></a>什么是fabric</h2><p>一个 fabric 是一个逻辑空间，所有的节点都可以在其中互相通信。这个虚拟空间可以通过一个交换机或一个交换机网络来构建，每个在 fabric中的交换机包含唯一的域标识符。</p>
-<h2 id="描述SAN连接"><a href="#描述SAN连接" class="headerlink" title="描述SAN连接"></a>描述SAN连接</h2><p>三种方案：<br>        点对点直连<br>        通过一个仲裁环（FC HUB）通过环获得权限<br>        交换机（FC SW）</p>
-<h2 id="SAN的优势"><a href="#SAN的优势" class="headerlink" title="SAN的优势"></a>SAN的优势</h2><p>高带宽<br>        SCSI扩展<br>        资源整合<br>        可扩展性<br>        安全的访问</p>
-<h2 id="ISL（交换链路内协议）-目的"><a href="#ISL（交换链路内协议）-目的" class="headerlink" title="ISL（交换链路内协议） 目的"></a>ISL（交换链路内协议） 目的</h2><p>ISL协议用于实现交换机间的 VLAN 中继。他连接两台交换机用于传输数据。</p>
-<h2 id="FC-2分区的目的"><a href="#FC-2分区的目的" class="headerlink" title="FC-2分区的目的"></a>FC-2分区的目的</h2><p>分区是一种 FC 交换机的功能，它使得节点在一个 fabric 里可以被逻辑上分为不同的组，且在组间进行互相通信。分区实现了更好的通信控制，因为只有同属一个分区的成员才可以互相通信。</p>
-<h2 id="什么是核心边缘结构"><a href="#什么是核心边缘结构" class="headerlink" title="什么是核心边缘结构"></a>什么是核心边缘结构</h2><p>核心-边缘 fabric 是一种拓扑结构。在核心-边缘 fabric 中有两种类型的交换机层，边缘层通常由多个交换机组成，边缘层的交换机通过 ISL 与核心层的交换机连接。核心层通常由企业级导向器组成，以保证 fabric 的高可用性。 在核心-边缘拓扑中，边缘层的交换机彼此之间并无链接。</p>
-<h2 id="SAN-虚拟化"><a href="#SAN-虚拟化" class="headerlink" title="SAN 虚拟化"></a>SAN 虚拟化</h2><p>两种 SAN 环境下的虚拟化技术：块级存储虚拟化以及虚拟 SAN。<br>        块级存储虚拟化：将块存储设备 LUN 集合，实现了独立与底层物理存储的虚拟存储配给。SAN 中的虚拟层对物理存储设备做抽象化处理，创建了一个容纳不同存储设备资源的存储池，虚拟卷从存储池中创建，然后分配给主机。资源地址不再指向存储阵列中的某些物理卷，而是指向虚拟层中的虚拟卷。虚拟层将虚拟卷与存储设备中的 LUN 进行映射，映射操作对于主机是透明的。块级存储虚拟化可以实现存储卷在线的扩展，并实现了不同卷的透明访问。它还提供不中断的数据迁移。<br>        <strong>虚拟</strong> <strong>SAN</strong>:是 FC SAN 上的一个逻辑 fabric.一组节点，无论在 fabric 中的物理位置如何，都可以进行通信。每个 VASN 可看做是一个 fabric，有自己的 fabric 服务。一个 VSAN 的 fabric 配置不会影响另一个 VSAN 的流量。</p>
-<h2 id="SAN的组件"><a href="#SAN的组件" class="headerlink" title="SAN的组件"></a>SAN的组件</h2><p>主机总线适配器 (HBA)<br>        光纤布线<br>        光纤通道交换机/集线器<br>        存储阵列<br>        管理系统</p>
-<h2 id="原生和桥接的-iSCSI-实现之间的区别？"><a href="#原生和桥接的-iSCSI-实现之间的区别？" class="headerlink" title="原生和桥接的 iSCSI 实现之间的区别？"></a><strong>原生和桥接的</strong> <strong>iSCSI</strong> <strong>实现之间的区别？</strong></h2><p>原生模式的拓扑结构中没有任何的 FC 组件。iSCSI 发起方可以直接连接到目的方或通过IP 网络连接到目的方。</p>
-<p>桥接模式通过提供 iSCSI 到 FC 的桥接功能，以实现 FC 与 IP 共存。</p>
-<p>iSCSI 原生模式：对于一个支持 iSCSI 的存储阵列，实现 iSCSI 连接不需要任何 FC 组件，阵列有一个或多个 iSCSI 端口配置了 IP 地址，连接到标准以太网交互机上，发起方登录到网络后，可以访问存储阵列中的可用 LUN，单一阵列端口只要有足够的存储流量处理能力，就可以同时服务多个主机或 iSCSI 发起方。</p>
-<p>iSCSI 桥接模式的解决方案需要 FC 组件。iSCSI 发起方将桥接器的 IP 地址配置为目标方存储，另一端，桥接器也被配置为存储阵列的 FC 发起方。</p>
-<h2 id="说明使用-NIC-TOE-and-iSCSI-HBA-的优点和缺点"><a href="#说明使用-NIC-TOE-and-iSCSI-HBA-的优点和缺点" class="headerlink" title="说明使用 NIC, TOE and iSCSI HBA 的优点和缺点"></a><strong>说明使用</strong> <strong>NIC, TOE and iSCSI HBA</strong> <strong>的优点和</strong>缺点</h2><p>标准 NIC 配合 iSCSI 发起方软件是最简单和最便宜的连接方案，主机 CPU 可能成为瓶颈。<br>        TOE 可以自己完成 TCP 的管理.而仅将 iSCSI 的功能交给主机 CPU 来实现。<br>        iSCSI HBA 则可以提供性能上的优势，因为它独自承担整个 iSCSI 功能和TCP/IP 处理。</p>
-<h2 id="两个发现iSCSI机制"><a href="#两个发现iSCSI机制" class="headerlink" title="两个发现iSCSI机制"></a>两个发现iSCSI机制</h2><p>发送目标发现和网络存储名称服务</p>
-<h2 id="iSCSI两种名字"><a href="#iSCSI两种名字" class="headerlink" title="iSCSI两种名字"></a>iSCSI两种名字</h2><p>IQN和EUI</p>
-<h2 id="FCoE的物理要素"><a href="#FCoE的物理要素" class="headerlink" title="FCoE的物理要素"></a>FCoE的物理要素</h2><p>CAN<br>        交换机</p>
-<h2 id="NAS组件"><a href="#NAS组件" class="headerlink" title="NAS组件"></a>NAS组件</h2><p>CPU 和内存 网络接口 存储接口 操作系统</p>
-<p>NFS、CIFS 以及其他用于文件共享的协议</p>
-<p>存储系统</p>
-<h2 id="NAS优点"><a href="#NAS优点" class="headerlink" title="NAS优点"></a>NAS优点</h2><p>支持全局信息访问<br>        通过对文件服务器的专用操作来提高效率<br>        灵活性<br>        集中化存储<br>        简化管理</p>
-<h2 id="NAS系统使用什么协议"><a href="#NAS系统使用什么协议" class="headerlink" title="NAS系统使用什么协议"></a>NAS系统使用什么协议</h2><p>NFS、CIFS</p>
-<h2 id="集成NAS和网关NAS的区别"><a href="#集成NAS和网关NAS的区别" class="headerlink" title="集成NAS和网关NAS的区别"></a>集成NAS和网关NAS的区别</h2><p>网关式 NAS 扩展性比统一 NAS 好，因为 NAS 头和存储阵列可以独立的根据需求进行升级。例如，可以通过增加 NAS 头的方式提升 NAS 设备的性能。</p>
-<p>集成：存储和机头在一块 网关不在一起</p>
-<h2 id="CAS核心特征"><a href="#CAS核心特征" class="headerlink" title="CAS核心特征"></a>CAS核心特征</h2><p>数据完整性 内容真实性 位置无关性 数据保护 单实例存储 强制保留期</p>
-<h2 id="CAS好处"><a href="#CAS好处" class="headerlink" title="CAS好处"></a>CAS好处</h2><p>安全性和可靠性 位置无关性 数据保护 单实例存储 检索记录快 扩展性 成本低</p>
-<h2 id="2个企业应用"><a href="#2个企业应用" class="headerlink" title="2个企业应用"></a>2个企业应用</h2><p>医疗保健行业解决方案：病例存储</p>
-<p>金融行业解决方案：财务数据存储</p>
-<h2 id="CAS逻辑组成"><a href="#CAS逻辑组成" class="headerlink" title="CAS逻辑组成"></a>CAS逻辑组成</h2><p>API 元数据 内容地址CA 访问协议</p>
-<h2 id="数据如何存储在CAS中"><a href="#数据如何存储在CAS中" class="headerlink" title="数据如何存储在CAS中"></a>数据如何存储在CAS中</h2><p>客户端将要归档的数据呈现给 API<br>        计算出唯一的内容地址<br>        发送给CAS<br>        CAS验证地址保存对象<br>        将确认返回给应用程序<br>        对象ID保留并存储</p>
-<h2 id="业务连续性解决方案解决哪些问题？"><a href="#业务连续性解决方案解决哪些问题？" class="headerlink" title="业务连续性解决方案解决哪些问题？"></a>业务连续性解决方案解决哪些问题？</h2><p>业务连续性是指做好充分准备，能够轻松应对会对业务运营造成不利影响的应用中断并从中进行恢复</p>
-<p>业务连续性解决方案着力解决系统不可用、应用性能降低 和不可接受的恢复策略等问题</p>
-<h2 id="RPO-和-RTO-之间有何区别？"><a href="#RPO-和-RTO-之间有何区别？" class="headerlink" title="RPO 和 RTO 之间有何区别？"></a>RPO 和 RTO 之间有何区别？</h2><p>恢复点目标 (RPO)<br>        • 中断后必须将系统和数据恢复到的时间点<br>        • 企业能够承担的数据损失量<br>        恢复时间目标 (RTO)<br>        • 一段时间，系统和应用程序在中断之后必须在此时间内恢复<br>        • 企业能够承担或经受的宕机时间</p>
-<h2 id="灾难恢复-and-灾难重启动的区别"><a href="#灾难恢复-and-灾难重启动的区别" class="headerlink" title="灾难恢复 and 灾难重启动的区别"></a><strong>灾难恢复</strong> <strong>and</strong> 灾难重启动的区别</h2><p>灾难恢复（Disaster Recovery）：当灾难发生时为了支持重要的业务操作而进行的对系统、数据和基础架构的恢复等一系列的相互协调的过程。 灾难恢复是对以前数据备份的恢复并且应用日志或其他必要方式将备份恢复到一个已知一致性位置的过程，一旦完成了全部恢复，未确定数据正确必须对其进行验证</p>
-<p>灾难重启动（Disaster Restart），指利用基于镜像的、一致的数据和应用的备份重新启动业务操作的过程。</p>
-<h2 id="举例说明计划性中断和非计划性中断"><a href="#举例说明计划性中断和非计划性中断" class="headerlink" title="举例说明计划性中断和非计划性中断"></a>举例说明计划性中断和非计划性中断</h2><p>计划性中断都是可预见且可安排的，但是仍然会引起数据不可用。包括新硬件的安装、集成和维护，软件升级或补丁、进行备份、应用和数据的恢复、设备操作以及对生产环境测试的刷新和迁移</p>
-<p>非计划性中断包括人为失误、数据库损坏以及物理或虚拟部件损坏引起的故障。另一种则是自然或人为的灾难</p>
-<h2 id="商业组织关注于什么"><a href="#商业组织关注于什么" class="headerlink" title="商业组织关注于什么"></a>商业组织关注于什么</h2><p>业务连续性：能持续访问数据是业务操作正常执行别的必须满足的前提。<br>保护物理资源和虚拟资源，简化业务连续性策略和方案的实现。</p>
-<h2 id="单点故障举例"><a href="#单点故障举例" class="headerlink" title="单点故障举例"></a>单点故障举例</h2><p>VM HBA 物理服务器 IP网络 FC交换机 存储端口 存储阵列</p>
-<h2 id="备份的三个目的"><a href="#备份的三个目的" class="headerlink" title="备份的三个目的"></a>备份的三个目的</h2><p>灾难恢复，业务性恢复和归档</p>
-<h2 id="描述备份-回复的三大主要考虑点"><a href="#描述备份-回复的三大主要考虑点" class="headerlink" title="描述备份/回复的三大主要考虑点"></a><strong>描述备份/回复的三大主要考虑点</strong></h2><p>数据丢失量 停机时间 保留期</p>
-<h2 id="支持备份的三个科技"><a href="#支持备份的三个科技" class="headerlink" title="支持备份的三个科技"></a>支持备份的三个科技</h2><p>line SAN 直连</p>
-<h2 id="磁带和虚拟磁带备份的优缺点是什么？"><a href="#磁带和虚拟磁带备份的优缺点是什么？" class="headerlink" title="磁带和虚拟磁带备份的优缺点是什么？"></a>磁带和虚拟磁带备份的优缺点是什么？</h2><p>与物理磁带比较，虚拟磁带提供更好的单数据流性能、更好的可靠性和随机磁盘读写性能。备份和恢复操作受益于磁盘的随机访问特性，这是因为虚拟带库总是处于在线状态，且具备更快备份和回复速度。虚拟磁带并不需要与物理磁带相关联的维护任务，与备份到磁盘设备相比，虚拟磁带是预先配置好的，其安装和管理更容易。 但是虚拟磁带库一般只用于备份用途，在被分在磁盘环境中、圣餐数据 和备份数据都可以使用磁盘。</p>
-<h2 id="三种备份方式"><a href="#三种备份方式" class="headerlink" title="三种备份方式"></a>三种备份方式</h2><p><strong>全备份：</strong>指的是对生产卷上的所有数据进行完整备份，全备份副本由复制生产卷上的存储设备而得到。恢复较快，但是消耗空间加大，备份时间也较长。</p>
-<p><strong>增量式备份</strong>复制自上次全备份或增量式备份以来（取二者中较晚者）修改的数据，由于仅限对修改的数据进行备份，因此备份非常快，但是恢 复起来却很耗时；</p>
-<p><strong>累积式（或者差分式）备份</strong>复制自最后一次全备份以来修改的数据，这种方式备份时间比增量式长，但是恢复较快。</p>
-<h2 id="WWN分区和端口分区"><a href="#WWN分区和端口分区" class="headerlink" title="WWN分区和端口分区"></a>WWN分区和端口分区</h2><p>端口分区：使用物理端口的FC地址来定义分区。在端口分区里，访问数据取决于节点连接到哪个物理交换端口。FC地址是在端口登录fabric时动态分配的。即，fabric上的任何改变都会改变分区。端口分区也称为硬分区。尽管这种方法是安全的，但要求发生fabric重配置事件时必须更新分区配置；</p>
-<p>WWN分区：用万维网名称来定义分区。被称为软分区。其主要优点在于灵活性。允许SAN重连但不需要更新配置分区信息。</p>
-<h1 id="计算题"><a href="#计算题" class="headerlink" title="计算题"></a>计算题</h1><p><img src="/pic/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/image-20210602135541943.png" alt="image-20210602135541943"></p>
-<p><img src="/pic/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/image-20210602135612854.png" alt="image-20210602135612854"></p>
-<p><img src="/pic/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/image-20210602135617509.png" alt="image-20210602135617509"></p>
-<p>解题思路</p>
-<p><img src="/pic/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/image-20210602135853883.png" alt="image-20210602135853883"></p>
-<p>​    1/（T+L+X）*0.6 = 52 IOPS</p>
-<p>​    (1500*4+2800)*0.75 =6600 IOPS</p>
-<p>RAD10:</p>
-<p>6600*2/3 + 6600*1/3*2 = 8800 IOPS</p>
-<p>8800/52 = 169块</p>
-<p>320*N/2 ≥ 6.4*1024</p>
+        <h1 id="结构享元模式"><a href="#结构享元模式" class="headerlink" title="结构享元模式"></a>结构享元模式</h1><p>意图：采用共享方式有效使用数量巨大的细粒度对象</p>
+<p>应用场景：</p>
+<p>1.减少对象实例数量</p>
+<p>2.共享实例以提高资源利用或性能</p>
+<p>参与者：</p>
+<p>Flyweight：享元的抽象类型</p>
+<p>ConcreteFlyweight：可共享的享元对象</p>
+<p>UnshaerdConcreteFlyweight：被客户端使用，但是不被享元工厂管理的非共享的享元对象</p>
+<p>FlyweightFactory：享元工厂产生享元对象</p>
+<p>Client</p>
+<h1 id="职责链模式"><a href="#职责链模式" class="headerlink" title="职责链模式"></a>职责链模式</h1><h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="继承中成员方法的访问特点"><a href="#继承中成员方法的访问特点" class="headerlink" title="继承中成员方法的访问特点"></a>继承中成员方法的访问特点</h2><p>在父子类的继承关系当中，创建子类对象，访问成员方法的规则</p>
+<p>1.创建的对象是谁，就优先用谁，如果没有则向上找</p>
+<p>注意事项：</p>
+<p>无论是成员方法还是成员变量，如果没有都是向上找父类，绝对不会向下找子类</p>
+<h2 id="继承中方法的重写覆盖"><a href="#继承中方法的重写覆盖" class="headerlink" title="继承中方法的重写覆盖"></a>继承中方法的重写覆盖</h2><p>重写（override）：方法名称一样，参数列表也一样。（覆盖、覆写）</p>
+<p>重载（overload）：方法名称一样，参数列表一样</p>
+<p>方法覆盖重写的特点：创建的是什么对象，就调用什么对象重写的</p>
+<p>注意事项：</p>
+<p>1.必须保证父类和子类的方法名称一样</p>
+<p>注解@override，卸载方法前面，用来检测是不是有效的正确覆盖重写。也可以不写，只是用来检验。</p>
+<p>2.子类方法的返回值必须小于等于父类方法的返回值范围。</p>
+<p>java.long.Object类是所有类的公共最高父类(祖宗类)，java.long.String就是Object的子类。</p>
+<p>举例：</p>
+<p>父类：public Object method（）</p>
+<p>子类：public String method（）</p>
+<p>这是可以的，因为String是Object的子类</p>
+<p>但是如果子类是void不行，因为父类有返回值，但是子类没有返回值？</p>
+<p>3.子类的权限必须大于等于父类方法的权限修饰符</p>
+<p>public &gt; protect &gt; (default) &gt; private</p>
+<p>default是什么都不写，写了反倒报错？</p>
+<h2 id="继承中构造方法的访问特点"><a href="#继承中构造方法的访问特点" class="headerlink" title="继承中构造方法的访问特点"></a>继承中构造方法的访问特点</h2><p>1.子类构造方法当中有一个默认隐含的super（）调用，什么都没写，则默认先调用的父类构造，后执行的子类构造。</p>
+<p>2.可以通过super关键字来子类构造调用父类重载构造</p>
+<p>3.super的父类构造调用，必须是子类构造方法的第一个语句。不能一个子类构造调用多个super</p>
+<p>子类必须调用父类构造方法，不写则赠送super（），写了则用写的指定的super调用。super只能有一个还必须要第一个。</p>
+<h2 id="super关键字的三种用法"><a href="#super关键字的三种用法" class="headerlink" title="super关键字的三种用法"></a>super关键字的三种用法</h2><p>1.在子类的成员方法中，访问父类的成员变量</p>
+<p>2.在子类的成员方法中，访问父类的成员方法</p>
+<p>3.在子类的构造方法中，访问父类的构造方法</p>
+<h2 id="this关键字的三种方法"><a href="#this关键字的三种方法" class="headerlink" title="this关键字的三种方法"></a>this关键字的三种方法</h2><p>1.在本类的成员方法中，访问本类的成员变量</p>
+<p>2.在本类的成员方法中，访问本类的另一个成员方法（主要是起到强调作用，来子本类而不是父类）</p>
+<p>3.在本类的成员方法中，访问本类的另一个构造方法</p>
+<p>比如：本来的有参构造调用本类的无参构造。</p>
+<p>注意：</p>
+<p>1.this（）调用必须是构造方法的第一个语句。唯一一个。</p>
+<p>2.super（）和this（）两种构造调用，不同时使用，因为他俩都是唯一的。</p>
+<p>3.不能循环调用</p>
+<h2 id="super和this关键字图解"><a href="#super和this关键字图解" class="headerlink" title="super和this关键字图解"></a>super和this关键字图解</h2><p><img src="../pic/6-2/image-20210604111751003.png" alt="image-20210604111751003"></p>
+<h2 id="Java集成的三个特点"><a href="#Java集成的三个特点" class="headerlink" title="Java集成的三个特点"></a>Java集成的三个特点</h2><p>1.Java是单继承的。</p>
+<p>一个类的直接父类只能有唯一一个</p>
+<p>2.Java语言可以多级继承</p>
+<h2 id="抽象类的概念"><a href="#抽象类的概念" class="headerlink" title="抽象类的概念"></a>抽象类的概念</h2><p>如果父类当中的方法不确定如何进行{}方法实现，那么这就应该是一个抽象方法</p>
+<h2 id="抽象方法和抽象类的格式"><a href="#抽象方法和抽象类的格式" class="headerlink" title="抽象方法和抽象类的格式"></a>抽象方法和抽象类的格式</h2><p>1.格式：public abstract void eat();</p>
+<p>2.抽象方法所在类，必须是抽象类才行。</p>
+<p>3.抽象类里面的方法不一定非得都是抽象方法。</p>
+<p>4.不能直接创建new抽象类对象</p>
+<p>5.必须用一个子类来继承抽象父类</p>
+<p>6.子类必须覆盖重写抽象父类当中所有的抽象方法</p>
+<p>7.创建子类对象进行使用</p>
+<h2 id="抽象方法和抽象类的注意事项"><a href="#抽象方法和抽象类的注意事项" class="headerlink" title="抽象方法和抽象类的注意事项"></a>抽象方法和抽象类的注意事项</h2><p>抽象类的子类，必须重写抽象父类中所有的抽象方法，否则，编译无法通过而报错。除非该子类也是抽象类。</p>
+<p>but这时候就要抽象子类的子类完成未完成的抽象方法的具体化。</p>
+<p>举例：</p>
+<p>abstract Animal中有abstract sleep，abstact eat</p>
+<p>在abstract Animal的子类abstract Dog中有eat</p>
+<p>在abstract Dog的子类hashiqi中有sleep</p>
+<h2 id="接口的定义基本格式"><a href="#接口的定义基本格式" class="headerlink" title="接口的定义基本格式"></a>接口的定义基本格式</h2><p>接口就是一种，公共的规范标准</p>
+<h3 id="接口中可以包含的内容有："><a href="#接口中可以包含的内容有：" class="headerlink" title="接口中可以包含的内容有："></a>接口中可以包含的内容有：</h3><p>如果是Java 7</p>
+<p>1.常量</p>
+<p>2.抽象方法</p>
+<p>如果是Java 8 还可以额外包括</p>
+<p>3.默认方法</p>
+<p>4.静态方法</p>
+<p>如果是Java9 还可以包括</p>
+<p>5.私有方法</p>
+<p>注意事项：</p>
+<p>1.接口当中的抽象方法，修饰符必须是两个固定的关键字：public abstract</p>
+<p>2.这两个关键字修饰符，可以选择性的忽略。</p>
+<p>3.方法中的三要素，可以随意定义</p>
+<h2 id="接口的抽象方法使用"><a href="#接口的抽象方法使用" class="headerlink" title="接口的抽象方法使用"></a>接口的抽象方法使用</h2><p>1.接口的格式：</p>
+<p>public class 实现类名称 implements 接口名称{</p>
+<p>​        // …</p>
+<p>}</p>
+<p>2.接口的实现类必须覆盖重写（实现）接口中所有的抽象方法</p>
+<p>实现：去掉abstract关键字，加上方法体大括号</p>
+<p>3.创建实现类的对象，进行使用</p>
+<p>注意事项：</p>
+<p>如果实现类并没有覆盖重写接口中的所有的抽象方法，那么这个实现类自己就必须是抽象类。</p>
+<h2 id="Java中接口的默认方法定义与使用"><a href="#Java中接口的默认方法定义与使用" class="headerlink" title="Java中接口的默认方法定义与使用"></a>Java中接口的默认方法定义与使用</h2><p>格式：</p>
+<p>public default 返回值类型 方法名称（参数列表{</p>
+<p>方法体</p>
+<p>}</p>
+<p>接口当中的默认方法，可以解决接口升级的问题。</p>
+<p>（当接口中需要添加新的方法，如果用的是抽象类，则在运用接口的类中都需要添加新的方法就很麻烦。）</p>
+<p>默认方法可以被继承类继承下去</p>
+<p>1.接口的默认方法，可以通过接口实现类对象，直接调用</p>
+<p>2.接口的默认方法，也可以被接口实现类进行覆盖重写</p>
+<h2 id="接口的静态方法定义和使用"><a href="#接口的静态方法定义和使用" class="headerlink" title="接口的静态方法定义和使用"></a>接口的静态方法定义和使用</h2><p>public static 返回值类型 方法名称（参数列表）{</p>
+<p>​        方法体</p>
+<p>}</p>
+<p>注意：</p>
+<p>不能通过接口实现类的对象来调用接口中的静态方法。因为一个类可以实现多个接口，多个类中的静态方法有可能会产生冲突。</p>
+<p>正确用法：</p>
+<p>接口名称.静态方法名(参数);</p>
+<h2 id="接口的私有方法定义"><a href="#接口的私有方法定义" class="headerlink" title="接口的私有方法定义"></a>接口的私有方法定义</h2><p>需要抽取一个公有方法，用来解决两个默认方法之间重复代码的问题。</p>
+<p>1.普通私有方法：解决多个默认方法之间重复代码问题</p>
+<p>格式：private 返回值类型 方法名称(参数列表){</p>
+<p>方法体</p>
+<p>}</p>
+<p>2.静态私有方法，解决多个静态方法之间的重复代码问题</p>
+<p>格式：private static 返回值类型 方法名称(参数列表){</p>
+<p>方法体</p>
+<p>}</p>
+<p>原来我也是Java 8，小丑竟是我自己</p>
+<p>我说怎么private用不用</p>
+<h2 id="接口的常量定义和使用"><a href="#接口的常量定义和使用" class="headerlink" title="接口的常量定义和使用"></a>接口的常量定义和使用</h2><p>必须要用<strong>public static final</strong> 三个关键字进行修饰</p>
+<p>从效果上看，这就是接口的常量。</p>
+<p>一旦赋值，就不可以修改。</p>
+<p>一旦使用final关键字进行修饰，就不可改变</p>
+<p>1.接口中的常量，可以省略public static final, 注意，不写也照样是这样</p>
+<p>2.接口当中的常量，必须进行赋值，不能不赋值</p>
+<p>3.接口中常量的名称，使用完全大写的字母，用下划线进行分割。</p>
+<p>使用方法：</p>
+<p>接口名称.常量名称</p>
+<h2 id="Java接口内容小结"><a href="#Java接口内容小结" class="headerlink" title="Java接口内容小结"></a>Java接口内容小结</h2><p><img src="/pic/6-2/image-20210604191526068.png" alt="image-20210604191526068"></p>
+<p>注意：</p>
+<p>1.接口不能有静态方法块</p>
+<p>2.接口不能有构造方法</p>
+<p>3.一个类的直接父类是唯一的，但是一个类可以同时实现多个接口。</p>
+<p>4.如果实现类所实现的多个接口方法，只需要重写覆盖一次</p>
+<p>5.如果实现类没有覆盖重写所有接口当中的所有方法，实现类必须是抽象类。</p>
+<p>6.如果实现类所实现的多个接口中，存在重复的默认方法，实现类一定要对冲突的默认方法进行覆盖重写。</p>
+<p>7.继承优先于接口实现，如果继承和接口的方法重名，并且没有重写方法，优先调用父类的方法。</p>
+<h2 id="接口中的多继承"><a href="#接口中的多继承" class="headerlink" title="接口中的多继承"></a>接口中的多继承</h2><p>1.类与接口之间是多实现的。一个类可以实现多个接口</p>
+<p>2.接口与接口之间是多继承的。</p>
+<p>注意事项</p>
+<p>1.多个父接口当中的抽象方法如果重复没有问题。</p>
+<p>2.多个父接口当中的默认方法如果重复，那么子接口必须进行默认方法的覆盖重写。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p><img src="/pic/6-2/image-20210604194915018.png" alt="image-20210604194915018"></p>
+<p>多态是指一个对象拥有多种形态。</p>
+<h3 id="多态的格式与使用"><a href="#多态的格式与使用" class="headerlink" title="多态的格式与使用"></a>多态的格式与使用</h3><p>格式：</p>
+<p>父类名称 对象名 = new 子类名称();</p>
+<p>或者</p>
+<p>接口名称 对象名 = new 实现类名称();</p>
+<p>优先运行的子类方法，因为new出来的是子类</p>
+<h3 id="多态中成员变量的使用特点"><a href="#多态中成员变量的使用特点" class="headerlink" title="多态中成员变量的使用特点"></a>多态中成员变量的使用特点</h3><p>1.直接通过对象名称访问成员变量，看等号左边是谁，优先用水，没有则想上找。</p>
+<p>2.间接通过成员方法访问，该方法属于谁，优先用谁，没有则向上找。</p>
+<p>3.编译看左，运行也看左</p>
+<h3 id="多态中成员方法的使用特点"><a href="#多态中成员方法的使用特点" class="headerlink" title="多态中成员方法的使用特点"></a>多态中成员方法的使用特点</h3><p>1.看new的是谁，就优先用谁，没有就向上找</p>
+<p>2.编译看左边，运行看右边</p>
+<p>即是否有这个方法看左边，运行结果看右边</p>
+<p>子类有重写才能用子类，不然全看父类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package Extends;</span><br><span class="line"></span><br><span class="line">public class First &#123;</span><br><span class="line">    int num = 10;</span><br><span class="line">    public First()&#123;</span><br><span class="line">        System.out.println(&quot;这是父类构造&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void show()&#123;</span><br><span class="line">        System.out.println(&quot;I&#x27;m from First&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    public void  methodFirst()&#123;</span><br><span class="line">        System.out.println(&quot;I&#x27;m only from First&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package Extends;</span><br><span class="line"></span><br><span class="line">public class Second extends First&#123;</span><br><span class="line">    int num = 20;</span><br><span class="line">    public Second()&#123;</span><br><span class="line">        System.out.println(&quot;这是子类构造&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void show()&#123;</span><br><span class="line">        System.out.println(&quot;I&#x27;m from Second&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    public void  methodSecond()&#123;</span><br><span class="line">        System.out.println(&quot;I&#x27;m only from Second&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package Extends;</span><br><span class="line"></span><br><span class="line">public class Demo02 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        First first = new Second();</span><br><span class="line">        System.out.println(first.num);//10</span><br><span class="line">        first.show();//I&#x27;m from Second</span><br><span class="line">        first.methodFirst();//I&#x27;m only from First</span><br><span class="line">        //first.methodSecond();//错误</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用多态的好处"><a href="#使用多态的好处" class="headerlink" title="使用多态的好处"></a>使用多态的好处</h3><p><img src="/pic/6-2/image-20210604213840340.png" alt="image-20210604213840340"></p>
+<h2 id="对象的向上转型"><a href="#对象的向上转型" class="headerlink" title="对象的向上转型"></a>对象的向上转型</h2><p><img src="/pic/6-2/image-20210604214225430.png" alt="image-20210604214225430"></p>
+<h2 id="对象的向下转型"><a href="#对象的向下转型" class="headerlink" title="对象的向下转型"></a>对象的向下转型</h2><p>用对象的向下转型，还原对象。</p>
+<p><img src="/pic/6-2/image-20210604214813244.png" alt="image-20210604214813244"></p>
+<p>如果本来是猫，非要转成狗，会报错：ClassCastException</p>
+<h2 id="用instanceof关键字进行类型判断"><a href="#用instanceof关键字进行类型判断" class="headerlink" title="用instanceof关键字进行类型判断"></a>用instanceof关键字进行类型判断</h2><p>格式：</p>
+<p>对象 instanceof 类型</p>
+<p>这将会得到一个boolean值结果，也就是判断前面的对象能不能当作后面对象的实例（<strong>前转后</strong>）</p>
+<h2 id="笔记本电脑案例分析"><a href="#笔记本电脑案例分析" class="headerlink" title="笔记本电脑案例分析"></a>笔记本电脑案例分析</h2><p><img src="/pic/6-2/image-20210604223823789.png" alt="image-20210604223823789"></p>
 
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
@@ -150,7 +230,7 @@
             <div class="suffix-box-right">
                 <span class="suffix-box-title">文章作者</span>：Aomine Daiki
                 <br>
-                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/" target="_blank">存储技术相关</a>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/02/6-2/" target="_blank">6-2</a>
                 <br>
                 <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
                 <br>
@@ -167,18 +247,18 @@
             <div class="category">
                 分类：
                 
-                    <a href="/category/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/">存储技术</a>
+                    <a href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">日常随笔</a>
                 
             </div>
         
         
         <div class="article-prev-next">
             
-                <a href="/2021/06/02/6-2/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/06/02/6-2/" title="发布于 2021-06-02 09:21">6-2</a>
+                <a href="/2021/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="发布于 2021-06-04 08:04">设计模式总结</a>
                 <br>
             
             
-                <a href="/2021/06/01/6-1/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/01/6-1/" title="发布于 2021-06-01 01:36">6-1</a>
+                <a href="/2021/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%85%B3/" title="发布于 2021-06-02 09:14">存储技术相关</a>
             
         </div>
     </div>
