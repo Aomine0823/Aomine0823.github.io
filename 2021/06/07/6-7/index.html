@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>设计模式总结</title>
+    <title>6-7</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -31,19 +31,19 @@
     <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-subtitle">设计模式总结</h1>
+                <h1 class="header-subtitle">6-7</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text">
                         <span>
-                            <i class="iconfont icon-time"></i> 发表时间：2021-06-04
+                            <i class="iconfont icon-time"></i> 发表时间：2021-06-07
                         </span>
                         
-                            <span id="/2021/06/04/设计模式/" class="leancloud_visitors" data-flag-title="设计模式总结">
+                            <span id="/2021/06/07/6-7/" class="leancloud_visitors" data-flag-title="6-7">
                                 <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                             </span>
                         
                         <span>
-                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/04/设计模式/"></span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/07/6-7/"></span>
                         </span>  
                     </p>                 
                 </div>
@@ -57,11 +57,136 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        <h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>事件模式？</p>
-<p>简单工厂模式？原型模式</p>
-<p>撤销历史记录是个动态的方法，用栈倒序</p>
-<p>组合模式</p>
-<p>课上介绍的图形绘制项目<br><a target="_blank" rel="noopener" href="https://github.com/santiweide/mini_painter">https://github.com/santiweide/mini_painter</a></p>
+        <h1 id="MySQL476-493"><a href="#MySQL476-493" class="headerlink" title="MySQL476-493"></a>MySQL476-493</h1><p><strong>1.DataBase（DB）</strong></p>
+<p><strong>2.数据库：</strong></p>
+<p>用于存储和管理数据的仓库</p>
+<p><strong>3.数据库的特点</strong></p>
+<p>1.持久化存储数据。其实数据库就是一个文件系统。</p>
+<p>2.方便存储和管理数据</p>
+<p>3.使用了统一的方式操作数据库</p>
+<p><strong>4.常见的数据库软件</strong></p>
+<p>Oracle、MySQL、Microsoft SQL Server、DB2</p>
+<p><strong>5.MySQL的好处</strong></p>
+<p>1.开源免费</p>
+<p>2.功能十分强大，可以支持千万级的访问</p>
+<p><strong>6.MySQL的安装</strong></p>
+<p>安装步骤详见</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1qkNY31Hz9gpGgVzMeInf4Q">https://pan.baidu.com/s/1qkNY31Hz9gpGgVzMeInf4Q</a><br>        提取码：3bcg<br>        复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+<p>C:\ProgramData</p>
+<p><strong>7.MySQL的配置</strong></p>
+<p>1.cmd启动输入:services.msc 打开服务窗口</p>
+<p>2.使用管理员打开cmd，</p>
+<p>net stop mysql启动mysql服务</p>
+<p>net start mysql打开mysql服务</p>
+<p><strong>8.MySQL登录/远程访问</strong></p>
+<p>1.mysql -uroot -proot</p>
+<p>mysql -h（主机ip）-uroot -proot</p>
+<p>mysql –host=     –user=   –passward=</p>
+<p><strong>9.MySQL退</strong>出</p>
+<p>1.exit</p>
+<p>2.quit</p>
+<p><strong>10.MySQL的目录结构</strong></p>
+<p>1.安装目录</p>
+<p>​    配置文件：my.ini</p>
+<p>2.数据目录</p>
+<p>​    数据库：文件夹</p>
+<p>​    表：文件</p>
+<p>​    数据：</p>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>定义了操作所有关系型数据库的规则</p>
+<p>SQ通用语法</p>
+<p>1.以单行或多行书写，以分号结尾。</p>
+<p>2.用空格或者缩进进行增强语句的可读性。</p>
+<p>3.不区分大小写，但是关键字建议使用大写。</p>
+<p>4.三种注释</p>
+<p>​    单行注释：–或者#</p>
+<p>​    多行注释：/* */</p>
+<p>5.SQL分类</p>
+<p>（1）DDL数据定义语言</p>
+<p>​        关键字：create,drop,alter</p>
+<p>（2）DML数据操作语言</p>
+<p>​        关键字：insert,delete,update</p>
+<p>（3）DQL数据查询语言</p>
+<p>​        关键字：select,where</p>
+<p>（4）DCL数据控制语言(授权)</p>
+<p>​        关键字：GRANT,REVOKE</p>
+<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><p>1.操作数据库：CRUD</p>
+<p>​    1.C（Create）：创建</p>
+<p>​        创建数据库</p>
+<p>​            <strong>create database 数据库名称；</strong></p>
+<p>​        创建数据库，判断不存在，在创建</p>
+<p>​            create database if not exists 数据库名称；</p>
+<p>​        创建数据库，并指定字符集</p>
+<p>​            create database 数据库名称 character set 字符集名；</p>
+<p>​        创建db4数据库。判断是否存在，并指定字符集为gbk;</p>
+<p>​            creater database if not exists db4 character set gbk;</p>
+<p>​    2.R（Retrirve）：查询</p>
+<p>​        查询所有数据库的名称：</p>
+<p>​            <strong>show databases；</strong></p>
+<p>​        查看某个数据库的字符集：查看某个数据库的创建语句</p>
+<p>​            <strong>show create database；</strong></p>
+<p>​    3.U（Update）：修改</p>
+<p>​        修改数据库的字符集</p>
+<p>​            <strong>alter database 数据库名称 character set 字符集名称；</strong></p>
+<p>​    4.D（Delete）：删除</p>
+<p>​        删除数据库</p>
+<p>​            <strong>drop database 数据库名称；</strong></p>
+<p>​        判断数据库是否存在，存在再删除</p>
+<p>​            drop database if exists 数据库名称 ；</p>
+<p>​    5.使用数据库</p>
+<p>​        查询当前正在使用的数据库名称</p>
+<p>​            <strong>select database（）；</strong></p>
+<p>​            <strong>use 数据库名称；（没有database！！）</strong></p>
+<h1 id="操作表"><a href="#操作表" class="headerlink" title="操作表"></a>操作表</h1><p>1.C（Create）：创建</p>
+<p>​    1.语法</p>
+<p>​        create table 表名（</p>
+<p>​            列名1 数据类型1，</p>
+<p>​            列名2 数据类型2，</p>
+<p>​            ……</p>
+<p>​            列名n 数据类型n</p>
+<p>​            ）；</p>
+<p>​            注意：最后一列不需要加逗号</p>
+<p>​            数据类型：</p>
+<p>​                1.int：整数类型</p>
+<p>​                        age int，</p>
+<p>​                2.double：小数类型</p>
+<p>​                        score double（5，2）（最大值999.99）</p>
+<p>​                3.date：日期：只包含了年月日 yyyy-MM-dd</p>
+<p>​                4.datetime：日期，包含了年月日时分秒 yyyy-MM-dd HH：mm：ss</p>
+<p>​                5.timestamp：时间错类型 包含年月日时分秒 yyyy-MM-dd HH：mm：ss</p>
+<p>​                    如果是timestamp类型，如果将来不给这个字段赋值，或赋值为null，则默认使用当前的系统时间来自动赋值。</p>
+<p>​                6.varchar：字符串</p>
+<p>​                    name     varchar（20）；表示姓名最大20字符</p>
+<p>​    创建表：</p>
+<p>​        <strong>create table student（</strong></p>
+<p>​            <strong>id int，</strong></p>
+<p>​            <strong>name carchar(32),</strong></p>
+<p>​            <strong>age int,</strong></p>
+<p>​            <strong>score double(4,1),</strong></p>
+<p>​            <strong>birthday date,</strong></p>
+<p>​            <strong>insert_time timestamp</strong></p>
+<p>​            <strong>）;</strong></p>
+<p>​    复制创建表：</p>
+<p>​        create table 新的表名 like 需要复制的表名；</p>
+<p>2.R（Retrieve）：查询</p>
+<p>​    查询某个数据库中所有的表名称</p>
+<p>​        show tables；</p>
+<p>​    查询表结构</p>
+<p>​        desc 表名；</p>
+<p>3.U(Update)：</p>
+<p>​    1.修改表名</p>
+<p>​        <strong>alter table 表名 rename to 新的表名；</strong></p>
+<p>​    2.修改表的字符集</p>
+<p>​        <strong>alter table 表明character set 字符集名称；</strong></p>
+<p>​    3.修改表的一列（添加）</p>
+<p>​        <strong>alter table 表名 add 列名 数据类型；</strong></p>
+<p>​    4.修改列名称 类型</p>
+<p>​        （1）alter table 表名 changer 列名 修改之后的列名 修改之后的类型</p>
+<p>​        （2）alter table 表名 modify 列名 修改之后的类型</p>
+<p>​    5.删除表的一列</p>
+<p>​        <strong>alter table 表名 drop 列名；</strong></p>
+<p>4.D（Delete）：删除</p>
+<p>​    <strong>drop table 表名；</strong></p>
+<p>​    drop table if exists 表名；</p>
 
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
@@ -71,7 +196,7 @@
             <div class="suffix-box-right">
                 <span class="suffix-box-title">文章作者</span>：Aomine Daiki
                 <br>
-                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_blank">设计模式总结</a>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/07/6-7/" target="_blank">6-7</a>
                 <br>
                 <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
                 <br>
@@ -88,18 +213,18 @@
             <div class="category">
                 分类：
                 
-                    <a href="/category/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+                    <a href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">日常随笔</a>
                 
             </div>
         
         
         <div class="article-prev-next">
             
-                <a href="/2021/06/05/6-5/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/06/05/6-5/" title="发布于 2021-06-05 09:15">6-5</a>
+                <a href="/2021/06/08/6-8/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/06/08/6-8/" title="发布于 2021-06-08 01:37">6-8</a>
                 <br>
             
             
-                <a href="/2021/06/02/6-2/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/02/6-2/" title="发布于 2021-06-02 09:21">6-2</a>
+                <a href="/2021/06/06/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/06/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" title="发布于 2021-06-06 08:29">在线教育项目</a>
             
         </div>
     </div>

@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>设计模式总结</title>
+    <title>6-5</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -31,19 +31,19 @@
     <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-subtitle">设计模式总结</h1>
+                <h1 class="header-subtitle">6-5</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text">
                         <span>
-                            <i class="iconfont icon-time"></i> 发表时间：2021-06-04
+                            <i class="iconfont icon-time"></i> 发表时间：2021-06-05
                         </span>
                         
-                            <span id="/2021/06/04/设计模式/" class="leancloud_visitors" data-flag-title="设计模式总结">
+                            <span id="/2021/06/05/6-5/" class="leancloud_visitors" data-flag-title="6-5">
                                 <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                             </span>
                         
                         <span>
-                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/04/设计模式/"></span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/05/6-5/"></span>
                         </span>  
                     </p>                 
                 </div>
@@ -57,11 +57,96 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        <h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>事件模式？</p>
-<p>简单工厂模式？原型模式</p>
-<p>撤销历史记录是个动态的方法，用栈倒序</p>
-<p>组合模式</p>
-<p>课上介绍的图形绘制项目<br><a target="_blank" rel="noopener" href="https://github.com/santiweide/mini_painter">https://github.com/santiweide/mini_painter</a></p>
+        <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="final关键字概念与四种用法"><a href="#final关键字概念与四种用法" class="headerlink" title="final关键字概念与四种用法"></a>final关键字概念与四种用法</h2><p>1.可以用来修饰一个类</p>
+<p>2.可以用来修饰一个方法</p>
+<p>3.可以用来修饰一个局部变量</p>
+<p>4.可以用来修饰一个成员变量</p>
+<h3 id="用来修饰一个类"><a href="#用来修饰一个类" class="headerlink" title="用来修饰一个类"></a>用来修饰一个类</h3><p>public final class 类名称{</p>
+<p>​        //…</p>
+<p>}</p>
+<p>含义：但该你这个类不能有任何的子类</p>
+<p>注意：一个类如果是final的，那么其中所有的成员方法都无法进行覆盖重写。</p>
+<h3 id="用来修饰一个方法"><a href="#用来修饰一个方法" class="headerlink" title="用来修饰一个方法"></a>用来修饰一个方法</h3><p>格式：</p>
+<p>修饰符 final 返回值类型 方法名称(参数列表){</p>
+<p>​        //…</p>
+<p>}</p>
+<p>当final修饰一个方法的时候，这个方法就是最终方法，也就是不能被覆盖重写</p>
+<p>注意：</p>
+<p>对于类和方法来说，abstract关键字和final关键字不能同时使用，因为矛盾。</p>
+<p>abstract一定要被覆盖重写，而final不能被覆盖重写。</p>
+<h3 id="用来修饰一个局部变量"><a href="#用来修饰一个局部变量" class="headerlink" title="用来修饰一个局部变量"></a>用来修饰一个局部变量</h3><p>一旦使用final来修饰局部变量，那么这个变量就不能进行更改</p>
+<p>一次赋值，终生不变。</p>
+<p>可以分两部写，即</p>
+<p>final int num；</p>
+<p>num = 10；</p>
+<p>注意与接口中的常量进行区分</p>
+<p>对于基本类型来说，不可变说的是变量当中的数据不可改变。</p>
+<p>对于引用类型来说，不可变说的是变量当中的地址值不可改变。但是内容可以改变。</p>
+<h3 id="用来修饰一个成员变量"><a href="#用来修饰一个成员变量" class="headerlink" title="用来修饰一个成员变量"></a>用来修饰一个成员变量</h3><p>如果使用final关键字修饰，那么这个变量也照样是不可变。</p>
+<p>1.由于成员变量具有默认值，所以用了final之后必须手动赋值，不会再给默认值了。</p>
+<p>2.对于final的成员变量，要么使用直接赋值，要么通过构造方法赋值。</p>
+<p>3.必须保证类当中所有重载的构造方法，都最终会对final的成员变量赋值。</p>
+<h2 id="成员变量与局部变量的区别"><a href="#成员变量与局部变量的区别" class="headerlink" title="成员变量与局部变量的区别"></a>成员变量与局部变量的区别</h2><p>1.从语法形式上，看成员变量是属于类的，而局部变量是在方法中定义的变量或是方法的参数；成员变量可以被public,private,static等修饰符所修饰，而局部变量不能被访问控制修饰符及static所修饰；但是，成员变量和局部变量都能被final所修饰； </p>
+<p>2.从变量在内存中的存储方式来看，成员变量是对象的一部分，而对象存在于堆内存，局部变量存在于栈内存 </p>
+<p>3.从变量在内存中的生存时间上看，成员变量是对象的一部分，它随着对象的创建而存在，而局部变量随着方法的调用而自动消失。 </p>
+<p>4.成员变量如果没有被赋初值，则会自动以类型的默认值而赋值（一种情况例外被final修饰但没有被static修饰的成员变量必须显示地赋值）；而局部变量则不会自动赋值。</p>
+<h2 id="四种权限修饰符"><a href="#四种权限修饰符" class="headerlink" title="四种权限修饰符"></a>四种权限修饰符</h2><p>​                            public &gt; protect &gt; (default) &gt; private</p>
+<p>同一个类            🐕            🐕            🐕            🐕</p>
+<p>同一个包            🐕            🐕            🐕             🐱</p>
+<p>不同包子类         🐕            🐕            🐱            🐱</p>
+<p>不同包非子类      🐕            🐱           🐱            🐱</p>
+<h2 id="内部类的概念与分类"><a href="#内部类的概念与分类" class="headerlink" title="内部类的概念与分类"></a>内部类的概念与分类</h2><p>1.成员内部类</p>
+<p>2.局部内部类（包含匿名内部类）</p>
+<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><p>定义格式：</p>
+<p>修饰符 class 类名称{</p>
+<p>​        修饰符 class 类名称{</p>
+<p>​                //…</p>
+<p>​        }</p>
+<p>​        //…</p>
+<p>}</p>
+<p>注意：内用外，随意访问；外用内，一定需要借助内部类对象</p>
+<p>内部类会在class文件中显示出来，例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Body &#123;//外部类</span><br><span class="line">    public class Heart&#123;//成员内部类</span><br><span class="line"></span><br><span class="line">        public void beat()&#123;//内部类方法</span><br><span class="line">            System.out.println(&quot;pong……&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    private String name;</span><br><span class="line">    public void methodBody()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/pic/6-5/image-20210605104205720.png" alt="image-20210605104205720"></p>
+<p>.class文件中也会包含内部类。</p>
+<h3 id="成员内部类的使用"><a href="#成员内部类的使用" class="headerlink" title="成员内部类的使用"></a>成员内部类的使用</h3><p>1.间接方式：在外部类的方法当中，使用内部类，然偶main只是调用外部类的方法。</p>
+<p>2.直接方式：公式： 外部类名称.内部类名称 对象名 = new 外部类名称().new 内部类名称()</p>
+<h3 id="内部类的同名变量访问"><a href="#内部类的同名变量访问" class="headerlink" title="内部类的同名变量访问"></a>内部类的同名变量访问</h3><p>内部类的成员方法中：</p>
+<p>变量名称：局部变量，就近原则</p>
+<p>this.变量名称：内部类的成员变量</p>
+<p>外部类名称.this.变量名称：外部类的成员变量</p>
+<h3 id="局部内部类定义"><a href="#局部内部类定义" class="headerlink" title="局部内部类定义"></a>局部内部类定义</h3><p>如果一个类是定义在一个方法内部的，那么这就是一个局部内部类。</p>
+<p>“局部”：只有当前所属的方法才能使用它，出了这个方法外面就不能用了。</p>
+<p>定义格式：</p>
+<p>修饰符 class 外部类名称{</p>
+<p>​        修饰符 返回值类型 外部类方法名称（参数列表）{</p>
+<p>​                class 局部内部类名称{</p>
+<p>​                        //…</p>
+<p>​                }</p>
+<p>​        }</p>
+<p>}</p>
+<h3 id="局部内部类的final问题"><a href="#局部内部类的final问题" class="headerlink" title="局部内部类的final问题"></a>局部内部类的final问题</h3><p>局部内部类，如果希望访问所在的局部变量，那么这个局部变量必须是有效final的。</p>
+<p>备注：从java8中开始，只要局部变量是是不变，那么final关键字可以省略。</p>
+<p>原因：</p>
+<p>1.new出来的对象在堆内存中</p>
+<p>2.但是局部变量是跟着方法走的，在栈内存中</p>
+<p>3.方法运行结束之后立刻出战，局部变量就会立刻消失</p>
+<p>4.new出来的对象会在堆中继续存在，直到垃圾回收小时。</p>
+<h3 id="匿名内部类（重要）"><a href="#匿名内部类（重要）" class="headerlink" title="匿名内部类（重要）"></a>匿名内部类（重要）</h3><p>如果接口的实现类（或者说父类的子类）只需要使用唯一的一次，那么这种情况下就可以省略掉该类的定义，而改为使用，匿名内部类</p>
+<p>匿名内部类的定义格式：</p>
+<p>接口名称 对象名 = new 接口名称（）{</p>
+<p>​        //覆盖重写所有抽象方法</p>
+<p>}；</p>
+<p>//没有使用implement关键字</p>
+<p>举例：</p>
+<p><img src="/pic/6-5/image-20210605132649838.png" alt="image-20210605132649838"></p>
+<h3 id="匿名内部类的注意事项"><a href="#匿名内部类的注意事项" class="headerlink" title="匿名内部类的注意事项"></a>匿名内部类的注意事项</h3><p>1.匿名内部类，在创建对象的时候，只能使用唯一一次。</p>
+<p><img src="/pic/6-5/image-20210605151859705.png" alt="image-20210605151859705"></p>
+<p>这是有对象的情况，还可以有没对象的情况，即匿名内部类的同时匿名对象</p>
+<p><img src="/pic/6-5/image-20210605153325590.png" alt="image-20210605153325590"></p>
+<p>匿名对象只能实现一个方法=-=</p>
+<h2 id="类、接口作为成员变量的类型"><a href="#类、接口作为成员变量的类型" class="headerlink" title="类、接口作为成员变量的类型"></a>类、接口作为成员变量的类型</h2><p>和String的用法差不多，只是String的值可以直接调用，但是类作为成员变量的时候需要用get、set函数。</p>
 
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
@@ -71,7 +156,7 @@
             <div class="suffix-box-right">
                 <span class="suffix-box-title">文章作者</span>：Aomine Daiki
                 <br>
-                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_blank">设计模式总结</a>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/05/6-5/" target="_blank">6-5</a>
                 <br>
                 <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
                 <br>
@@ -88,18 +173,18 @@
             <div class="category">
                 分类：
                 
-                    <a href="/category/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+                    <a href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">日常随笔</a>
                 
             </div>
         
         
         <div class="article-prev-next">
             
-                <a href="/2021/06/05/6-5/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/06/05/6-5/" title="发布于 2021-06-05 09:15">6-5</a>
+                <a href="/2021/06/06/6-6/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/06/06/6-6/" title="发布于 2021-06-06 08:29">6-6</a>
                 <br>
             
             
-                <a href="/2021/06/02/6-2/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/02/6-2/" title="发布于 2021-06-02 09:21">6-2</a>
+                <a href="/2021/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="发布于 2021-06-04 08:04">设计模式总结</a>
             
         </div>
     </div>
