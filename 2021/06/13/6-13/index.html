@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>分类 - 日常随笔</title>
+    <title>6-13</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -17,169 +17,137 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/index.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css">
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css">
+    
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js"></script>
+
 </head>
 <body>
     <a id="cover"></a>
     <div id="header">
-    <div class="header" >
+    <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-title"></h1>
-                <h2 class="header-description" id="hitokoto"></h2>
-                <h3 class="header-info" id="hitokotoAuthor"></h3>
-                <!--
-                <h1 class="header-subtitle"></h1>
-                <p class="header-subinfo"></p>
-                -->
+                <h1 class="header-subtitle">6-13</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2021-06-13
+                        </span>
+                        
+                            <span id="/2021/06/13/6-13/" class="leancloud_visitors" data-flag-title="6-13">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/13/6-13/"></span>
+                        </span>  
+                    </p>                 
+                </div>
             </div>
         </div>
-        <a class="scroll-down" href="javascript:;" target="_self" data-offset="-45">
-            <span class="hidden">Scroll Down</span>
-            <i class="scroll-down-icon iconfont icon-return"></i>
-        </a>
+        <canvas id="articleHeaderCanvas"></canvas>
     </div>
 </div>
     <div id="container">
     <div id="content">
-        <div class="articles">
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/05/6-5/">6-5</a>
-                
+        <div id="article">
+    <div class="toc"></div>
+    <div class="article-body">
+        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>查询慢：链表中的地址不是连续的， 每次查询元素，都必须从头开始查询</p>
+<p>增删快：链表结构，增加/删除一个元素，对链表的整体结构没有影响，所以增删快</p>
+<p>链表中的每一个元素也称之为一个节点</p>
+<p>一个节点包含了一个数据源（存储数组），一个指针域（存储地址）</p>
+<p>链表分为：</p>
+<h3 id="单向链表："><a href="#单向链表：" class="headerlink" title="单向链表："></a>单向链表：</h3><p>单链表是链表中结构最简单的。一个单链表的节点(Node)分为两个部分，第一个部分(data)保存或者显示关于节点的信息，另一个部分存储下一个节点的地址。最后一个节点存储地址的部分指向空值。</p>
+<p>单向链表只可向一个方向遍历，一般查找一个节点的时候需要从第一个节点开始每次访问下一个节点，一直访问到需要的位置。而插入一个节点，对于单向链表，我们只提供在链表头插入，只需要将当前插入的节点设置为头节点，next指向原头节点即可。删除一个节点，我们将该节点的上一个节点的next指向该节点的下一个节点。</p>
+<p><img src="/pic/6-13/image-20210613121956905.png" alt="image-20210613121956905"></p>
+<p>双向链表：</p>
+<p>双向链表它可以从两个方向遍历。</p>
+<p><img src="/pic/6-13/image-20210613122307872.png" alt="image-20210613122307872"></p>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h3 id="二叉树（BST）"><a href="#二叉树（BST）" class="headerlink" title="二叉树（BST）"></a>二叉树（BST）</h3><p><img src="/pic/6-13/image-20210613123751681.png" alt="image-20210613123751681"></p>
+<p>二叉树的特性：</p>
+<p>1.左子树上所有的节点的值均小于或等于他的根结点的值</p>
+<p>2.右子树上所有的节点的值均大于或等于她的根结点的值</p>
+<p>3.左右子树也一定分别为二叉排序树</p>
+<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><p>红黑树就是一种平衡的二叉查找树。具有以下特性：</p>
+<p>1.节点是红色或者黑色</p>
+<p>2.根节点是黑色</p>
+<p>3.每个叶子的节点都是黑色的空节点</p>
+<p>4.每个红色节点的两个子节点都是黑色的。</p>
+<p>5.从任意节点到其每个叶子的所有路径都包含相同数目的黑色节点</p>
+<p><img src="/pic/6-13/image-20210613131940467.png" alt="image-20210613131940467"></p>
+<p>红黑树趋近于平衡树，查询的速度非常的快，查询叶子节点最大次数和最小次数不能超过2倍。</p>
+<p>红黑树的平衡依靠的是三种操作：左旋、右旋、变色。</p>
+<h4 id="左旋"><a href="#左旋" class="headerlink" title="左旋"></a>左旋</h4><p>以某个结点作为支点(旋转结点)，其右子结点变为旋转结点的父结点，右子结点的左子结点变为旋转结点的右子结点，左子结点保持不变。</p>
+<p><img src="/pic/6-13/image-20210613134417208.png" alt="image-20210613134417208"></p>
+<h4 id="右旋"><a href="#右旋" class="headerlink" title="右旋"></a>右旋</h4><p>以某个结点作为支点(旋转结点)，其左子结点变为旋转结点的父结点，左子结点的右子结点变为旋转结点的左子结点，右子结点保持不变。</p>
+<p><img src="/pic/6-13/image-20210613134540390.png" alt="image-20210613134540390"></p>
+<h4 id="变色"><a href="#变色" class="headerlink" title="变色"></a>变色</h4><p>结点的颜色由红变黑或由黑变红。</p>
+<h4 id="红黑树插入"><a href="#红黑树插入" class="headerlink" title="红黑树插入"></a>红黑树插入</h4><p>插入操作包括两部分工作：一查找插入的位置；二插入后自平衡。查找插入的父结点很简单，跟查找操作区别不大：</p>
+<ol>
+<li>从根结点开始查找；</li>
+<li>若根结点为空，那么插入结点作为根结点，结束。</li>
+<li>若根结点不为空，那么把根结点作为当前结点；</li>
+<li>若当前结点为null，返回当前结点的父结点，结束。</li>
+<li>若当前结点key等于查找key，那么该key所在结点就是插入结点，更新结点的值，结束。</li>
+<li>若当前结点key大于查找key，把当前结点的左子结点设置为当前结点，重复步骤4；</li>
+<li>若当前结点key小于查找key，把当前结点的右子结点设置为当前结点，重复步骤4；</li>
+</ol>
+<p>插入结点是应该是红色</p>
+<p><img src="/pic/6-13/image-20210613134827402.png" alt="image-20210613134827402"></p>
+<h4 id="红黑树删除"><a href="#红黑树删除" class="headerlink" title="红黑树删除"></a>红黑树删除</h4><p><img src="/pic/6-13/image-20210613140253827.png" alt="image-20210613140253827"></p>
+<p>我放弃了=-=</p>
+
+        <p class="suffix-end">__END__</p>
+        <div class="suffix-box">
+            <div class="suffix-box-left">
+                <img src="/image/avatar.jpg" alt="Aomine Daiki">
             </div>
-            <div class="article-abstract">
-                
+            <div class="suffix-box-right">
+                <span class="suffix-box-title">文章作者</span>：Aomine Daiki
+                <br>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/13/6-13/" target="_blank">6-13</a>
+                <br>
+                <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
+                <br>
+                <span class="suffix-box-title">关于主题</span>：<a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+                <br>
+                <span class="suffix-box-title">版权声明</span>：文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+                <br>
             </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-05
-                </span>
-                
-                    <span id="/2021/06/05/6-5/" class="leancloud_visitors" data-flag-title="6-5">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/05/6-5/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+            <div style="clear: both;"></div>
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/02/6-2/">6-2</a>
+    </div>
+    <div class="article-footer">
+        
+            <div class="category">
+                分类：
+                
+                    <a href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">日常随笔</a>
                 
             </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-02
-                </span>
-                
-                    <span id="/2021/06/02/6-2/" class="leancloud_visitors" data-flag-title="6-2">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/02/6-2/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+        
+        
+        <div class="article-prev-next">
+            
+            
+                <a href="/2021/06/12/6-12/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/12/6-12/" title="发布于 2021-06-12 11:17">6-12</a>
+            
         </div>
+    </div>
     
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/01/6-1/">6-1</a>
-                
-            </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-01
-                </span>
-                
-                    <span id="/2021/06/01/6-1/" class="leancloud_visitors" data-flag-title="6-1">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/01/6-1/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+    <div class="article-comments">
+        <div class="comments-title">
+            评论列表
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/05/31/5-31/">5-31</a>
-                
-            </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-05-31
-                </span>
-                
-                    <span id="/2021/05/31/5-31/" class="leancloud_visitors" data-flag-title="5-31">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/05/31/5-31/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+        <div class="comments-content">
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/05/30/5-30/">5-30</a>
-                
-            </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-05-30
-                </span>
-                
-                    <span id="/2021/05/30/5-30/" class="leancloud_visitors" data-flag-title="5-30">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/05/30/5-30/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
-        </div>
-    
-    
-        <div class="pagination-bottom">
-            <div class="pagination">
-                
-                    <a class="extend prev" rel="prev" href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">上一页</a><a class="page-number" href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/">1</a><span class="page-number current">2</span><a class="page-number" href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/page/3/">3</a><a class="page-number" href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/page/4/">4</a><a class="page-number" href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/page/5/">5</a><a class="extend next" rel="next" href="/category/%E6%97%A5%E5%B8%B8%E9%9A%8F%E7%AC%94/page/3/">下一页</a>
-                
-            </div>
-        </div>
-    
+    </div>
+
 </div>
 
     </div>

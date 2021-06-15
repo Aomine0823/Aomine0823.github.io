@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>设计模式大作业</title>
+
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/NotoSansSC.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Playball.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/PTMono.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/RobotoSlab.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css">
+
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css">
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css">
+    
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js"></script>
+
+</head>
+<body>
+    <a id="cover"></a>
+    <div id="header">
+    <div class="header">
+        <div class="vertical">
+            <div class="inner">
+                <h1 class="header-subtitle">设计模式大作业</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2021-06-11
+                        </span>
+                        
+                            <span id="/2021/06/11/设计模式大作业/" class="leancloud_visitors" data-flag-title="设计模式大作业">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/11/设计模式大作业/"></span>
+                        </span>  
+                    </p>                 
+                </div>
+            </div>
+        </div>
+        <canvas id="articleHeaderCanvas"></canvas>
+    </div>
+</div>
+    <div id="container">
+    <div id="content">
+        <div id="article">
+    <div class="toc"></div>
+    <div class="article-body">
+        <h1 id="设计模式大作业☞小型点餐系统"><a href="#设计模式大作业☞小型点餐系统" class="headerlink" title="设计模式大作业☞小型点餐系统"></a>设计模式大作业☞小型点餐系统</h1><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/15g_eyfD40y9kFABMzJoYZA">https://pan.baidu.com/s/15g_eyfD40y9kFABMzJoYZA</a><br>提取码：5spb<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+<p><img src="/pic/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%A4%A7%E4%BD%9C%E4%B8%9A/image-20210612092303674.png" alt="image-20210612092303674"></p>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package Command;</span><br><span class="line"></span><br><span class="line">import Decorator.FoodItem;</span><br><span class="line">import Decorator.SimpleFood;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//命令模式，将点菜行为封装</span><br><span class="line">public interface FcartCommand &#123;</span><br><span class="line">    //购物车</span><br><span class="line">    String name = null;</span><br><span class="line">    FoodItem fooditem = new SimpleFood();</span><br><span class="line">    Invoker invoker = new Invoker();</span><br><span class="line">    public void add();</span><br><span class="line">    public void remove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package Command;</span><br><span class="line"></span><br><span class="line">import Decorator.FoodItem;</span><br><span class="line">import Decorator.SimpleFood;</span><br><span class="line"></span><br><span class="line">public class FcartCommandImpl implements FcartCommand&#123;</span><br><span class="line">    FReceiver fr = new FReceiver();</span><br><span class="line">    String name;</span><br><span class="line">    FoodItem foodItem = new SimpleFood();</span><br><span class="line">    public FcartCommandImpl(FoodItem foodItem) &#123;</span><br><span class="line">        name = foodItem.getName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void add() &#123;</span><br><span class="line"></span><br><span class="line">        fr.choose();</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void remove() &#123;</span><br><span class="line">        fr.cancel();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package Command;</span><br><span class="line"></span><br><span class="line">public class FReceiver &#123;</span><br><span class="line">    public void choose()&#123;</span><br><span class="line">        System.out.println(&quot;添加一份&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void cancel()&#123;</span><br><span class="line">        System.out.println(&quot;删除一份&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package Command;</span><br><span class="line"></span><br><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">public class Invoker &#123;</span><br><span class="line">    Stack&lt;FcartCommand&gt; s = new Stack&lt;&gt;();</span><br><span class="line">    public void push(FcartCommand fcc)&#123;</span><br><span class="line">        s.push(fcc);</span><br><span class="line">        FcartCommandImpl fcci = (FcartCommandImpl) fcc;</span><br><span class="line">        System.out.print(fcci.getName());</span><br><span class="line">        fcc.add();</span><br><span class="line">    &#125;</span><br><span class="line">    public void pop()&#123;</span><br><span class="line">        FcartCommand fcc = s.pop();</span><br><span class="line">        FcartCommandImpl fcci = (FcartCommandImpl) fcc;</span><br><span class="line">        System.out.print(fcci.getName());</span><br><span class="line">        fcc.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package Decorator;</span><br><span class="line"></span><br><span class="line">import FoodFactory.Product.BaseFood;</span><br><span class="line">import FoodFactory.Product.Food;</span><br><span class="line"></span><br><span class="line">public abstract class FoodItem &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int price;</span><br><span class="line"></span><br><span class="line">    public int getPrice() &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPrice(int price) &#123;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public FoodItem() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public FoodItem(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAmount(int i)&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><figcaption><span>Decorator;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package Decorator;</span><br><span class="line"></span><br><span class="line">public class SimpleFood extends FoodItem&#123;</span><br><span class="line">    public SimpleFood(String name) &#123;</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line">    public SimpleFood() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setAmount(int i)&#123;</span><br><span class="line">        System.out.println(&quot;客户点餐菜品：&quot; + getName() + i + &quot;份&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><figcaption><span>Decorator;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package Decorator;</span><br><span class="line"></span><br><span class="line">public class SimpleFood extends FoodItem&#123;</span><br><span class="line">    public SimpleFood(String name) &#123;</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line">    public SimpleFood() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setAmount(int i)&#123;</span><br><span class="line">        System.out.println(&quot;客户点餐菜品：&quot; + getName() + i + &quot;份&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package Decorator;</span><br><span class="line"></span><br><span class="line">public class FoodDecorator extends FoodItem&#123;</span><br><span class="line">    FoodItem fi;</span><br><span class="line">    public FoodDecorator() &#123;</span><br><span class="line">        super();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public FoodDecorator(FoodItem fi) &#123;</span><br><span class="line">        this.fi = fi;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAmount(int i)&#123;</span><br><span class="line">        fi.setAmount(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package Decorator;</span><br><span class="line"></span><br><span class="line">public class HFD extends FoodDecorator&#123;</span><br><span class="line">    public HFD(FoodItem fi)&#123;</span><br><span class="line">        super(fi);</span><br><span class="line">    &#125;</span><br><span class="line">    public HFD()&#123;</span><br><span class="line">        super();</span><br><span class="line">    &#125;</span><br><span class="line">    public void setAmount(int i)&#123;</span><br><span class="line">        super.setAmount(i);</span><br><span class="line">    &#125;</span><br><span class="line">    public void setHL(int i)&#123;</span><br><span class="line">        if(i == 0)&#123;</span><br><span class="line">            System.out.println(fi.getName() + &quot;辣度选择为不辣&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (i == 1)&#123;</span><br><span class="line">            System.out.println(fi.getName() + &quot;辣度选择为微辣&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (i == 2)&#123;</span><br><span class="line">            System.out.println(fi.getName() + &quot;辣度选择为中辣&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if(i == 3)&#123;</span><br><span class="line">            System.out.println(fi.getName() + &quot;辣度选择为特辣&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package Decorator;</span><br><span class="line"></span><br><span class="line">public class SFD extends FoodDecorator&#123;</span><br><span class="line">    public SFD() &#123;</span><br><span class="line">        super();</span><br><span class="line">    &#125;</span><br><span class="line">    public SFD(FoodItem fi)&#123;</span><br><span class="line">        super(fi);</span><br><span class="line">    &#125;</span><br><span class="line">    public void setAmount(int i)&#123;</span><br><span class="line">        super.setAmount(i);</span><br><span class="line">    &#125;</span><br><span class="line">    public void setSL(int i)&#123;</span><br><span class="line">        if(i == 0)&#123;</span><br><span class="line">            System.out.println(fi.getName() + &quot;甜度度选择为不额外加糖&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (i == 1)&#123;</span><br><span class="line">            System.out.println(fi.getName() + &quot;甜度选择为三分糖&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (i == 2)&#123;</span><br><span class="line">            System.out.println(fi.getName() + &quot;甜度选择为五分糖&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if(i == 3)&#123;</span><br><span class="line">            System.out.println(fi.getName() + &quot;甜度选择为七分糖&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="工厂模式-可能不太适合呜呜呜"><a href="#工厂模式-可能不太适合呜呜呜" class="headerlink" title="工厂模式 可能不太适合呜呜呜"></a>工厂模式 可能不太适合呜呜呜</h2><p>但是为了凑一个模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Factory;</span><br><span class="line"></span><br><span class="line">import FoodFactory.Product.BaseFood;</span><br><span class="line"></span><br><span class="line">public interface Factory &#123;</span><br><span class="line">    public BaseFood prodeceBaseFood();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Factory;</span><br><span class="line"></span><br><span class="line">import FoodFactory.Product.BaseFood;</span><br><span class="line">import FoodFactory.Product.Food;</span><br><span class="line"></span><br><span class="line">public class FoodFactory implements Factory&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Food prodeceBaseFood() &#123;</span><br><span class="line">        return new Food();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Factory;</span><br><span class="line"></span><br><span class="line">import FoodFactory.Product.BaseFood;</span><br><span class="line">import FoodFactory.Product.Fruit;</span><br><span class="line"></span><br><span class="line">public class FruitFactory implements Factory&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Fruit prodeceBaseFood() &#123;</span><br><span class="line">        return new Fruit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">import com.sun.javaws.IconUtil;</span><br><span class="line"></span><br><span class="line">public abstract class BaseFood &#123;</span><br><span class="line">    int price;</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    public int getPrice() &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPrice(int price) &#123;</span><br><span class="line">        this.price = price;</span><br><span class="line">        System.out.println(&quot;设置成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void show() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void make() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class CASP extends Food &#123;</span><br><span class="line">/*    private String name = &quot;酸辣土豆丝&quot;;</span><br><span class="line">    private int price = 10;*/</span><br><span class="line">    public CASP()&#123;</span><br><span class="line">        name = &quot;酸辣土豆丝&quot;;</span><br><span class="line">        price = 10;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public int getPrice() &#123;</span><br><span class="line">        return super.getPrice();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setPrice(int price) &#123;</span><br><span class="line">        super.setPrice(10);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class Cray extends Food&#123;</span><br><span class="line"></span><br><span class="line">    public Cray()&#123;</span><br><span class="line">         name = &quot;十三香小龙虾&quot;;</span><br><span class="line">         price = 74;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public  class Food extends BaseFood&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public int getPrice() &#123;</span><br><span class="line">        return super.getPrice();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPrice(int price) &#123;</span><br><span class="line">        super.setPrice(price);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void show() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void make() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class Fruit extends BaseFood&#123;</span><br><span class="line">    String name;</span><br><span class="line">    int price;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getPrice() &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPrice(int price) &#123;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void show() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void make() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class Hami_melon extends Fruit&#123;</span><br><span class="line"></span><br><span class="line">   /* String name = &quot;哈密瓜果盘&quot;;</span><br><span class="line">    int price = 6;*/</span><br><span class="line">    public Hami_melon()&#123;</span><br><span class="line">        name = &quot;哈密瓜果盘&quot;;</span><br><span class="line">        price = 6;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class KPC extends Food&#123;</span><br><span class="line">    /*String name = &quot;宫保鸡丁&quot;;</span><br><span class="line">    int price = 21;*/</span><br><span class="line">    public KPC()&#123;</span><br><span class="line">        name = &quot;宫保鸡丁&quot;;</span><br><span class="line">        price = 21;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class SAES extends Food&#123;</span><br><span class="line">   /* String name = &quot;紫菜蛋汤&quot;;</span><br><span class="line">    int price = 10;*/</span><br><span class="line">    public SAES()&#123;</span><br><span class="line">        name = &quot;紫菜蛋汤&quot;;</span><br><span class="line">        price = 10;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class SSSR extends Food&#123;</span><br><span class="line">    /*String name = &quot;糖醋排骨&quot;;</span><br><span class="line">    int price = 28;*/</span><br><span class="line">    public SSSR()&#123;</span><br><span class="line">        name = &quot;糖醋排骨&quot;;</span><br><span class="line">        price = 28;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class Steak extends Food&#123;</span><br><span class="line">    /*String name = &quot;牛排&quot;;</span><br><span class="line">    int price = 38;*/</span><br><span class="line">    public Steak()&#123;</span><br><span class="line">        name = &quot;牛排&quot;;</span><br><span class="line">        price = 38;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class Strawberry extends Fruit&#123;</span><br><span class="line">    /*String name = &quot;草莓果盘&quot;;</span><br><span class="line">    int price = 8;*/</span><br><span class="line">    public Strawberry()&#123;</span><br><span class="line">        name = &quot;草莓果盘&quot;;</span><br><span class="line">        price = 8;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class Watermelon extends Fruit&#123;</span><br><span class="line">    /*String name = &quot;西瓜果盘&quot;;</span><br><span class="line">    int price = 4;*/</span><br><span class="line">    public Watermelon()&#123;</span><br><span class="line">        name = &quot;西瓜果盘&quot;;</span><br><span class="line">        price = 4;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory.Product;</span><br><span class="line"></span><br><span class="line">public class Waxberry extends  Fruit&#123;</span><br><span class="line">    /*String name = &quot;杨梅果盘&quot;;</span><br><span class="line">    int price = 6;*/</span><br><span class="line">    public Waxberry() &#123;</span><br><span class="line">        name = &quot;杨梅果盘&quot;;</span><br><span class="line">        price = 6;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show() &#123;</span><br><span class="line">        System.out.println( name + &quot;单价/份：&quot; + price);</span><br><span class="line">    &#125;</span><br><span class="line">    public void make()&#123;</span><br><span class="line">        System.out.println(&quot;正在制作&quot; + name + &quot;……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory;</span><br><span class="line"></span><br><span class="line">import FoodFactory.Factory.FoodFactory;</span><br><span class="line">import FoodFactory.Product.*;</span><br><span class="line"></span><br><span class="line">public class Menu &#123;</span><br><span class="line">    public void showMenu()&#123;</span><br><span class="line">        System.out.println(&quot;==================菜单==================&quot;);</span><br><span class="line">        System.out.println(&quot;水果列表&quot;);</span><br><span class="line">        /*FoodFactory ff =new FoodFactory();</span><br><span class="line">        Food food = ff.prodeceBaseFood();*/</span><br><span class="line">        Hami_melon hami_melon = new Hami_melon();</span><br><span class="line">        hami_melon.show();</span><br><span class="line">        Strawberry strawberry = new Strawberry();</span><br><span class="line">        strawberry.show();</span><br><span class="line">        Watermelon watermelon = new Watermelon();</span><br><span class="line">        watermelon.show();</span><br><span class="line">        Waxberry waxberry = new Waxberry();</span><br><span class="line">        waxberry.show();</span><br><span class="line">        System.out.println(&quot;主菜列表&quot;);</span><br><span class="line">        CASP casp = new CASP();</span><br><span class="line">        casp.show();</span><br><span class="line">        Cray cray = new Cray();</span><br><span class="line">        cray.show();</span><br><span class="line">        KPC kpc = new KPC();</span><br><span class="line">        kpc.show();</span><br><span class="line">        SAES saes = new SAES();</span><br><span class="line">        saes.show();</span><br><span class="line">        SSSR sssr = new SSSR();</span><br><span class="line">        sssr.show();</span><br><span class="line">        Steak steak = new Steak();</span><br><span class="line">        steak.show();</span><br><span class="line">        System.out.println(&quot;====================================&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变化，由于存储格式不一样啦"><a href="#变化，由于存储格式不一样啦" class="headerlink" title="变化，由于存储格式不一样啦"></a>变化，由于存储格式不一样啦</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">package FoodFactory;</span><br><span class="line"></span><br><span class="line">import FoodFactory.Product.*;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">public class Transform &#123;</span><br><span class="line">    public BaseFood TransForm(String string)&#123;</span><br><span class="line">        switch (string) &#123;</span><br><span class="line">            case &quot;酸辣土豆丝&quot;:</span><br><span class="line">                return new CASP();</span><br><span class="line">                //break;</span><br><span class="line">            case &quot;十三香小龙虾&quot;:</span><br><span class="line">                return new Cray();</span><br><span class="line">                //break;</span><br><span class="line">            case &quot;哈密瓜&quot;:</span><br><span class="line">                return new Hami_melon();</span><br><span class="line">                //break;</span><br><span class="line">            case &quot;宫保鸡丁&quot;:</span><br><span class="line">                return new KPC();</span><br><span class="line">                //break;</span><br><span class="line">            case &quot;紫菜蛋汤&quot;:</span><br><span class="line">                return new SAES();</span><br><span class="line">                //break;</span><br><span class="line">            case &quot;糖醋排骨&quot;:</span><br><span class="line">                return new SSSR();</span><br><span class="line">                //break;</span><br><span class="line">            case &quot;牛排&quot;:</span><br><span class="line">                return new Steak();</span><br><span class="line">                //break;</span><br><span class="line">            case &quot;草莓&quot;:</span><br><span class="line">                return new Strawberry();</span><br><span class="line">                //break;</span><br><span class="line">            case &quot;西瓜&quot;:</span><br><span class="line">                return new Watermelon();</span><br><span class="line">                //break;</span><br><span class="line">            case &quot;杨梅&quot;:</span><br><span class="line">                return new Waxberry();</span><br><span class="line">                //break;</span><br><span class="line">            default:</span><br><span class="line">                //System.out.println(&quot;输入错误，本店不出售此类菜品&quot;);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">    public void cook (ArrayList&lt;BaseFood&gt; foodArrayList)&#123;</span><br><span class="line">        for (int i = 0; i &lt; foodArrayList.size(); i++) &#123;</span><br><span class="line">            foodArrayList.get(i).make();</span><br><span class="line">            foodArrayList.get(i).getPrice();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void show(ArrayList&lt;String&gt; stringArrayList)&#123;</span><br><span class="line">        for (int i = 0; i &lt; stringArrayList.size(); i++) &#123;</span><br><span class="line">            System.out.println(stringArrayList.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package Price;</span><br><span class="line">//桥接模式</span><br><span class="line">public interface MemberDiscount &#123;</span><br><span class="line">    double getDiscountRatio();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package Price;</span><br><span class="line"></span><br><span class="line">public class GoldenMemberDiscount implements MemberDiscount&#123;</span><br><span class="line">    //黄金会员打9折</span><br><span class="line">    @Override</span><br><span class="line">    public double getDiscountRatio() &#123;</span><br><span class="line">        return 0.9;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package Price;</span><br><span class="line"></span><br><span class="line">public class DiamondMemberDiscount implements MemberDiscount&#123;</span><br><span class="line">        //钻石会员打8折</span><br><span class="line">    @Override</span><br><span class="line">    public double getDiscountRatio() &#123;</span><br><span class="line">        return 0.8;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package Price;</span><br><span class="line"></span><br><span class="line">public abstract class DiscountStrategy &#123;</span><br><span class="line">    //持有一个实现化对象的引用</span><br><span class="line">    //优惠策略</span><br><span class="line">    protected MemberDiscount memberDiscount;</span><br><span class="line"></span><br><span class="line">    public DiscountStrategy(MemberDiscount memberDiscount) &#123;</span><br><span class="line">        this.memberDiscount = memberDiscount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public abstract double getDiscountPrice(double orig, double value);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package Price;</span><br><span class="line"></span><br><span class="line">public class FixDisCountStrategy extends DiscountStrategy&#123;</span><br><span class="line">    //固定优惠价格策略（修正抽象化(Refined Abstraction)角色）</span><br><span class="line">    public FixDisCountStrategy(MemberDiscount memberDiscount) &#123;</span><br><span class="line">        super(memberDiscount);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public double getDiscountPrice(double orig, double value) &#123;</span><br><span class="line">        return (orig - value) * memberDiscount.getDiscountRatio();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package Price;</span><br><span class="line"></span><br><span class="line">public class RatioDiscountStrategy extends DiscountStrategy&#123;</span><br><span class="line">    //按比例优惠价格策略（修正抽象化(Refined Abstraction)角色）</span><br><span class="line">    public RatioDiscountStrategy(MemberDiscount memberDiscount) &#123;</span><br><span class="line">        super(memberDiscount);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public double getDiscountPrice(double orig, double value) &#123;</span><br><span class="line">        return orig * value * memberDiscount.getDiscountRatio();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package Price;</span><br><span class="line"></span><br><span class="line">import FoodFactory.Product.BaseFood;</span><br><span class="line">import FoodFactory.Product.Food;</span><br><span class="line">import FoodFactory.Product.Fruit;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">public class OriginalPrice &#123;</span><br><span class="line">    public int calculate(ArrayList&lt;BaseFood&gt; baseFoodArrayList)&#123;</span><br><span class="line">        int price = 0;</span><br><span class="line">        for (int i = 0; i &lt; baseFoodArrayList.size(); i++) &#123;</span><br><span class="line">            BaseFood baseFood = baseFoodArrayList.get(i);</span><br><span class="line">            price += baseFood.getPrice();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package Price;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public void showDiscount(int price)&#123;</span><br><span class="line">        DiscountStrategy goldenMemberFix = new FixDisCountStrategy(new GoldenMemberDiscount());</span><br><span class="line">        System.out.println(&quot;黄金会员 + 固定优惠金额，原价：&quot;+price+&quot;元，优惠后：&quot; + goldenMemberFix.getDiscountPrice(price, 1) + &quot;元&quot;);</span><br><span class="line"></span><br><span class="line">        DiscountStrategy diamondMemberFix = new FixDisCountStrategy(new DiamondMemberDiscount());</span><br><span class="line">        System.out.println(&quot;钻石会员 + 固定优惠金额，原价：&quot;+price+&quot;元，优惠后：&quot; + diamondMemberFix.getDiscountPrice(price, 1) + &quot;元&quot;);</span><br><span class="line"></span><br><span class="line">        DiscountStrategy goldenMemberRatio = new RatioDiscountStrategy(new GoldenMemberDiscount());</span><br><span class="line">        System.out.println(&quot;黄金会员 + 折扣优惠金额，原价：&quot;+price+&quot;元，优惠后：&quot; + goldenMemberRatio.getDiscountPrice(price, 0.95) + &quot;元&quot;);</span><br><span class="line"></span><br><span class="line">        DiscountStrategy diamondMemberRatio = new RatioDiscountStrategy(new DiamondMemberDiscount());</span><br><span class="line">        System.out.println(&quot;钻石会员 + 折扣优惠金额，原价：&quot;+price+&quot;元，优惠后：&quot; + diamondMemberRatio.getDiscountPrice(price, 0.95) + &quot;元&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line">import Command.FcartCommand;</span><br><span class="line">import Command.FcartCommandImpl;</span><br><span class="line">import Command.Invoker;</span><br><span class="line">import Decorator.FoodItem;</span><br><span class="line">import Decorator.HFD;</span><br><span class="line">import Decorator.SimpleFood;</span><br><span class="line">import FoodFactory.Menu;</span><br><span class="line">import FoodFactory.Product.BaseFood;</span><br><span class="line">import FoodFactory.Transform;</span><br><span class="line">import Price.OriginalPrice;</span><br><span class="line">import Price.Test;</span><br><span class="line">import com.sun.org.apache.xpath.internal.operations.Or;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Patron &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc = new Scanner(System.in);</span><br><span class="line">        Invoker i = new Invoker();//存储菜品</span><br><span class="line">        ArrayList&lt;String&gt; foodMenu = new ArrayList&lt;&gt;();</span><br><span class="line">        ArrayList&lt;BaseFood&gt; cookMenu = new ArrayList&lt;&gt;();</span><br><span class="line">        Transform transform = new Transform();</span><br><span class="line">        int num = -1;</span><br><span class="line">        int flag = 1;</span><br><span class="line">        do&#123;</span><br><span class="line">            System.out.println(&quot;======================&quot;);</span><br><span class="line">            System.out.println(&quot;1.我要点菜&quot;);</span><br><span class="line">            System.out.println(&quot;2.查看已点菜单&quot;);</span><br><span class="line">            System.out.println(&quot;3.查看点餐进度&quot;);</span><br><span class="line">            System.out.println(&quot;4.查看点餐金额&quot;);</span><br><span class="line">            System.out.println(&quot;5.退出&quot;);</span><br><span class="line">            System.out.println(&quot;======================&quot;);</span><br><span class="line">            System.out.println(&quot;请输入上述的数字1-5进行选择&quot;);</span><br><span class="line">            int choose = sc.nextInt();</span><br><span class="line">            switch (choose)&#123;</span><br><span class="line">                case 1:</span><br><span class="line">                    System.out.println(&quot;进入点菜界面&quot;);</span><br><span class="line">                    Menu menu = new Menu();</span><br><span class="line">                    menu.showMenu();</span><br><span class="line">                    System.out.println(&quot;请输入菜品名称&quot;);</span><br><span class="line">                    String name = sc.next();</span><br><span class="line">                    FoodItem f1 = new SimpleFood(name);//应用装饰者模式</span><br><span class="line">                    HFD hf1 = new HFD(f1);</span><br><span class="line">                    //System.out.println(&quot;请输入菜品数量,请输入1-3之间的数字&quot;);</span><br><span class="line">                    //int number = sc.nextInt();</span><br><span class="line">                    //hf1.setAmount(number);</span><br><span class="line">                    System.out.println(&quot;请输入菜品辣度,请输入0-3之间的数字,提示：0表示不辣,1表示微辣,2表示中辣,3表示特辣&quot;);</span><br><span class="line">                    int level = sc.nextInt();</span><br><span class="line">                    hf1.setHL(level);</span><br><span class="line">                    cookMenu.add(transform.TransForm(f1.getName()));</span><br><span class="line">                    foodMenu.add(f1.getName());</span><br><span class="line">                    FcartCommand fcc =new FcartCommandImpl(f1);//嵌套命令模式</span><br><span class="line">                    i.push(fcc);</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    System.out.println(&quot;========================&quot;);</span><br><span class="line">                    System.out.println(&quot;查看已点菜单&quot;);</span><br><span class="line">                    transform.show(foodMenu);//菜单,String格式</span><br><span class="line">                    break;</span><br><span class="line">                case 3:</span><br><span class="line">                    System.out.println(&quot;==========================&quot;);</span><br><span class="line">                    System.out.println(&quot;查看点餐进度&quot;);</span><br><span class="line">                    transform.cook(cookMenu);//后厨，BaseFood</span><br><span class="line">                    break;</span><br><span class="line">                case 4:</span><br><span class="line">                    System.out.println(&quot;==========================&quot;);</span><br><span class="line">                    System.out.println(&quot;查看点餐金额&quot;);</span><br><span class="line">                    OriginalPrice originalPrice = new OriginalPrice();</span><br><span class="line">                    int price = originalPrice.calculate(cookMenu);</span><br><span class="line">                    System.out.println(&quot;商品原价为：&quot; + price);</span><br><span class="line">                    System.out.println(&quot;是否是本店会员，是请按1，享受会员折扣&quot;);</span><br><span class="line">                    int is = sc.nextInt();</span><br><span class="line">                    if(is ==1)&#123;</span><br><span class="line">                        Test test = new Test();</span><br><span class="line">                        test.showDiscount(price);</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;else&#123;</span><br><span class="line">                        System.out.println(&quot;很遗憾您不是本店会员，无法享受折扣，期待您成为会员&quot;);</span><br><span class="line">                        System.out.println(&quot;您需支付的金额为原价&quot; + price);</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                case 5:</span><br><span class="line">                    System.out.println(&quot;退出成功！祝您用餐愉快&quot;);</span><br><span class="line">                    flag = 0;</span><br><span class="line">                    break;</span><br><span class="line">                default:</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag == 1)&#123;</span><br><span class="line">                System.out.println(&quot;是否需要返回主界面，返回请按0&quot;);</span><br><span class="line">                num = sc.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;while(num == 0);//循环条件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //Invoker i = new Invoker();//存储菜品</span><br><span class="line">        //FoodItem f1 = new SimpleFood(&quot;酸辣土豆丝&quot;);//应用装饰者模式</span><br><span class="line">        //ArrayList&lt;String&gt; foodMenu = new ArrayList&lt;&gt;();</span><br><span class="line">        //ArrayList&lt;BaseFood&gt; cookMenu = new ArrayList&lt;&gt;();</span><br><span class="line">        //Transform transform = new Transform();</span><br><span class="line">        /*cookMenu.add(transform.TransForm(f1.getName()));</span><br><span class="line">        foodMenu.add(f1.getName());</span><br><span class="line">        f1.setAmount(1);</span><br><span class="line">        FcartCommand fcc =new FcartCommandImpl(f1);//嵌套命令模式</span><br><span class="line">        i.push(fcc);*/</span><br><span class="line">        //i.pop();</span><br><span class="line">        /*FoodItem f2 = new SimpleFood(&quot;十三香小龙虾&quot;);//应用装饰者模式</span><br><span class="line">        HFD hf2 = new HFD(f2);</span><br><span class="line">        hf2.setAmount(1);</span><br><span class="line">        hf2.setHL(1);*/</span><br><span class="line">        /*cookMenu.add(transform.TransForm(f2.getName()));</span><br><span class="line">        foodMenu.add(f2.getName());*/</span><br><span class="line">        //System.out.println(cookMenu);</span><br><span class="line">        //transform.show(foodMenu);//菜单,String格式</span><br><span class="line">        //transform.cook(cookMenu);//后厨，BaseFood</span><br><span class="line">        //System.out.println(&quot;==========================&quot;);</span><br><span class="line">        //OriginalPrice originalPrice = new OriginalPrice();</span><br><span class="line">        //int price = originalPrice.calculate(cookMenu);</span><br><span class="line">        //System.out.println(price);</span><br><span class="line">        //Test test = new Test();</span><br><span class="line">        //test.showDiscount(price);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        <p class="suffix-end">__END__</p>
+        <div class="suffix-box">
+            <div class="suffix-box-left">
+                <img src="/image/avatar.jpg" alt="Aomine Daiki">
+            </div>
+            <div class="suffix-box-right">
+                <span class="suffix-box-title">文章作者</span>：Aomine Daiki
+                <br>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%A4%A7%E4%BD%9C%E4%B8%9A/" target="_blank">设计模式大作业</a>
+                <br>
+                <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
+                <br>
+                <span class="suffix-box-title">关于主题</span>：<a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+                <br>
+                <span class="suffix-box-title">版权声明</span>：文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+                <br>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <div class="article-footer">
+        
+            <div class="category">
+                分类：
+                
+                    <a href="/category/%E7%82%B9%E9%A4%90%E7%B3%BB%E7%BB%9F/">点餐系统</a>
+                
+            </div>
+        
+        
+        <div class="article-prev-next">
+            
+                <a href="/2021/06/12/6-12/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/06/12/6-12/" title="发布于 2021-06-12 11:17">6-12</a>
+                <br>
+            
+            
+                <a href="/2021/06/08/6-8/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/08/6-8/" title="发布于 2021-06-08 01:37">6-8</a>
+            
+        </div>
+    </div>
+    
+    <div class="article-comments">
+        <div class="comments-title">
+            评论列表
+        </div>
+        <div class="comments-content">
+        </div>
+    </div>
+
+</div>
+
+    </div>
+</div>
+    <div id="footer"></div>
+    <div id="sidebar">
+    <div class="menu-wrap" style="display:none;">
+        <nav class="menu">
+            <div class="menu-introduce"> 
+                <div class="introduce-avatar"></div> 
+                <div class="introduce-info"> 
+                    <div class="introduce-user"><span></span></div>        
+                </div> 
+            </div> 
+            <div class="menu-list">
+                <ul></ul> 
+            </div> 
+            <div class="menu-link"></div> 
+        </nav>
+        <button class="menu-button-close"></button>
+        <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+            </svg>
+        </div>
+    </div>
+    <button class="menu-button-open">MENU</button>
+    <div class="menu-cover"></div>
+</div>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/search.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/iscroll.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/instantsearch.min.js"></script>
+<div class="search-window">
+    <div class="search-content">
+        <div class="search-content-icon">
+            <i class="iconfont icon-search"></i>
+        </div>
+        <div id="search-input" class="search-input"></div>
+    </div>
+
+    <div class="search-scroll">
+        <div class="search-result">
+            <div id="search-stats" class="search-stats"></div>
+            <div id="search-hits"></div>
+            <div id="search-pagination" class="search-pagination"></div>
+        </div>
+    </div>
+
+    <span class="search-close-icon">
+        <i class="iconfont icon-close"></i>
+    </span>
+</div>
+    <div id="tools">
+    <div class="progressbar-top"></div>
+
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/APlayer.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/APlayer.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/Meting.min.js"></script>
+        <meting-js id="3778678" lrcshow="false" server="netease" type="playlist" fixed="true" autoplay="false" loop="all" order="random" preload="auto" volume="0.67" mutex="true"></meting-js>
+    
+    
+    <div class="wrap-right"></div>
+    <div class="loading"></div>
+</div>
+    <script>
+    window.config = {
+        GitHubUserName     : 'first19326',
+        GitHubRepositories : 'hexo-liveforcode',
+
+        BlogUser      : 'Aomine Daiki',
+        BlogAvatar    : '/image/avatar.jpg',
+        BlogStartDate : '2020-01-01',
+
+        WebsiteTitleBlur         : '(◍´꒳`◍) Hi, Live For Code',
+        WebsiteTitleBlurTimeOut  : 500,
+        WebsiteTitleFocus        : '(*´∇｀*) 欢迎回来!',
+        WebsiteTitleFocusTimeOut : 1000,
+        WebsiteFavicon           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/website/logo.png',
+
+        ProgressBar: {
+            id       : 'topProgressBar',
+            color    : '#77B6FF',
+            height   : '2px',
+            duration : 0.2
+        },
+
+        Loading: {
+            rebound: {
+                tension  : 16,
+                friction : 5
+            },
+            spinner: {
+                id     : 'spinner',
+                radius : 90,
+                sides  : 3,
+                depth  : 4,
+                colors : {
+                    background : '#F0F0F0',
+                    stroke     : '#272633',
+                    base       : '',
+                    child      : '#272633'
+                },
+                alwaysForward : true,
+                restAt        : 0.5,
+                renderBase    : false
+            }
+        },
+
+        HomeHeaderAnimationRendered : true,
+        HomeHeaderAnimation         : {
+            radius      : 15,
+            density     : 0.2,
+            color       : 'rgba(255, 255, 255, .2)',
+            clearOffset : 0.3
+        },
+
+        ArticleHeaderAnimationRendered : false,
+        ArticleHeaderAnimation         : {
+            triW                  : 14,
+            triH                  : 20,
+            neighbours            : [
+                
+                    'side',
+                
+                    'top',
+                
+                    'bottom',
+                
+            ],
+            speedTrailAppear      : 0.1,
+            speedTrailDisappear   : 0.1,
+            speedTriOpen          : 1,
+            trailMaxLength        : 30,
+            trailIntervalCreation : 100,
+            delayBeforeDisappear  : 2,
+            colors                : [
+                
+                    '#96EDA6',
+                
+                    '#5BC6A9',
+                
+                    '#38668C',
+                
+                    '#374D84',
+                
+                    '#BED5CB',
+                
+                    '#62ADC6',
+                
+                    '#8EE5DE',
+                
+                    '#304E7B',
+                
+            ]
+        },
+
+        BackAnimationRendered          : true,
+        IEBrowserBackAnimationRendered : false,
+        BackAnimation                  : {
+            colorSaturation  : '60%',
+            colorBrightness  : '50%',
+            colorAlpha       : 0.5,
+            colorCycleSpeed  : 5,
+            verticalPosition : 'random',
+            horizontalSpeed  : 200,
+            ribbonCount      : 3,
+            strokeSize       : 0,
+            parallaxAmount   : -0.2,
+            animateSections  : true
+        },
+
+        HomeHeaderImage : [
+            
+                'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/header/home.jpg',
+            
+                'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/header/home.jpeg',
+            
+        ],
+        HomeBannerText  : '',
+
+        ArticleHeaderImage : [
+            
+                'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/header/article.jpg',
+            
+        ],
+
+        OtherBannerText : '',
+
+        MenuList : [
+            
+                {
+                    name   : '首页',
+                    href   : '/',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '标签',
+                    href   : '/tag',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '分类',
+                    href   : '/category',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '归档',
+                    href   : '/archive',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '赞赏',
+                    href   : '/donate',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '关于',
+                    href   : '/about',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '订阅',
+                    href   : '/atom.xml',    
+                    target : '_blank',
+                    class  : ''
+                },
+            
+                {
+                    name   : '搜索',
+                    href   : '',    
+                    target : '',
+                    class  : 'search'
+                },
+            
+                {
+                    name   : '留言板',
+                    href   : '/comment',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '友情链接',
+                    href   : '/friend',    
+                    target : '',
+                    class  : ''
+                },
+            
+        ],
+        MenuLink : [
+            
+                
+                    {
+                        icon : 'icon-weibo', 
+                        url  : ''
+                    },
+                
+                    {
+                        icon : 'icon-wechat', 
+                        url  : ''
+                    },
+                
+                    {
+                        icon : 'icon-qq', 
+                        url  : ''
+                    },
+                
+                    {
+                        icon : 'icon-github', 
+                        url  : 'https://github.com/first19326'
+                    },
+                
+            
+        ],
+
+        FooterStyle : 2,
+        BottomText  : {
+            icon    : 'like-fill',
+            left    : '人生若只如初见',
+            right   : '何事秋风悲画扇'
+        },
+        ThemeInfo   : true,
+
+        ConsoleList : [
+            
+                
+                    [
+                        
+                            
+                                'Based on cnblogs theme SimpleMemory.',
+                            
+                                '',
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                'SimpleMemory Author:',
+                            
+                                'BNDong',
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                'Theme:',
+                            
+                                'LiveForCode',
+                            
+                        
+                    ],
+                
+            
+        ],
+
+        FontIconExtend : '',
+
+        Donate : {
+            paypal  : '',
+            bitcoin : '',
+            alipay  : '/image/alipay.png',
+            wechat  : '/image/wechat.png'
+        },
+
+        Code : {
+            style : 'normal'
+        },  
+
+        Search : {
+            applicationID : '010C3EANT8',
+            apiKey        : 'c7abab9f11b79102b9aff7fe6d41447d',
+            indexName     : 'Notes',
+            hits          : {
+                page : 10
+            },
+            labels        : {
+                placeholder : '搜索',
+                empty       : '未发现与 「${query}」 相关的内容',
+                stats       : '${hits} 条相关条目，使用了 ${time} 毫秒',
+            }
+        }, 
+
+        Valine : {
+            switch         : true,
+            el             : '.comments-content',
+            appId          : 'srhKtvWPQTWYKh3qX8G8M7v0-gzGzoHsz',
+            appKey         : '8uVSP1q6UlALVC5igYfIfv2h',
+            placeholder    : '你是我一生只会遇见一次的惊喜...',
+            avatar         : 'mm',
+            meta           : 'nick,mail,link',
+            requiredFields : 'nick,mail',
+            pageSize       : 5,
+            lang           : 'zh-cn',
+            visitor        : true,
+            enableQQ       : true
+        },
+
+        Tocbot : {
+            switch                : true,
+            tocSelector           : '.toc',
+            contentSelector       : '.article-body',
+            headingSelector       : 'h1, h2, h3, h4, h5',
+            headingsOffset        : 0,
+            scrollSmooth          : true,
+            scrollSmoothOffset    : -5,
+            positionFixedSelector : '.toc',
+            positionFixedClass    : 'toc-fixed',
+            fixedSidebarOffset    : '',
+        },
+
+        Require : {
+            baseUrl     : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/',
+            waitSeconds : 100
+        },
+
+        Music : {
+            type : 'Meting'
+        },
+        APlayer : {
+            container : '.aplayer',
+            fixed     : true,
+            autoplay  : false,
+            loop      : 'all',
+            order     : 'random',
+            preload   : 'auto',
+            volume    : 0.67,
+            mutex     : true,
+            lrcType   : 3,
+            audio     : [
+                
+                    {
+                        name   : 'aLIEz',
+                        artist : 'mizuki（瑞葵）',
+                        cover  : '/music/cover/aLIEz.jpg',
+                        url    : '/music/song/aLIEz.mp3',
+                        lrc    : '/music/lrc/aLIEz.lrc'
+                    },
+                
+                    {
+                        name   : 'Endless Tears',
+                        artist : 'CLIFF EDGE',
+                        cover  : '/music/cover/Endless Tears.jpg',
+                        url    : '/music/song/Endless Tears.mp3',
+                        lrc    : '/music/lrc/Endless Tears.lrc'
+                    },
+                
+                    {
+                        name   : 'Miracle',
+                        artist : 'Cascada',
+                        cover  : '/music/cover/Miracle.jpg',
+                        url    : '/music/song/Miracle.mp3',
+                        lrc    : '/music/lrc/Miracle.lrc'
+                    },
+                
+                    {
+                        name   : 'Roll The Dice',
+                        artist : '高珊',
+                        cover  : '/music/cover/Roll The Dice.jpg',
+                        url    : '/music/song/Roll The Dice.mp3',
+                        lrc    : '/music/lrc/Roll The Dice.lrc'
+                    },
+                
+                    {
+                        name   : 'See You Again',
+                        artist : 'Charlie Puth, Wiz Khalifa',
+                        cover  : '/music/cover/See You Again.jpg',
+                        url    : '/music/song/See You Again.mp3',
+                        lrc    : '/music/lrc/See You Again.lrc'
+                    },
+                
+                    {
+                        name   : 'Traveling Light',
+                        artist : 'Joel Hanson, Sara Groves',
+                        cover  : '/music/cover/Traveling Light.jpg',
+                        url    : '/music/song/Traveling Light.mp3',
+                        lrc    : '/music/lrc/Traveling Light.lrc'
+                    },
+                
+                    {
+                        name   : '痴心绝对',
+                        artist : '李圣杰',
+                        cover  : '/music/cover/痴心绝对.jpg',
+                        url    : '/music/song/痴心绝对.mp3',
+                        lrc    : '/music/lrc/痴心绝对.lrc'
+                    },
+                
+                    {
+                        name   : '好想大声说爱你',
+                        artist : 'BAAD（バード）',
+                        cover  : '/music/cover/好想大声说爱你.jpg',
+                        url    : '/music/song/好想大声说爱你.mp3',
+                        lrc    : '/music/lrc/好想大声说爱你.lrc'
+                    },
+                
+            ]
+        },
+        Meting : {
+            id       : '3778678', 
+            lrcshow  : false, 
+            server   : 'netease', 
+            type     : 'playlist', 
+            fixed    : true, 
+            autoplay : false, 
+            loop     : 'all', 
+            order    : 'random', 
+            preload  : 'auto', 
+            volume   : 0.67, 
+            mutex    : true
+        },
+
+        LazyLoad : {
+            default : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/website/lazyload.svg'
+        },
+  
+        Style : {
+            aplayer          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/APlayer.css',
+            archive          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/archive.css',
+            donate           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/donate.css',
+            fancybox         : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/jquery.fancybox.css',
+            footer           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/footer.css',
+            iconfont         : 'https://at.alicdn.com/t/font_1546312_l3yohatebw.css',
+            index            : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/index.css',
+            menuBubble       : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/menu-bubble.css',
+            page             : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/page.css',
+            post             : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css',
+            search           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/search.css',
+            tocbot           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/tocbot.css',
+            normal           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css',
+            night            : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/night.css',
+            clipboard        : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/clipboard.css'
+        },
+
+        Script: {
+            aplayer          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/APlayer.min.js',
+            config           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/require.config.js',
+            index            : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/index.js',
+            instantSearch    : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/instantsearch.min.js',
+            jQuery           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js',
+            loading          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/loading.js',
+            meting           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/Meting.min.js',
+            iscroll          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/iscroll.js',
+            require          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/require.min.js'
+        },
+
+        Font: {
+            LongCang   : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css',
+            Monda      : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css',
+            NotoSansSC : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/NotoSansSC.css',
+            Playball   : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Playball.css',
+            PTMono     : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/PTMono.css',
+            RobotoSlab : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/RobotoSlab.css',
+            Rosario    : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css',
+            UbuntuMono : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css'
+        },
+
+        Suffix : {
+            about : '无所求必满载而归.'
+        },
+            
+        Theme : {
+            url  : 'https://github.com/first19326/Hexo-LiveForCode',
+            name : 'Hexo - Live For Code'
+        }  
+    };
+</script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/index.js"></script>
+</body>
+</html>
