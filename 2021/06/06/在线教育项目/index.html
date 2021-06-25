@@ -104,6 +104,7 @@
 <p>git</p>
 <p>jenkins</p>
 <h1 id="创建springboot工程"><a href="#创建springboot工程" class="headerlink" title="创建springboot工程"></a>创建springboot工程</h1><p>版本2.2.1.RELEASE</p>
+<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><p>在后端开发中，使用过maven，maven构建项目，管理jar依赖，联网下载依赖</p>
 <h1 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><p>在mysql中初始化</p>
 <h1 id="建立依赖"><a href="#建立依赖" class="headerlink" title="建立依赖"></a>建立依赖</h1><p>1.spring-boot-starter</p>
 <p>2.spring-boot-starter–test</p>
@@ -115,6 +116,7 @@
 <p>2.@MapperScan</p>
 <p>​    指定要变成实现类的接口所在的包，然后包下面的所有接口在编译之后都会生成相应的实现类</p>
 <p>3.@Autowired</p>
+<p>​    把service注入</p>
 <p>4.@Service</p>
 <p>5.@@TableField(fill = FieldFill.INSERT)</p>
 <p>​    自动填入</p>
@@ -132,6 +134,8 @@
 <p>13.ResponseBody</p>
 <p>返回数据，返回json数据</p>
 <p>14.@ControllerAdvice</p>
+<p>15.@Component</p>
+<p>将类交给spring管理</p>
 <h1 id="mp实现添加操作"><a href="#mp实现添加操作" class="headerlink" title="mp实现添加操作"></a>mp实现添加操作</h1><hr>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public  void addUser()&#123;</span><br><span class="line">    User user = new User();</span><br><span class="line">    user.setName(&quot;lucy&quot;);</span><br><span class="line">    user.setAge(30);</span><br><span class="line">    user.setEmail(&quot;lucy@qq.com&quot;);</span><br><span class="line">    int insert = userMapper.insert(user);</span><br><span class="line">    System.out.println(&quot;insert:&quot;+insert);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -370,7 +374,7 @@
 <p>2.编写讲师分页查询接口</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//分页查询方法</span><br><span class="line">@GetMapping(&quot;pageTeacher/&#123;current&#125;/&#123;limit&#125;&quot;)</span><br><span class="line">public R pageListTeacher(@PathVariable long current,@PathVariable long limit)&#123;</span><br><span class="line">    //创建page对象</span><br><span class="line">    Page&lt;EduTeacher&gt; pageTeacher = new Page&lt;&gt;(current,limit);</span><br><span class="line">    //调用方法实现分页</span><br><span class="line">    //调用方法时候，底层封装，把分页所有数据分装到pageTeacher对象里面</span><br><span class="line">    teacherService.page(pageTeacher,null);</span><br><span class="line">    long total = pageTeacher.getTotal();</span><br><span class="line">    List&lt;EduTeacher&gt; records = pageTeacher.getRecords();//数据list集合</span><br><span class="line">    return R.ok().data(&quot;total&quot;,total).data(&quot;rows&quot;,records);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="条件查询分页"><a href="#条件查询分页" class="headerlink" title="## 条件查询分页"></a>## 条件查询分页</h3><p>第一步：把条件之传递到接口里面</p>
+<h3 id="条件查询分页"><a href="#条件查询分页" class="headerlink" title="## 条件查询分页"></a>## 条件查询分页</h3><p>第一步：把条件值传递到接口里面</p>
 <p>把条件值分装到对象里面，把对象传递到接口里面。vo？？？</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class TeacherQuery &#123;</span><br><span class="line"></span><br><span class="line">    @ApiModelProperty(value = &quot;教师名称,模糊查询&quot;)</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    @ApiModelProperty(value = &quot;头衔 1高级讲师 2首席讲师&quot;)</span><br><span class="line">    private Integer level;</span><br><span class="line"></span><br><span class="line">    @ApiModelProperty(value = &quot;查询开始时间&quot;, example = &quot;2019-01-01 10:10:10&quot;)</span><br><span class="line">    private String begin;//注意，这里使用的是String类型，前端传过来的数据无需进行类型转换</span><br><span class="line"></span><br><span class="line">    @ApiModelProperty(value = &quot;查询结束时间&quot;, example = &quot;2019-12-01 10:10:10&quot;)</span><br><span class="line">    private String end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -398,6 +402,136 @@
 
 <p>2.修改</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//7讲师修改功能</span><br><span class="line">@PostMapping(&quot;updateTeacher&quot;)</span><br><span class="line">public R updateTeacher(@RequestBody EduTeacher eduTeacher)&#123;</span><br><span class="line">    boolean b = teacherService.updateById(eduTeacher);</span><br><span class="line">    if(b)&#123;</span><br><span class="line">        return R.ok();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return R.error();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="全局异常处理"><a href="#全局异常处理" class="headerlink" title="全局异常处理"></a>全局异常处理</h2><p>1.在service-base中创建统一异常处理类GlobalExceptionHandler.java：</p>
+<p>GlobalExceptionHandler.java中添加异常处理方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@ControllerAdvice</span><br><span class="line">public class GlobalExceptionHandler &#123;</span><br><span class="line">    //指定出现什么异常执行这个方法</span><br><span class="line">    @ExceptionHandler(Exception.class)</span><br><span class="line">    @ResponseBody//这个方法不在controller中所以不会返回数据，为了返回数据</span><br><span class="line">    public R error(Exception e)&#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        return R.error().message(&quot;执行了全局异常处理&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="特殊异常"><a href="#特殊异常" class="headerlink" title="特殊异常"></a>特殊异常</h2><p>GlobalExceptionHandler.java中添加异常处理方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//特定异常</span><br><span class="line">@ExceptionHandler(ArithmeticException.class)</span><br><span class="line">@ResponseBody//这个方法不在controller中所以不会返回数据，为了返回数据</span><br><span class="line">public R error(ArithmeticException e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">    return R.error().message(&quot;执行了ArithmeticException异常处理&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><p>1.创建自定义异常类继承runtimeException</p>
+<p>​    写属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import lombok.AllArgsConstructor;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line">@Data //getset方法</span><br><span class="line">@AllArgsConstructor //生成有参数的构造方法</span><br><span class="line">@NoArgsConstructor //生成无参数构造</span><br><span class="line">public class GuliException extends RuntimeException&#123;</span><br><span class="line">    private Integer code;//状态码</span><br><span class="line">    private String msg;//异常信息</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>GlobalExceptionHandler.java中添加异常处理方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//自定义异常异常</span><br><span class="line">@ExceptionHandler(GuliException.class)</span><br><span class="line">@ResponseBody//这个方法不在controller中所以不会返回数据，为了返回数据</span><br><span class="line">public R error(GuliException e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">    return R.error().code(e.getCode()).message(e.getMsg());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="统一日志处理"><a href="#统一日志处理" class="headerlink" title="统一日志处理"></a>统一日志处理</h2><p>1、日志级别：</p>
+<p>ERROR、WARN、INFO、DEBUG</p>
+<p>2、在application中设置日志级别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#设置日志级别</span><br><span class="line">logging.level.root=WARN</span><br></pre></td></tr></table></figure>
+
+<p>设置什么级别就只显示当前级别及以上一类的信息</p>
+<p>3、把日志不仅输出到控制台，也可以输出到文件，使用日志工具</p>
+<p>Logback日志工具</p>
+<p>1.删除application中的所有日志配置</p>
+<p>2.</p>
+<p>安装idea彩色日志插件：grep-console</p>
+<p>resources 中创建 logback-spring.xml  //名字固定，勿乱改</p>
+<p>3.将固定内容输入到logback-spring.xml文件中</p>
+<h3 id="将错误日志输出到文件"><a href="#将错误日志输出到文件" class="headerlink" title="将错误日志输出到文件"></a>将错误日志输出到文件</h3><p>在GlobalExceptionHandler.java中添加注解</p>
+<p>@Slf4j</p>
+<p>异常输出语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log.error(e.getMessage());</span><br></pre></td></tr></table></figure>
+
+<h1 id="后台系统登陆功能"><a href="#后台系统登陆功能" class="headerlink" title="后台系统登陆功能"></a>后台系统登陆功能</h1><p>1.添加注解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/eduservice/user&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>2.写类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class EduLoginController &#123;</span><br><span class="line"></span><br><span class="line">    //login</span><br><span class="line">    @PostMapping(&quot;login&quot;)</span><br><span class="line">    public R login()&#123;</span><br><span class="line"></span><br><span class="line">        return R.ok().data(&quot;token&quot;,&quot;admin&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //info</span><br><span class="line">    @GetMapping(&quot;info&quot;)</span><br><span class="line">    public  R info()&#123;</span><br><span class="line"></span><br><span class="line">        return R.ok().data(&quot;roles&quot;,&quot;[admin]&quot;).data(&quot;name&quot;,&quot;admin&quot;).data(&quot;avatar&quot;,&quot;https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn20107%2F277%2Fw640h437%2F20200304%2F6d8c-iqfqmau0838979.jpg&amp;refer=http%3A%2F%2Fn.sinaimg.cn&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1626918542&amp;t=f8ae4c403dc2b73f96a147c54845304d&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-跨域问题"><a href="#3-跨域问题" class="headerlink" title="3.跨域问题"></a>3.跨域问题</h2><p>通过一个地址去访问另外一个地址，这个过程中如果有三个地方任何一个不一样</p>
+<p>访问地址 </p>
+<p>ip地址</p>
+<p>端口号</p>
+<h2 id="4-跨域的解决方式"><a href="#4-跨域的解决方式" class="headerlink" title="4.跨域的解决方式"></a>4.跨域的解决方式</h2><p>（1）在后端接口controller添加注解（常用）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@CrossOrigin //解决跨域</span><br></pre></td></tr></table></figure>
+
+<p>（2）使用网关解决</p>
+<p>注意：跨域请求会两次</p>
+<p>第一次检测是否连通服务器</p>
+<p>第二次再进行请求</p>
+<h1 id="阿里云oss开发准备"><a href="#阿里云oss开发准备" class="headerlink" title="阿里云oss开发准备"></a>阿里云oss开发准备</h1><p><img src="../pic/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20210624194649796.png" alt="image-20210624194649796"></p>
+<table>
+<thead>
+<tr>
+<th align="left">AccessKey ID</th>
+<th align="left">AccessKey Secret</th>
+<th align="left">状态</th>
+<th align="left">最后使用时间</th>
+<th align="left">创建时间</th>
+<th align="right">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">LTAI5tFtxQG4p3UzRXb1bN4f</td>
+<td align="left">mUpqmncLYIl6LynhoZ0L3kyyEIQbR5</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="right"></td>
+</tr>
+</tbody></table>
+<p>官方文档 示例代码</p>
+<p><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/32010.html?spm=a2c4g.11186623.6.919.be4a26fd58rvbA">初始化 - 对象存储 OSS - 阿里云 (aliyun.com)</a></p>
+<table>
+<thead>
+<tr>
+<th align="left">Endpoint（地域节点）</th>
+<th align="left">Bucket 域名</th>
+<th align="right">HTTPS</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">外网访问</td>
+<td align="left">oss-cn-beijing.aliyuncs.com</td>
+<td align="right">guli-file0823.oss-cn-beijing.aliyuncs.com</td>
+<td>支持</td>
+</tr>
+<tr>
+<td align="left">ECS 的经典网络访问（内网）</td>
+<td align="left">oss-cn-beijing-internal.aliyuncs.com</td>
+<td align="right">guli-file0823.oss-cn-beijing-internal.aliyuncs.com</td>
+<td>支持</td>
+</tr>
+<tr>
+<td align="left">ECS 的 VPC 网络访问（内网）</td>
+<td align="left">oss-cn-beijing-internal.aliyuncs.com</td>
+<td align="right">guli-file0823.oss-cn-beijing-internal.aliyuncs.com</td>
+<td>支持</td>
+</tr>
+</tbody></table>
+<h1 id="讲师管理-上传讲师头像"><a href="#讲师管理-上传讲师头像" class="headerlink" title="讲师管理 上传讲师头像"></a>讲师管理 上传讲师头像</h1><p>1.pom中的依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;!-- 阿里云oss依赖 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.aliyun.oss&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;aliyun-sdk-oss&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;!-- 日期工具栏依赖 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;joda-time&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;joda-time&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.创建配置文件application.properties</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#服务端口</span><br><span class="line">server.port=8002</span><br><span class="line">#服务名</span><br><span class="line">spring.application.name=service-oss</span><br><span class="line"></span><br><span class="line">#环境设置：dev、test、prod</span><br><span class="line">spring.profiles.active=dev</span><br><span class="line"></span><br><span class="line">#阿里云 OSS</span><br><span class="line">#不同的服务器，地址不同</span><br><span class="line">aliyun.oss.file.endpoint=oss-cn-beijing.aliyuncs.com</span><br><span class="line">aliyun.oss.file.keyid=LTAI5tFtxQG4p3UzRXb1bN4f</span><br><span class="line">aliyun.oss.file.keysecret=mUpqmncLYIl6LynhoZ0L3kyyEIQbR5</span><br><span class="line">#bucket可以在控制台创建，也可以使用java代码创建</span><br><span class="line">aliyun.oss.file.bucketname=guli-file0823</span><br></pre></td></tr></table></figure>
+
+<p>3.创建启动类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.atguigu.oss;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.SpringApplication;</span><br><span class="line">import org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line">import org.springframework.context.annotation.ComponentScan;</span><br><span class="line"></span><br><span class="line">@SpringBootApplication</span><br><span class="line">@ComponentScan(&#123;&quot;com.atguigu&quot;&#125;)</span><br><span class="line">public class OssApplication &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(OssApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.解决报错<img src="../pic/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20210624202342109.png" alt="image-20210624202342109"></p>
+<p>找不到数据库</p>
+<p>在启动类添加属性，默认不去加载数据库配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)</span><br></pre></td></tr></table></figure>
+
+<p>5.创建一个常量类用来读取配置文件中的内容</p>
+<p>用@Value（）注解 </p>
+<p>属性注解，将值注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class ConstantPropertiesUtils &#123;</span><br><span class="line"></span><br><span class="line">    //读取配置文件内容</span><br><span class="line">    @Value(&quot;$&#123;aliyun.oss.file.endpoint&#125;&quot;)</span><br><span class="line">    private String endpoint;</span><br><span class="line">    </span><br><span class="line">    @Value(&quot;$&#123;aliyun.oss.file.keyid&#125;&quot;)</span><br><span class="line">    private String keyId;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;aliyun.oss.file.keysecret&#125;&quot;)</span><br><span class="line">    private String keySecret;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;aliyun.oss.file.bucketname&#125;&quot;)</span><br><span class="line">    private String bucketName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口继承initializingbean以读取private</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">//当项目已启动，spring接口，spring加载之后，执行接口一个方法</span><br><span class="line">@Component</span><br><span class="line">public class ConstantPropertiesUtils implements InitializingBean &#123;</span><br><span class="line"></span><br><span class="line">    //读取配置文件内容</span><br><span class="line">    @Value(&quot;$&#123;aliyun.oss.file.endpoint&#125;&quot;)</span><br><span class="line">    private String endpoint;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;aliyun.oss.file.keyid&#125;&quot;)</span><br><span class="line">    private String keyId;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;aliyun.oss.file.keysecret&#125;&quot;)</span><br><span class="line">    private String keySecret;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;aliyun.oss.file.bucketname&#125;&quot;)</span><br><span class="line">    private String bucketName;</span><br><span class="line"></span><br><span class="line">    //定义公开静态常量</span><br><span class="line">    public static String END_POINT;</span><br><span class="line">    public static String KEY_ID;</span><br><span class="line">    public static String KEY_SECRET;</span><br><span class="line">    public static String BUCKET_NAME;</span><br><span class="line">    @Override</span><br><span class="line">    public void afterPropertiesSet() throws Exception &#123;</span><br><span class="line">        //方法会在初始化之后执行</span><br><span class="line">        END_POINT = endpoint;</span><br><span class="line">        KEY_ID = keyId;</span><br><span class="line">        KEY_SECRET = keySecret;</span><br><span class="line">        BUCKET_NAME = bucketName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建包</p>
+<p><img src="../pic/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/image-20210625160516661.png" alt="image-20210625160516661"></p>
+<p>创建controller</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package com.atguigu.oss.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import com.atguigu.commonutils.R;</span><br><span class="line">import com.atguigu.oss.service.OssService;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line">import org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/eduoss/fileoss&quot;)</span><br><span class="line">public class OssController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private OssService ossService;</span><br><span class="line"></span><br><span class="line">    //上传头像的方法</span><br><span class="line">    @PostMapping</span><br><span class="line">    public R uploadOssFile(MultipartFile file)&#123;</span><br><span class="line">        //获取上传文件 MultipartFile</span><br><span class="line">        //返回上传到oss的路径</span><br><span class="line">        String url = ossService.uploadFileAvatar(file);</span><br><span class="line"></span><br><span class="line">        return R.ok().data(&quot;url&quot;,url);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在service中实现上传头像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">package com.atguigu.oss.service.impl;</span><br><span class="line"></span><br><span class="line">import com.aliyun.oss.OSS;</span><br><span class="line">import com.aliyun.oss.OSSClientBuilder;</span><br><span class="line">import com.atguigu.oss.service.OssService;</span><br><span class="line">import com.atguigu.oss.utils.ConstantPropertiesUtils;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line">import org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class OssServiceImpl implements OssService &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String uploadFileAvatar(MultipartFile file) &#123;</span><br><span class="line">        //工具类获取值</span><br><span class="line">        String endpoint = ConstantPropertiesUtils.END_POINT;</span><br><span class="line">        String accessKeyId = ConstantPropertiesUtils.KEY_ID;</span><br><span class="line">        String accessKeySecret = ConstantPropertiesUtils.KEY_SECRET;</span><br><span class="line">        String bucketName = ConstantPropertiesUtils.BUCKET_NAME;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            //创建OSS实例</span><br><span class="line">            OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);</span><br><span class="line"></span><br><span class="line">            //获取上传文件输入流</span><br><span class="line">            InputStream inputStream = file.getInputStream();</span><br><span class="line"></span><br><span class="line">            //获取文件名称</span><br><span class="line">            String filename = file.getOriginalFilename();</span><br><span class="line"></span><br><span class="line">            //调用oss方法实现上传</span><br><span class="line">            //第一个参数 bucketName</span><br><span class="line">            //第二个参数 上传到oss文件路劲和文件名称</span><br><span class="line">            //第三个参数 上传文件的输入流</span><br><span class="line">            ossClient.putObject(bucketName, filename, inputStream);</span><br><span class="line"></span><br><span class="line">            //关闭OssClient</span><br><span class="line">            ossClient.shutdown();</span><br><span class="line"></span><br><span class="line">            //把上传之后的文件路径返回</span><br><span class="line">            //需要把上传到阿里云oss路径手动拼接出来</span><br><span class="line">            String url = &quot;https://&quot; + bucketName + &quot;.&quot; + endpoint + &quot;/&quot; + filename;</span><br><span class="line">            return url;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
         <p class="suffix-end">__END__</p>
