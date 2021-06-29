@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>Live For Code</title>
+    <title>项目总结</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -17,169 +17,173 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/index.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css">
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css">
+    
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js"></script>
+
 </head>
 <body>
     <a id="cover"></a>
     <div id="header">
-    <div class="header" >
+    <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-title"></h1>
-                <h2 class="header-description" id="hitokoto"></h2>
-                <h3 class="header-info" id="hitokotoAuthor"></h3>
-                <!--
-                <h1 class="header-subtitle"></h1>
-                <p class="header-subinfo"></p>
-                -->
+                <h1 class="header-subtitle">项目总结</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2021-06-29
+                        </span>
+                        
+                            <span id="/2021/06/29/项目总结/" class="leancloud_visitors" data-flag-title="项目总结">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/29/项目总结/"></span>
+                        </span>  
+                    </p>                 
+                </div>
             </div>
         </div>
-        <a class="scroll-down" href="javascript:;" target="_self" data-offset="-45">
-            <span class="hidden">Scroll Down</span>
-            <i class="scroll-down-icon iconfont icon-return"></i>
-        </a>
+        <canvas id="articleHeaderCanvas"></canvas>
     </div>
 </div>
     <div id="container">
     <div id="content">
-        <div class="articles">
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/13/6-13/">6-13</a>
-                
+        <div id="article">
+    <div class="toc"></div>
+    <div class="article-body">
+        <h1 id="项目描述"><a href="#项目描述" class="headerlink" title="项目描述"></a>项目描述</h1><p>分为前台系统和后台系统。</p>
+<p>前台系统包含：首页数据显示、课程列表和详情、课程支付、课程视频播放、微信登陆、微信支付等等。</p>
+<p>后台系统包含：权限管理、课程管理、统计分析、课程分类管理的部分的部分。</p>
+<p>我主要负责：讲师管理与课程管理部分。</p>
+<p>使用了微服务技术架构。前后端分离开发。</p>
+<p>后端主要运用的技术由sprintboot、springcloud、mybatsplus、httpclient、mysql、maven、easyexcel、nginx、使用swagger生成接口文档</p>
+<p>第三方技术主要包含：阿里云oss、视频点播、短信服务</p>
+<h1 id="后端项目技术点"><a href="#后端项目技术点" class="headerlink" title="后端项目技术点"></a>后端项目技术点</h1><h2 id="采用微服务架构"><a href="#采用微服务架构" class="headerlink" title="采用微服务架构"></a>采用微服务架构</h2><p>按照项目中的功能模块、相关业务模块，将项目拆分成多个独立的部分，每个部分都可以进行独立运行和部署</p>
+<h2 id="SprintBoot"><a href="#SprintBoot" class="headerlink" title="SprintBoot"></a>SprintBoot</h2><p>maven</p>
+<p>1.sprintboot本质上就是spring，只是快速构建spring工程脚手架</p>
+<p>2.细节</p>
+<p>​    @MapperScan启动类包扫描机制，在所有包的最外层扫所有的包    </p>
+<p>​    也可以使用@ComponentScan(“包路径”)进行设置扫描规则</p>
+<p>​    @Configuration,在启动sprint工程的时候，会把配置类中的内容进行加载</p>
+<p>3.sprintboot配置文件properties和yml</p>
+<p>​    配置文件加载顺序：bootstrap.properties –&gt; application,properties –&gt; application-dev</p>
+<h2 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h2><p>1.是很多框架的总称，使用这些框架实现微服务架构，基于SpringBoot实现</p>
+<p>2.组成框架有哪些</p>
+<p>​        服务调用——Netflix Feign</p>
+<p>​        熔断器——NetFlix Hystrix</p>
+<p>​        服务网关——Spring Cloud GateWay</p>
+<p>项目中使用Nacos，替代sprintcloud一些组件</p>
+<p>3，Nacos作注册中心，实现模块间的相互调用</p>
+<p>​    Nacos作配置中心，加载多配置文件或者改变命名空间做不同的切换</p>
+<p>​    Feign作服务调用，一个微服务的模块去调用零一个微服务，通过feign找到另外一个的名字，实现远程调用，在课程中调orders查看视频是否购买</p>
+<p>​    Hysrix熔断器，一个模块调用另一个模块连不上，就可以使用熔断的方法自己处理，或者连接服务器超时</p>
+<p>​    GateWay网关：sprintcloud之前zuul网关，目前是gateway网关</p>
+<p>4.版本 2.2版本 hoxton</p>
+<h2 id="MybatisPlus"><a href="#MybatisPlus" class="headerlink" title="MybatisPlus"></a>MybatisPlus</h2><p>1.MyBatisPlus就是对MyBati做增强</p>
+<p>2.自动填充</p>
+<p>3.乐观锁</p>
+<p>4.逻辑删除</p>
+<p>5.代码生成器</p>
+<h2 id="EasyExcel"><a href="#EasyExcel" class="headerlink" title="EasyExcel"></a>EasyExcel</h2><p>1.阿里巴巴提供操作excel工具，代码简洁，效率提高</p>
+<p>​        对poi进行了封装，采用SAX方式解析。一行一行进行读取解析</p>
+<p>​        项目应用在添加课程分类，读取excel数据</p>
+<h2 id="Spring-Security"><a href="#Spring-Security" class="headerlink" title="Spring Security"></a>Spring Security</h2><p>1.在项目中整合实现权限管理功能</p>
+<p>2.springsecurity框架组成：认证和授权</p>
+<p>3.springsecurity登录认证过程：</p>
+<p>​        登录之后以key和value的形式存储到redis中，</p>
+<p>​        根据用户名生成token信息，</p>
+<p>​        将token放到cookie，在header放token值</p>
+<p>​        通过springsecurity获取token，从token获取用户名拿着用户名从redis获取权限列表</p>
+<p>​        由springsecurity给当前用户赋予权限，可以执行相应操作</p>
+<p>4.springsecurity代码执行过程</p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>1.首页数据通过redis进行缓存</p>
+<p>2.redis数据类型</p>
+<p>​    字符串、set、list、hash、有序参数</p>
+<p>3.如果使用redis作为缓存，什么样数据适合使用redis作为缓存。</p>
+<p>​    不经常修改的或者不太重要的</p>
+<h2 id="Niginx"><a href="#Niginx" class="headerlink" title="Niginx"></a>Niginx</h2><p>1.反向代理服务器</p>
+<p>2.请求转发、负载均衡、动静分离</p>
+<h2 id="QAuth2-JWT"><a href="#QAuth2-JWT" class="headerlink" title="QAuth2+JWT"></a>QAuth2+JWT</h2><p>1.Auth2针对特定问题解决方案</p>
+<p>2.JWT包含三部分：头、主体部分、防伪部份</p>
+<h2 id="HttpClient"><a href="#HttpClient" class="headerlink" title="HttpClient"></a>HttpClient</h2><p>1.发送请求返回响应的工具，不需要浏览器完成请求和相应的过程</p>
+<p>2.应用场景：微信登陆获取扫描人 信息，微信支付查询支付状态</p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>1.特点：客户端技术，数据存在客户端或者浏览器中，每次发送请求带着cookie值进行发送，cookie有默认会话级别（有效时长），关闭浏览器cookie默认不存在，但是可以设置cookie有效时长，setMaxAge</p>
+<h2 id="微信支付"><a href="#微信支付" class="headerlink" title="微信支付"></a>微信支付</h2><h2 id="微信登陆"><a href="#微信登陆" class="headerlink" title="微信登陆"></a>微信登陆</h2><h2 id="阿里云OSS"><a href="#阿里云OSS" class="headerlink" title="阿里云OSS"></a>阿里云OSS</h2><p>文件存储服务器</p>
+<p>1.添加讲师上传讲师头像</p>
+<h2 id="阿里云点播"><a href="#阿里云点播" class="headerlink" title="阿里云点播"></a>阿里云点播</h2><p>1.视频的上传、删除、播放、</p>
+<p>2.整合阿里云视频播放器进行播放</p>
+<p>使用视频播放凭证进行播放，使用地址的话无法播放加密的</p>
+<h2 id="阿里云短信服务"><a href="#阿里云短信服务" class="headerlink" title="阿里云短信服务"></a>阿里云短信服务</h2><p>1.注册时候，发送手机验证码</p>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>版本控制</p>
+<p>先把代码提交到本地库，然后提交到远程库</p>
+<h2 id="Docker-Jenkins"><a href="#Docker-Jenkins" class="headerlink" title="Docker + Jenkins"></a>Docker + Jenkins</h2><p>将代码从远程库中拉下来进行编译运行</p>
+<p>1.手动打包运行</p>
+<p>2.idea打包</p>
+<p>3.jenkins自动化部署过程</p>
+<h1 id="总结问题"><a href="#总结问题" class="headerlink" title="总结问题"></a>总结问题</h1><h2 id="1-mp主键自带的生成策略"><a href="#1-mp主键自带的生成策略" class="headerlink" title="1.mp主键自带的生成策略"></a>1.mp主键自带的生成策略</h2><p>1.生成的id值是19位，JavaScript处理数字型类型值的时候，只会处理16位，如果显示成long就会显示出问题</p>
+<p>2.解决办法：处理成字符串</p>
+<h2 id="2-跨域问题"><a href="#2-跨域问题" class="headerlink" title="2.跨域问题"></a>2.跨域问题</h2><p>访问协议、ip地址、端口号、这三个如果有任何一个不一样，产生跨域</p>
+<p>通过control中crossorigin添加注解</p>
+<p>403错误</p>
+<h2 id="3-413问题"><a href="#3-413问题" class="headerlink" title="3.413问题"></a>3.413问题</h2><p>上传视频时，因为iginx有上传文件大小限制，如果超过nginx大小，出现413错误，</p>
+<p>niginx超过大小会反413问题，请求体过大</p>
+<p>解决方案：在nginx配置客户端大小</p>
+<h2 id="4-Maven加载问题"><a href="#4-Maven加载问题" class="headerlink" title="4.Maven加载问题"></a>4.Maven加载问题</h2><p>默认情况下不加载src-java文件夹中xml类型文件</p>
+<p>解决方案：直接复制xml文件到target目录</p>
+<p>​            在pom和application中配置</p>
+
+        <p class="suffix-end">__END__</p>
+        <div class="suffix-box">
+            <div class="suffix-box-left">
+                <img src="/image/avatar.jpg" alt="Aomine Daiki">
             </div>
-            <div class="article-abstract">
-                
+            <div class="suffix-box-right">
+                <span class="suffix-box-title">文章作者</span>：Aomine Daiki
+                <br>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/06/29/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" target="_blank">项目总结</a>
+                <br>
+                <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
+                <br>
+                <span class="suffix-box-title">关于主题</span>：<a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+                <br>
+                <span class="suffix-box-title">版权声明</span>：文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+                <br>
             </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-13
-                </span>
-                
-                    <span id="/2021/06/13/6-13/" class="leancloud_visitors" data-flag-title="6-13">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/13/6-13/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+            <div style="clear: both;"></div>
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/12/6-12/">6-12</a>
+    </div>
+    <div class="article-footer">
+        
+            <div class="category">
+                分类：
+                
+                    <a href="/category/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/">项目总结</a>
                 
             </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-12
-                </span>
-                
-                    <span id="/2021/06/12/6-12/" class="leancloud_visitors" data-flag-title="6-12">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/12/6-12/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+        
+        
+        <div class="article-prev-next">
+            
+            
+                <a href="/2021/06/19/6-19%E6%B1%89%E5%BE%97%E4%B8%80%E9%9D%A2/" class="next-prefix">» </a> 下一篇：    <a href="/2021/06/19/6-19%E6%B1%89%E5%BE%97%E4%B8%80%E9%9D%A2/" title="发布于 2021-06-19 07:27">6-19汉得一面</a>
+            
         </div>
+    </div>
     
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%A4%A7%E4%BD%9C%E4%B8%9A/">设计模式大作业</a>
-                
-            </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-11
-                </span>
-                
-                    <span id="/2021/06/11/设计模式大作业/" class="leancloud_visitors" data-flag-title="设计模式大作业">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/11/设计模式大作业/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+    <div class="article-comments">
+        <div class="comments-title">
+            评论列表
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/08/6-8/">6-8</a>
-                
-            </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-08
-                </span>
-                
-                    <span id="/2021/06/08/6-8/" class="leancloud_visitors" data-flag-title="6-8">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/08/6-8/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+        <div class="comments-content">
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/07/6-7/">6-7</a>
-                
-            </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-07
-                </span>
-                
-                    <span id="/2021/06/07/6-7/" class="leancloud_visitors" data-flag-title="6-7">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/07/6-7/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
-        </div>
-    
-    
-        <div class="pagination-bottom">
-            <div class="pagination">
-                
-                    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
-                
-            </div>
-        </div>
-    
+    </div>
+
 </div>
 
     </div>
