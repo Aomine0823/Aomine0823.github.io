@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>Live For Code</title>
+    <title>Java垃圾回收机制</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -17,169 +17,122 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/index.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css">
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css">
+    
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js"></script>
+
 </head>
 <body>
     <a id="cover"></a>
     <div id="header">
-    <div class="header" >
+    <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-title"></h1>
-                <h2 class="header-description" id="hitokoto"></h2>
-                <h3 class="header-info" id="hitokotoAuthor"></h3>
-                <!--
-                <h1 class="header-subtitle"></h1>
-                <p class="header-subinfo"></p>
-                -->
+                <h1 class="header-subtitle">Java垃圾回收机制</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2021-07-07
+                        </span>
+                        
+                            <span id="/2021/07/07/Java垃圾回收机制/" class="leancloud_visitors" data-flag-title="Java垃圾回收机制">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/07/07/Java垃圾回收机制/"></span>
+                        </span>  
+                    </p>                 
+                </div>
             </div>
         </div>
-        <a class="scroll-down" href="javascript:;" target="_self" data-offset="-45">
-            <span class="hidden">Scroll Down</span>
-            <i class="scroll-down-icon iconfont icon-return"></i>
-        </a>
+        <canvas id="articleHeaderCanvas"></canvas>
     </div>
 </div>
     <div id="container">
     <div id="content">
-        <div class="articles">
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/07/6-7/">6-7</a>
-                
+        <div id="article">
+    <div class="toc"></div>
+    <div class="article-body">
+        <h2 id="垃圾回收算法有哪些"><a href="#垃圾回收算法有哪些" class="headerlink" title="垃圾回收算法有哪些"></a>垃圾回收算法有哪些</h2><p><strong>引用计数算法</strong></p>
+<p>给对象添加一个引用计数器，每当一个地方引用它时，数据器加1；当引用失效时，计数器减1；计数器为0的即可被回收。</p>
+<p>优点：实现简单，判断效率高</p>
+<p>缺点：很难解决对象之间的相互循环引用（objA.instance = objB; objB.instance = objA）的问题，所以java语言并没有选用引用计数法管理内存</p>
+<p><strong>根搜索算法</strong>（可达性分析法）</p>
+<p>Java和C#都是使用根搜索算法来判断对象是否存活。通过一系列的名为“GC Root”的对象作为起始点，从这些节点开始向下搜索，搜索所有走过的路径称为引用链（Reference Chain）,当一个对象到GC Root没有任何引用链相连时（用图论来说就是GC Root到这个对象不可达时），证明该对象是可以被回收的。</p>
+<p>在Java中这些对象可以成为GC Root：</p>
+<p>虚拟机栈（栈帧中的本地变量表）中的引用对象</p>
+<p>方法区中的类静态属性引用的对象</p>
+<p>方法区中的常量引用对象</p>
+<p>本地方法栈中JNI（即Native方法）的引用对象</p>
+<p><strong>标记-清除算法</strong></p>
+<p>标记-清除算法是一种常见的基础垃圾收集算法，它将垃圾收集分为两个阶段</p>
+<p>标记阶段：标记出可以回收的对象。</p>
+<p>清除阶段：回收被标记的对象所占用的空间。</p>
+<p>标记-清除算法主要有两个缺点，一个是标记和清除的效率不高，另一个从图中就可以看出，就是容易产生大量不连续的内存碎片，碎片太多可能会导致后续没有足够的连续内存分配给较大的对象，从而提前触发新的一次垃圾收集动作。</p>
+<p><strong>复制算法</strong></p>
+<p>为了解决标记-清除算法的效率不高的问题，产生了复制算法。它把内存空间划分为两个相等的区域，每次只使用其中一个区域。在垃圾收集时，遍历当前使用的区域，把存活对象复制到另一个区域中，最后将当前使用的区域的可回收的对象进行回收。</p>
+<p>这种算法每次都对整个半区进行内存回收，不需要考虑内存碎片的问题，代价就是使用内存为原来的一半。复制算法的效率与存活对象的数目多少有很大的关系，如果存活对象很少，复制算法的效率就会很高。由于绝大多数对象的生命周期很短，并且这些生命周期很短的对象都存于新生代中，所以复制算法被广泛应用于新生代中。</p>
+<p><strong>标记-压缩算法</strong></p>
+<p>在新生代中可以使用复制算法，但是在老年代就不能选择复制算法，因为老年代对象存活率会较高，这样会有较多的复制操作，导致效率变低。标记-清除算法可以应用在老年代中，但是效率不高，在内存回收后容易产生大量内存碎片。因此就出现了一种标记-压缩算法，与标记-清除算法不同的是，在标记可回收的对象后将所有存活的对象压缩到内存的一端，使它们紧凑地排列在一起，然后对边界以外的内存进行回收，回收后，已用和未用的内存都各自一边。</p>
+<p>标记-压缩算法解决了标记-清除算法效率低和容易产生大量内存碎片的问题，它被广泛应用于老年代中。</p>
+<p><strong>分代收集算法</strong></p>
+<p>分代收集算法会结合不同的收集算法来处理不同的空间，因此在学习分代收集算法之前我们首先要了解Java堆区的空间划分。Java堆区的空间划分在Java虚拟机中，各种对象的生命周期会有着较大的差别，大部分对象生命周期很短暂，少部分对象生命周期很长，有的甚至与应用程序以及Java虚拟机的运行周期一样长。因此，应该对不同生命周期的对象采取不同的收集策略，根据生命周期长短将它们放到不同的区域，并在不同的区域采用不同的收集算法，这就是分代的概念。现在主流的Java虚拟机的垃圾收集器都采用分代收集算法。Java堆区基于分代的概念，分为新生代和老年代，其中新生代再细分为Eden空间、From Survivor空间和To Survivor空间。因为Eden空间中的大多数生命周期很短，所以新生代的空间划分并不是均分的，HotSpot虚拟机默认Eden空间和两个Survivor空间的所占的比例为8:1。</p>
+<p>根据Java堆区的空间划分，垃圾收集的类型分为两种，它们分别如下：</p>
+<p>Minor Collection：新生代垃圾收集。</p>
+<p>Full Collection：对老年代进行收集，又可以称作Major Collection，Full Collection通常情况下会伴随至少一次的Minor Collection，它的收集频率较低，耗时较长。</p>
+<p>当执行一次Minor Collection时，Eden空间的存活对象会被复制到To Survivor空间，并且之前经过一次Minor Collection 并在From Survivor空间存活的仍年轻的对象也会复制到To Survivor空间。有两种情况Eden空间和From Survivor空间存活的对象不会复制到To Survivor空间， 而是晋升到老年代。一种是存活的对象的分代年龄超过-XX:MaxTenuringThreshold（用于控制对象经历多少次Minor GC 才晋升到老年代）所指定的阈值。另一种是To Survivor空间容量达到阈值。当所有存活的对象被复制到To Survivor空间，或者晋升到老年代，也就意味着Eden空间和From Survivor空间剩下的都是可回收对象。</p>
+<p>这个时候GC执行Minor Collection，Eden空间和From Survivor空间都会被清空，新生代存活的对象都存放在To Survivor空间。接下来将From Survivor空间和To Survivor空间互换位置，也就是此前的From Survivor空间成为了现在的To Survivor空间，每次Survivor空间互换都要保证To Survivor空间是空的，这就是复制算法在新生代中的应用。在老年代则会采用标记-压缩算法或标记-清除算法。</p>
+
+        <p class="suffix-end">__END__</p>
+        <div class="suffix-box">
+            <div class="suffix-box-left">
+                <img src="/image/avatar.jpg" alt="Aomine Daiki">
             </div>
-            <div class="article-abstract">
-                
+            <div class="suffix-box-right">
+                <span class="suffix-box-title">文章作者</span>：Aomine Daiki
+                <br>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/07/07/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" target="_blank">Java垃圾回收机制</a>
+                <br>
+                <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
+                <br>
+                <span class="suffix-box-title">关于主题</span>：<a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+                <br>
+                <span class="suffix-box-title">版权声明</span>：文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+                <br>
             </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-07
-                </span>
-                
-                    <span id="/2021/06/07/6-7/" class="leancloud_visitors" data-flag-title="6-7">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/07/6-7/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+            <div style="clear: both;"></div>
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/06/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/">在线教育项目</a>
+    </div>
+    <div class="article-footer">
+        
+            <div class="category">
+                分类：
+                
+                    <a href="/category/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
                 
             </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-06
-                </span>
-                
-                    <span id="/2021/06/06/在线教育项目/" class="leancloud_visitors" data-flag-title="在线教育项目">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/06/在线教育项目/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+        
+        
+        <div class="article-prev-next">
+            
+            
+                <a href="/2021/07/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84--%E6%A0%91/" class="next-prefix">» </a> 下一篇：    <a href="/2021/07/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84--%E6%A0%91/" title="发布于 2021-07-03 05:44">树</a>
+            
         </div>
+    </div>
     
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/06/6-6/">6-6</a>
-                
-            </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-06
-                </span>
-                
-                    <span id="/2021/06/06/6-6/" class="leancloud_visitors" data-flag-title="6-6">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/06/6-6/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+    <div class="article-comments">
+        <div class="comments-title">
+            评论列表
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/05/6-5/">6-5</a>
-                
-            </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-05
-                </span>
-                
-                    <span id="/2021/06/05/6-5/" class="leancloud_visitors" data-flag-title="6-5">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/05/6-5/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+        <div class="comments-content">
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式总结</a>
-                
-            </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-06-04
-                </span>
-                
-                    <span id="/2021/06/04/设计模式/" class="leancloud_visitors" data-flag-title="设计模式总结">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/06/04/设计模式/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
-        </div>
-    
-    
-        <div class="pagination-bottom">
-            <div class="pagination">
-                
-                    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
-                
-            </div>
-        </div>
-    
+    </div>
+
 </div>
 
     </div>
