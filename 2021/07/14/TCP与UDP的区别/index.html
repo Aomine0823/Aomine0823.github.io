@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>众安保险</title>
+    <title>TCP与UDP的区别</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -31,19 +31,19 @@
     <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-subtitle">众安保险</h1>
+                <h1 class="header-subtitle">TCP与UDP的区别</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text">
                         <span>
-                            <i class="iconfont icon-time"></i> 发表时间：2021-07-09
+                            <i class="iconfont icon-time"></i> 发表时间：2021-07-14
                         </span>
                         
-                            <span id="/2021/07/09/众安保险/" class="leancloud_visitors" data-flag-title="众安保险">
+                            <span id="/2021/07/14/TCP与UDP的区别/" class="leancloud_visitors" data-flag-title="TCP与UDP的区别">
                                 <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                             </span>
                         
                         <span>
-                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/07/09/众安保险/"></span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/07/14/TCP与UDP的区别/"></span>
                         </span>  
                     </p>                 
                 </div>
@@ -57,16 +57,31 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        <h1 id="7-9-一面"><a href="#7-9-一面" class="headerlink" title="7.9 一面"></a>7.9 一面</h1><h2 id="介绍自己"><a href="#介绍自己" class="headerlink" title="介绍自己"></a>介绍自己</h2><h2 id="水项目"><a href="#水项目" class="headerlink" title="水项目"></a>水项目</h2><h2 id="困难的地方"><a href="#困难的地方" class="headerlink" title="困难的地方"></a>困难的地方</h2><h2 id="啥时候上岗"><a href="#啥时候上岗" class="headerlink" title="啥时候上岗"></a>啥时候上岗</h2><h2 id="简述三次握手四次挥手"><a href="#简述三次握手四次挥手" class="headerlink" title="简述三次握手四次挥手"></a>简述三次握手四次挥手</h2><h2 id="hashmap"><a href="#hashmap" class="headerlink" title="hashmap"></a>hashmap</h2><p>扩容没答出来</p>
-<h2 id="简述他们公司做什么"><a href="#简述他们公司做什么" class="headerlink" title="简述他们公司做什么"></a>简述他们公司做什么</h2><p>数据库。</p>
-<p>个人敏感信息的加密。</p>
-<p>解析sql语句，加密，重写sql语句。</p>
-<p>逆向解密。</p>
-<p>权限管理。</p>
-<p>sdk模式，</p>
-<p>代理模式。prox模式？？连接管理由代理服务器解决。</p>
-<p>两道题目：一个是两个链表，找重复的节点的头</p>
-<p>​                    还有一个是，动态规划求不能相邻的和的最大值</p>
+        <h1 id="TCP与UDP的区别"><a href="#TCP与UDP的区别" class="headerlink" title="TCP与UDP的区别"></a>TCP与UDP的区别</h1><p>1、TCP面向连接（如打电话要先拨号建立连接）;UDP是无连接的，即发送数据之前不需要建立连接</p>
+<p>2、TCP提供可靠的服务。也就是说，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP尽最大努力交付，即不保证可靠交付<br>        3、TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流;UDP是面向报文的。UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如IP电话，实时视频会议等）<br>        4、每一条TCP连接只能是点到点的;UDP支持一对一，一对多，多对一和多对多的交互通信<br>        5、TCP首部开销20字节;UDP的首部开销小，只有8个字节</p>
+<p>6、TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道</p>
+<h1 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h1><p>拥塞控制和流量控制</p>
+<p>流量控制：如果发送方把数据发送得过快，接收方可能会来不及接收，这就会造成数据的丢失。</p>
+<p>TCP的流量控制是利用滑动窗口机制实现的，接收方在返回的数据中会包含自己的接收窗口的大小，以控制发送方的数据发送。</p>
+<p>拥塞控制：拥塞控制就是防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载。</p>
+<p>两者的区别：流量控制是为了预防拥塞。如：在马路上行车，交警跟红绿灯是流量控制，当发生拥塞时，如何进行疏散，是拥塞控制。流量控制指点对点通信量的控制。而拥塞控制是全局性的，涉及到所有的主机和降低网络性能的因素。</p>
+<p>拥塞解决的两种方法：</p>
+<p>发送方控制拥塞窗口的原则是：只要网络没有出现拥塞，拥塞窗口就再增大一些，以便把更多的分组发送出去。但只要网络出现拥塞，拥塞窗口就减小一些，以减少注入到网络中的分组数。</p>
+<p><strong>慢开始+拥塞避免</strong></p>
+<p><img src="/pic/TCP%E4%B8%8EUDP%E7%9A%84%E5%8C%BA%E5%88%AB/image-20210714192126445.png" alt="image-20210714192126445"></p>
+<p>一开始的慢开始算法的指数增长是很恐怖的，所以为了防止拥塞窗口增长过快需要设置一个门限ssthresh</p>
+<p>无论在慢开始阶段还是在拥塞避免阶段，只要发送方没有收到确认，就认为这时候拥塞了。</p>
+<p>1.就要把慢开始门限设置为此时窗口值的一半</p>
+<p>2.然后把拥塞窗口重新设置为1，执行慢开始算法。</p>
+<p><strong>快重传+快恢复</strong></p>
+<p>快重传要求接收方在收到一个失序的报文段后就立即发出重复确认</p>
+<p>如果没有快速重传和快速恢复，TCP将会使用定时器来要求传输暂停。在暂停这段时间内，没有新的数据包被发送。所以快速重传和快速恢复旨在快速恢复丢失的数据包。</p>
+<p>快重传的机制还是比较好理解的，如图所示，接收方发现M3丢失，则立即发送对M2的重复确认。一旦发送方一连收到三个M2的重复确认就应当立即重传M3，也就是发送方收到第四个对M2的确认时。</p>
+<p><img src="/pic/TCP%E4%B8%8EUDP%E7%9A%84%E5%8C%BA%E5%88%AB/image-20210714192249336.png" alt="image-20210714192249336"></p>
+<p>与快重传配合使用的还有快恢复算法，结合上图的实例来分析，其过程有以下两个要点。</p>
+<p>1.当发送方连续收到三个重复确认时，就把门限减半。</p>
+<p>2.考虑到如果网络出现拥塞的话就不会收到好几个重复的确认，所以发送方现在认为网络可能没有出现拥塞。所以此时不执行慢开始算法，而是将拥塞窗口设置为门限的大小，然后执行拥塞避免算法（加法）。</p>
+<p><img src="/pic/TCP%E4%B8%8EUDP%E7%9A%84%E5%8C%BA%E5%88%AB/image-20210714192421153.png" alt="image-20210714192421153"></p>
 
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
@@ -76,7 +91,7 @@
             <div class="suffix-box-right">
                 <span class="suffix-box-title">文章作者</span>：Aomine Daiki
                 <br>
-                <span class="suffix-box-title">文章出处</span>：<a href="/2021/07/09/%E4%BC%97%E5%AE%89%E4%BF%9D%E9%99%A9/" target="_blank">众安保险</a>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/07/14/TCP%E4%B8%8EUDP%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_blank">TCP与UDP的区别</a>
                 <br>
                 <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
                 <br>
@@ -93,18 +108,18 @@
             <div class="category">
                 分类：
                 
-                    <a href="/category/%E9%9D%A2%E7%BB%8F/">面经</a>
+                    <a href="/category/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
                 
             </div>
         
         
         <div class="article-prev-next">
             
-                <a href="/2021/07/09/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/07/09/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" title="发布于 2021-07-09 08:29">在线教育项目（持续更新）</a>
+                <a href="/2021/07/14/sql%E4%BA%8B%E5%8A%A1/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/07/14/sql%E4%BA%8B%E5%8A%A1/" title="发布于 2021-07-14 07:13">sql事务</a>
                 <br>
             
             
-                <a href="/2021/07/07/MySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E5%91%BD%E4%BB%A4/" class="next-prefix">» </a> 下一篇：    <a href="/2021/07/07/MySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E5%91%BD%E4%BB%A4/" title="发布于 2021-07-07 06:58">MySQL安装及命令</a>
+                <a href="/2021/07/11/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/" class="next-prefix">» </a> 下一篇：    <a href="/2021/07/11/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/" title="发布于 2021-07-11 10:55">进程间的通信方式以及应用场景</a>
             
         </div>
     </div>

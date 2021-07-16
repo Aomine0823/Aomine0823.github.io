@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>众安保险</title>
+    <title>sql事务</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -31,19 +31,19 @@
     <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-subtitle">众安保险</h1>
+                <h1 class="header-subtitle">sql事务</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text">
                         <span>
-                            <i class="iconfont icon-time"></i> 发表时间：2021-07-09
+                            <i class="iconfont icon-time"></i> 发表时间：2021-07-14
                         </span>
                         
-                            <span id="/2021/07/09/众安保险/" class="leancloud_visitors" data-flag-title="众安保险">
+                            <span id="/2021/07/14/sql事务/" class="leancloud_visitors" data-flag-title="sql事务">
                                 <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                             </span>
                         
                         <span>
-                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/07/09/众安保险/"></span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/07/14/sql事务/"></span>
                         </span>  
                     </p>                 
                 </div>
@@ -57,16 +57,25 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        <h1 id="7-9-一面"><a href="#7-9-一面" class="headerlink" title="7.9 一面"></a>7.9 一面</h1><h2 id="介绍自己"><a href="#介绍自己" class="headerlink" title="介绍自己"></a>介绍自己</h2><h2 id="水项目"><a href="#水项目" class="headerlink" title="水项目"></a>水项目</h2><h2 id="困难的地方"><a href="#困难的地方" class="headerlink" title="困难的地方"></a>困难的地方</h2><h2 id="啥时候上岗"><a href="#啥时候上岗" class="headerlink" title="啥时候上岗"></a>啥时候上岗</h2><h2 id="简述三次握手四次挥手"><a href="#简述三次握手四次挥手" class="headerlink" title="简述三次握手四次挥手"></a>简述三次握手四次挥手</h2><h2 id="hashmap"><a href="#hashmap" class="headerlink" title="hashmap"></a>hashmap</h2><p>扩容没答出来</p>
-<h2 id="简述他们公司做什么"><a href="#简述他们公司做什么" class="headerlink" title="简述他们公司做什么"></a>简述他们公司做什么</h2><p>数据库。</p>
-<p>个人敏感信息的加密。</p>
-<p>解析sql语句，加密，重写sql语句。</p>
-<p>逆向解密。</p>
-<p>权限管理。</p>
-<p>sdk模式，</p>
-<p>代理模式。prox模式？？连接管理由代理服务器解决。</p>
-<p>两道题目：一个是两个链表，找重复的节点的头</p>
-<p>​                    还有一个是，动态规划求不能相邻的和的最大值</p>
+        <h1 id="SQL事务四大特性"><a href="#SQL事务四大特性" class="headerlink" title="SQL事务四大特性"></a>SQL事务四大特性</h1><p>1.原子性（Atomicity）</p>
+<p>原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。</p>
+<p>2.一致性（Consistency）</p>
+<p>一致性是指事务必须使用数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行后都必须处于一致性的状态。</p>
+<p>3.隔离性（Isolation）</p>
+<p>隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启一个事务，不能被其他的操作所干扰，多个并发事务之间要相互隔离。</p>
+<p>4.持久性（Durability）</p>
+<p>持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即使是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</p>
+<h1 id="错误读"><a href="#错误读" class="headerlink" title="错误读"></a>错误读</h1><p><strong>脏读：</strong></p>
+<p>  脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据。</p>
+<p><strong>不可重复读:</strong></p>
+<p>   不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了</p>
+<p>不可重复读和脏读的区别是，脏读是末一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据</p>
+<p><strong>虚读（幻读）:</strong></p>
+<p>幻读是事务非独立执行时发生的一种现象，例如事务T1对一个表中所有的行的某个数据项做了从“1”修改到“2”的操作这时事务T2又对这个表插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。</p>
+<h1 id="四种隔离级别"><a href="#四种隔离级别" class="headerlink" title="四种隔离级别"></a>四种隔离级别</h1><p>1.Serializable（串行化）：可避免脏读，不可重复读，幻读的发生。</p>
+<p>2.Repeatable read(可重复读)：可避免脏读，不可重复读发生。</p>
+<p>3.read committed（读已提交）：可避免脏读的发生。</p>
+<p>4.read uncommitted（读未提交）：最低级别，任何情况都无法保证。</p>
 
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
@@ -76,7 +85,7 @@
             <div class="suffix-box-right">
                 <span class="suffix-box-title">文章作者</span>：Aomine Daiki
                 <br>
-                <span class="suffix-box-title">文章出处</span>：<a href="/2021/07/09/%E4%BC%97%E5%AE%89%E4%BF%9D%E9%99%A9/" target="_blank">众安保险</a>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/07/14/sql%E4%BA%8B%E5%8A%A1/" target="_blank">sql事务</a>
                 <br>
                 <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
                 <br>
@@ -93,18 +102,18 @@
             <div class="category">
                 分类：
                 
-                    <a href="/category/%E9%9D%A2%E7%BB%8F/">面经</a>
+                    <a href="/category/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
                 
             </div>
         
         
         <div class="article-prev-next">
             
-                <a href="/2021/07/09/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/07/09/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" title="发布于 2021-07-09 08:29">在线教育项目（持续更新）</a>
+                <a href="/2021/07/14/%E5%AD%97%E8%8A%82/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/07/14/%E5%AD%97%E8%8A%82/" title="发布于 2021-07-14 07:31">字节</a>
                 <br>
             
             
-                <a href="/2021/07/07/MySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E5%91%BD%E4%BB%A4/" class="next-prefix">» </a> 下一篇：    <a href="/2021/07/07/MySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E5%91%BD%E4%BB%A4/" title="发布于 2021-07-07 06:58">MySQL安装及命令</a>
+                <a href="/2021/07/14/TCP%E4%B8%8EUDP%E7%9A%84%E5%8C%BA%E5%88%AB/" class="next-prefix">» </a> 下一篇：    <a href="/2021/07/14/TCP%E4%B8%8EUDP%E7%9A%84%E5%8C%BA%E5%88%AB/" title="发布于 2021-07-14 07:13">TCP与UDP的区别</a>
             
         </div>
     </div>
