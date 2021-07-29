@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>分类 - 操作系统</title>
+    <title>数据库</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
@@ -17,86 +17,178 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/index.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css">
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css">
+    
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js"></script>
+
 </head>
 <body>
     <a id="cover"></a>
     <div id="header">
-    <div class="header" >
+    <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-title"></h1>
-                <h2 class="header-description" id="hitokoto"></h2>
-                <h3 class="header-info" id="hitokotoAuthor"></h3>
-                <!--
-                <h1 class="header-subtitle"></h1>
-                <p class="header-subinfo"></p>
-                -->
+                <h1 class="header-subtitle">数据库</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2021-07-27
+                        </span>
+                        
+                            <span id="/2021/07/27/数据库/" class="leancloud_visitors" data-flag-title="数据库">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/07/27/数据库/"></span>
+                        </span>  
+                    </p>                 
+                </div>
             </div>
         </div>
-        <a class="scroll-down" href="javascript:;" target="_self" data-offset="-45">
-            <span class="hidden">Scroll Down</span>
-            <i class="scroll-down-icon iconfont icon-return"></i>
-        </a>
+        <canvas id="articleHeaderCanvas"></canvas>
     </div>
 </div>
     <div id="container">
     <div id="content">
-        <div class="articles">
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/07/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-                
+        <div id="article">
+    <div class="toc"></div>
+    <div class="article-body">
+        <h1 id="MySql数据库"><a href="#MySql数据库" class="headerlink" title="MySql数据库"></a>MySql数据库</h1><p>MySQL是一种关系型数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。</p>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p>加锁范围：MySQL里面的锁可以分为：全局锁、表级锁、行级锁</p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>索引是定义在table基础之上，有助于无需检查所有记录而快速定位所需记录的一种辅助存储结构，由一系列存储在磁盘上的索引项组成，每一种索引项由索引字段和行指针构成。</p>
+<p>作用：提高数据的查询速度</p>
+<p>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</p>
+<p>可以大大加快 数据的检索速度，这也是创建索引的最主要的原因。</p>
+<p>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。</p>
+<p>在使用分组和排序 子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</p>
+<p>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</p>
+<p>常见的需要用到索引的情况：</p>
+<p>在经常需要搜索的列上，可以加快搜索的速度；</p>
+<p>在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构;</p>
+<p>在经常用在连接的列上，这 些列主要是一些外键，可以加快连接的速度；</p>
+<p>在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；</p>
+<p>在经常需要排序的列上创 建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间；</p>
+<p>在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。</p>
+<h3 id="索引优缺点"><a href="#索引优缺点" class="headerlink" title="索引优缺点"></a>索引优缺点</h3><p>索引的好处？</p>
+<p>通过创建索引,可以在查询的过程中,提高系统的性能；</p>
+<p>通过创建唯一性索引,可以保证数据库表中每一行数据的唯一性；</p>
+<p>在使用分组和排序子句进行数据检索时,可以减少查询中分组和排序的时间；</p>
+<p>索引的坏处？</p>
+<p>创建索引和维护索引要耗费时间,而且时间随着数据量的增加而增大；</p>
+<p>索引需要占用物理空间,如果要建立聚簇索引,所需要的空间会更大；</p>
+<p>在对表中的数据进行增加删除和修改时需要耗费较多的时间,因为索引也要动态地维护；</p>
+<h3 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h3><p>什么是稠密索引和稀疏索引？</p>
+<p>稠密索引：对于主文件中每一个记录都对应一个索引项；</p>
+<p>候选键属性的稠密索引：先查索引，然后再依据索引读主文件；</p>
+<p>非候选键属性的稠密索引：</p>
+<p>主文件按索引字段排序，索引文件中的索引字段值无重复；</p>
+<p>主文件索引字段未排序，但索引文件中的索引字段值是有重复的；</p>
+<p>主文件索引字段未排序且索引文件中的索引字段值无重复，这时可以引入指针桶来处理；</p>
+<p>稀疏索引：对于主文件中部分记录有索引项和它对应（要求主文件必须是按对应索引字段属性排序存储）；</p>
+<p>什么是主索引和辅助索引？</p>
+<p>主索引：对每个存储块有一个索引项，每个存储块的第一个记录叫锚，通常建立在有序文件的基于主码的排序字段上，属于稀疏索引。</p>
+<p>辅助索引：是定义在主文件的任一或多个非排序字段上的辅助存储结构，属于稠密索引。</p>
+<p>补充：一个主文件可以有一个主索引，但可以有多个辅助索引。</p>
+<p>什么是聚簇索引和非聚簇索引？</p>
+<p>聚簇索引：将数据存储与索引放到了一块，找到索引也就找到了数据，主文件按照对应字段排序存储，索引文件无重复排序存储。</p>
+<p>非聚簇索引：将数据存储于索引分开结构，索引结构的叶子节点指向了数据的对应行，主文件并没有按照对应字段排序存储，索引文件有重复排序存储。</p>
+<h3 id="索引的结构"><a href="#索引的结构" class="headerlink" title="索引的结构"></a>索引的结构</h3><p>B树</p>
+<p>即二叉搜索树， B树的搜索，从根结点开始，如果查询的关键字与结点的关键字相等，那么就命中；否则，如果查询关键字比结点关键字小，就进入左儿子；如果比结点关键字大，就进入右儿子；如果左儿子或右儿子的指针为空，则报告找不到相应的关键字； 如果B树的所有非叶子结点的左右子树的结点数目均保持差不多（平衡），那么B树的搜索性能逼近二分查找；但它比连续内存空间的二分查找的优点是，改变B树结构（插入与删除结点）不需要移动大段的内存数据，甚至通常是常数开销；</p>
+<p>B-树</p>
+<p>是一种多路搜索树（并不是二叉的）</p>
+<p>B+树</p>
+<p>B树：二叉树，每个结点只存储一个关键字，等于则命中，小于走左结点，大于走右结点；</p>
+<p>B-树：多路搜索树，每个结点存储M/2到M个关键字，非叶子结点存储指向关键字范围的子结点；所有关键字在整颗树中出现，且只出现一次，非叶子结点可以命中；</p>
+<p>B+树：在B-树基础上，为叶子结点增加链表指针，所有关键字都在叶子结点中出现，非叶子结点作为叶子结点的索引；B+树总是到叶子结点才命中；</p>
+<h1 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h1><p>数据冗余是指数据库中存在一些重复的数据，数据完整性是指数据库中的数据能够正确反应实际情况。</p>
+<p>数据完整性是指数据的可靠性和准确性，数据完整性类型有四种：</p>
+<p>实体完整性：实体的完整性强制表的标识符列或主键的完整性</p>
+<p>(通过唯一约束，主键约束或标识列属性)</p>
+<p>域完整性：限制类型(数据类型)，格式(通过检查约束和规则)，可能值范围</p>
+<p>(通过外键约束，检查约束，默认值定义，非空约束和规则)</p>
+<p>引用完整性（参照完整性）：在删除和输入记录时，引用完整性保持表之间已定义的关系。引用完整性确保键值在所有表中一致，不能引用不存在的值。如果一个键。</p>
+<p>(通过外键，所引用表的列必须是主键)</p>
+<p>定义完整性：用户自己定义的业务规则，比如使用触发器实现自定义业务规则。</p>
+<h1 id="数据库的范式"><a href="#数据库的范式" class="headerlink" title="数据库的范式"></a>数据库的范式</h1><p>为了建立冗余较小、结构合理的数据库，设计数据库时必须遵循一定的规则。在关系型数据库中这种规则就称为范式。范式是符合某一种设计要求的总结。要想设计一个结构合理的关系型数据库，必须满足一定的范式。</p>
+<p>第一范式(确保每列保持原子性) — 保证原子性</p>
+<p>第二范式(确保表中的每列都和主键相关) —解决部分依赖</p>
+<p>第三范式(确保每列都和主键列直接相关,而不是间接相关) – 解决传递依赖</p>
+<p>　第一范式：1NF是对属性的原子性约束，要求属性具有原子性，不可再分解； 　第二范式：2NF是对记录的惟一性约束，要求记录有惟一标识，即实体的唯一性； 　第三范式：3NF是对字段冗余性的约束，即任何字段不能由其他字段派生出来，它要求字段没有冗余。</p>
+<h1 id="数据表设计原则"><a href="#数据表设计原则" class="headerlink" title="数据表设计原则"></a>数据表设计原则</h1><p>一致性原则:对数据来源进行统一、系统的分析与设计，协调好各种数据源，保证数据的一致性和有效性。</p>
+<p>完整性原则:数据库的完整性是指数据的正确性和相容性。要防止合法用户使用数据库时向数据库加入不合语义的数据。对输入到数据库中的数据要有审核和约束机制。</p>
+<p>安全性原则:数据库的安全性是指保护数据，防止非法用户使用数据库或合法用户非法使用数据库造成数据泄露、更改或破坏。要有认证和授权机制。</p>
+<p>可伸缩性与可扩展性原则:数据库结构的设计应充分考虑发展的需要、移植的需要，具有良好的扩展性、伸缩性和适度冗余。</p>
+<p>规范化:数据库的设计应遵循规范化理论。规范化的数据库设计，可以减少数据库插入、删除、修改等操作时的异常和错误，降低数据冗余度等。</p>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>特性</p>
+<p>数据库事务是指作为单个逻辑工作单元执行的一系列操作（SQL语句）。这些操作要么全部执行，要么全部不执行。</p>
+<p>原子性 （atomicity）:强调事务的不可分割.</p>
+<p>一致性 （consistency）:事务的执行的前后数据的完整性保持一致.</p>
+<p>隔离性 （isolation）:一个事务执行的过程中,不应该受到其他事务的干扰</p>
+<p>持久性（durability） :事务一旦结束,数据就持久到数据库</p>
+<p>隔离级别</p>
+<p>隔离性是指，多个用户的并发事务访问同一个数据库时，一个用户的事务不应该被其他用户的事务干扰，多个并发事务之间要相互隔离。</p>
+<h2 id="四种隔离级别"><a href="#四种隔离级别" class="headerlink" title="四种隔离级别"></a>四种隔离级别</h2><p>读未提交（Read uncommitted）：这种事务隔离级别下，select语句不加锁。此时，可能读取到不一致的数据，即“读脏 ”。这是并发最高，一致性最差的隔离级别。</p>
+<p>读已提交（Read committed）：可避免 脏读 的发生。在互联网大数据量，高并发量的场景下，几乎 不会使用上述两种隔离级别。</p>
+<p>可重复读（Repeatable read）：MySql数据库的默认隔离级别。可避免脏读 、不可重复读的发生。</p>
+<p>串行化（Serializable ）：可避免 脏读、不可重复读、幻读的发生。</p>
+<p>几种问题</p>
+<p>脏读是指一个事务在处理数据的过程中，读取到另一个为提交事务的数据。</p>
+<p>不可重复读是指对于数据库中的某个数据，一个事务范围内的多次查询却返回了不同的结果，这是由于在查询过程中，数据被另外一个事务修改并提交了。 不可重复读和脏读的区别是，脏读读取到的是一个未提交的数据，而不可重复读读取到的是前一个事务提交的数据。而不可重复读在一些情况也并不影响数据的正确性，比如需要多次查询的数据也是要以最后一次查询到的数据为主。</p>
+<p>幻读是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。总的来说，解决不可重复读的方法是 锁行，解决幻读的方式是锁表。</p>
+
+        <p class="suffix-end">__END__</p>
+        <div class="suffix-box">
+            <div class="suffix-box-left">
+                <img src="/image/avatar.jpg" alt="Aomine Daiki">
             </div>
-            <div class="article-abstract">
-                
+            <div class="suffix-box-right">
+                <span class="suffix-box-title">文章作者</span>：Aomine Daiki
+                <br>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/07/27/%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_blank">数据库</a>
+                <br>
+                <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
+                <br>
+                <span class="suffix-box-title">关于主题</span>：<a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+                <br>
+                <span class="suffix-box-title">版权声明</span>：文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+                <br>
             </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-07-28
-                </span>
-                
-                    <span id="/2021/07/28/操作系统/" class="leancloud_visitors" data-flag-title="操作系统">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/07/28/操作系统/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+            <div style="clear: both;"></div>
         </div>
-    
-        <div class="article">
-            <div class="article-title">
-                <a href="/2021/07/11/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/">进程间的通信方式以及应用场景</a>
+    </div>
+    <div class="article-footer">
+        
+            <div class="category">
+                分类：
+                
+                    <a href="/category/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
                 
             </div>
-            <div class="article-abstract">
-                
-            </div>
-            <div class="clear"></div>
-            <div class="article-info">
-                <span>
-                    <i class="iconfont icon-time"></i> 发表时间：2021-07-11
-                </span>
-                
-                    <span id="/2021/07/11/进程间的通信方式以及应用场景/" class="leancloud_visitors" data-flag-title="进程间的通信方式以及应用场景">
-                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
-                    </span>
-                
-                <span>
-                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/07/11/进程间的通信方式以及应用场景/"></span>
-                </span>
-            </div>
-            <div class="clear"></div>     
+        
+        
+        <div class="article-prev-next">
+            
+                <a href="/2021/07/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/07/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="发布于 2021-07-28 08:24">计算机网络</a>
+                <br>
+            
+            
+                <a href="/2021/07/21/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" class="next-prefix">» </a> 下一篇：    <a href="/2021/07/21/%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E9%A1%B9%E7%9B%AE/" title="发布于 2021-07-21 08:29">在线教育项目（持续更新）</a>
+            
         </div>
+    </div>
     
-    
+    <div class="article-comments">
+        <div class="comments-title">
+            评论列表
+        </div>
+        <div class="comments-content">
+        </div>
+    </div>
+
 </div>
 
     </div>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>操作系统</title>
+
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/NotoSansSC.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Playball.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/PTMono.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/RobotoSlab.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css">
+
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css">
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css">
+    
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js"></script>
+
+</head>
+<body>
+    <a id="cover"></a>
+    <div id="header">
+    <div class="header">
+        <div class="vertical">
+            <div class="inner">
+                <h1 class="header-subtitle">操作系统</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2021-07-28
+                        </span>
+                        
+                            <span id="/2021/07/28/操作系统/" class="leancloud_visitors" data-flag-title="操作系统">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/07/28/操作系统/"></span>
+                        </span>  
+                    </p>                 
+                </div>
+            </div>
+        </div>
+        <canvas id="articleHeaderCanvas"></canvas>
+    </div>
+</div>
+    <div id="container">
+    <div id="content">
+        <div id="article">
+    <div class="toc"></div>
+    <div class="article-body">
+        <h1 id="select-poll-epoll"><a href="#select-poll-epoll" class="headerlink" title="select poll epoll"></a>select poll epoll</h1><h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>使用select函数进行IO请求和同步阻塞模型没有太大的区别，甚至还多了添加监视socket，以及调用select函数的额外操作，效率更差。但是，使用select以后最大的优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同一个线程内同时处理多个IO请求的目的。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。</p>
+<p>每次调用select，都需要把fd_set集合从用户态拷贝到内核态，如果fd_set集合很大时，那这个开销也很大</p>
+<p>同时每次调用select都需要在内核遍历传递进来的所有fd_set，如果fd_set集合很大时，那这个开销也很大</p>
+<p>为了减少数据拷贝带来的性能损坏，内核对被监控的fd_set集合大小做了限制，并且这个是通过宏控制的，大小不可改变(限制为1024)</p>
+<h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><p>poll的机制与select类似，与select在本质上没有多大差别，管理多个描述符也是进行轮询，根据描述符的状态进行处理，但是poll没有最大文件描述符数量的限制。poll改变了文件描述符集合的描述方式，</p>
+<h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2><p>相对于select来说，epoll没有描述符个数限制，使用一个文件描述符管理多个描述符，将用户关心的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。原因就是获取事件的时候，它无须遍历整个被侦听的描述符集，只要遍历那些被内核IO事件异步唤醒而加入Ready队列的描述符集合就行了。epoll除了提供select/poll那种IO事件的水平触发（Level Triggered）外，还提供了边缘触发（Edge Triggered），这就使得用户空间程序有可能缓存IO状态，减少epoll_wait/epoll_pwait的调用，提高应用程序效率。</p>
+<h1 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h1><p>定义</p>
+<p>进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动,进程是系统进行资源分配和调度的一个独立单位.</p>
+<p>线程是进程的一个实体,是CPU调度和分派的基本单位,它是比进程更小的能独立运行的基本单位.线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈),但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源.</p>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>一个线程可以创建和撤销另一个线程;同一个进程中的多个线程之间可以并发执行.</p>
+<p>相对进程而言，线程是一个更加接近于执行体的概念，它可以与同进程中的其他线程共享数据，但拥有自己的栈空间，拥有独立的执行序列。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>进程和线程的主要差别在于它们是不同的操作系统资源管理方式。</p>
+<p>进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比单线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某些变量的并发操作，只能用线程，不能用进程。</p>
+<ol>
+<li><p>简而言之,一个程序至少有一个进程,一个进程至少有一个线程.</p>
+</li>
+<li><p>线程的划分尺度小于进程，使得多线程程序的并发性高。</p>
+</li>
+<li><p>另外，进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率。</p>
+</li>
+<li><p>线程在执行过程中与进程还是有区别的。每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。</p>
+</li>
+<li><p>从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。这就是进程和线程的重要区别。</p>
+</li>
+</ol>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>线程和进程在使用上各有优缺点：线程执行开销小，但不利于资源的管理和保护；而进程正相反。同时，线程适合于在SMP机器上运行，而进程则可以跨机器迁移。</p>
+<h1 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h1><p>线程安全就是多线程访问时，采用了加锁机制，当一个线程访问该类的某个数据时，进行保护，其他线程不能进行访问直到该线程读取完，其他线程才可使用。不会出现数据不一致或者数据污染。</p>
+<p>线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是脏数据</p>
+<p>线程安全问题都是由全局变量及静态变量引起的。</p>
+<p>若每个线程中对全局变量、静态变量只有读操作，而无写操作，一般来说，这个全局变量是线程安全的；</p>
+<p>若有多个线程同时执行写操作，一般都需要考虑线程同步，否则的话就可能影响线程安全。</p>
+<h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h2><p>屏蔽中断 对于单核CPU来说，最简单的解决办法就是屏蔽中断，因为单核CPU并不存在真正的并发，多线程或者进程实际上还是交替执行的，当屏蔽中断时时钟中断也会屏蔽，CPU只有在发生时钟中断或者其他中断时才会出现对进程进行上下文切换，所以一旦屏蔽中断之后就只有自己这个进程进来，而不必担心别的进程会修改共享数据。</p>
+<p>硬件提供一些原语，比如中断禁用，原子指令等。常见的如下：</p>
+<p>TSL(test and set lock),测试并加锁</p>
+<p>XCHG,原子性的交换两个位置的值</p>
+<p>信号量（semaphore）</p>
+<p>这三种是硬件实现的原子操作，在这些硬件提供的原子操作的基础上，又提出了对这些原子操作的抽象，比如互斥量，管程。下面就先逐个介绍这些硬件原子操作的原理，介绍完之后，再介绍对他们的抽象，最后举一个例子来说明这些抽象的应用。</p>
+<p>管程解决的最主要的问题就是分离互斥和根据特定条件阻塞。</p>
+<p>互斥锁：任意时刻只允许一个进程或者线程进入临界区</p>
+<p>一个或多个条件变量：条件变量包含两个操作等待 / 唤醒操作</p>
+<h1 id="操作系统中的锁"><a href="#操作系统中的锁" class="headerlink" title="操作系统中的锁"></a>操作系统中的锁</h1><p>锁是线程同步时的一个重要的工具，然而操作系统中包含了多种不同的锁。</p>
+<h2 id="信号量（Semaphore）"><a href="#信号量（Semaphore）" class="headerlink" title="信号量（Semaphore）"></a>信号量（Semaphore）</h2><p>信号量分为二元信号量和多元信号量，所谓二元信号量就是指该信号量只有两个状态，要么被占用，要么空闲；而多元信号量则允许同时被N个线程占有，超出N个外的占用请求将被阻塞。信号量是“系统级别”的，即同一个信号量可以被不同的进程访问。</p>
+<h2 id="互斥量-（Mutex）"><a href="#互斥量-（Mutex）" class="headerlink" title="互斥量 （Mutex）"></a>互斥量 （Mutex）</h2><p>和二元信号量类似， 唯一不同的是，互斥量的获取和释放必须是在同一个线程中进行的。如果一个线程去释放一个并不是它所占有的互斥量是无效的。而信号量是可以由其它线程进行释放的。</p>
+<h2 id="临界区（Critical-Section）"><a href="#临界区（Critical-Section）" class="headerlink" title="临界区（Critical Section）"></a>临界区（Critical Section）</h2><p>术语中，把临界区的锁的获取称为进入临界区，而把锁的释放称为离开临界区。临界区是“进程级别”的，即它只在本进程的所有线程中可见，其它性质与互斥量相同（即谁获取，谁释放）</p>
+<h2 id="读写锁（Read-Write-Lock）"><a href="#读写锁（Read-Write-Lock）" class="headerlink" title="读写锁（Read-Write Lock）"></a>读写锁（Read-Write Lock）</h2><p>适用于一个特定的场合。比如对于一段线程间访问的数据，如果程序大部分时间都是在读取，而只有很少的时间才会写入，那么使用前面几种锁时，每次读取也是同样 要申请锁的，而这时其它的线程就无法再对此段数据进行读取。可是，多个线程同时对一段数据进行读取时，是不存在同步问题的，那么这些读取时设置的锁就影响 了程序的性能。读写锁的出现就是为了解决这个问题的。</p>
+<p>对于一个读写锁，有两种获取方式：共享（Shared）或独占 （Exclusive）。如果当前读写锁处于空闲状态，那么当多个线程同时以共享方式访问该读写锁时，都可以成功；而此时如果一个线程以独占的方式访问该 读写锁，那么它会等待所有共享访问都结束后才可以成功。在读写锁被独占访问的过程中，再次共享和独占请求访问该锁，都会进行等待状态。</p>
+<h2 id="5、条件变量（Condition-Variable）"><a href="#5、条件变量（Condition-Variable）" class="headerlink" title="5、条件变量（Condition Variable）"></a>5、条件变量（Condition Variable）</h2><p>条件变量相当于一种通知机制。多个线程可以设置等待该条件变量，而一旦另外的线程设置了该条件变量（相当于唤醒条件变量）后，多个等待的线程就可以继续执行了。</p>
+<h1 id="死锁以及避免"><a href="#死锁以及避免" class="headerlink" title="死锁以及避免"></a>死锁以及避免</h1><p>线程死锁是指由于两个或者多个线程互相持有对方所需要的资源，导致这些线程处于等待状态，无法前往执行。当线程进入对象的synchronized代码块时，便占有了资源，直到它退出该代码块或者调用wait方法，才释放资源，在此期间，其他线程将不能进入该代码块。当线程互相持有对方所需要的资源时，会互相等待对方释放资源，如果线程都不主动释放所占有的资源，将产生死锁。</p>
+<h2 id="产生死锁要满足的条件"><a href="#产生死锁要满足的条件" class="headerlink" title="产生死锁要满足的条件"></a>产生死锁要满足的条件</h2><p>互斥条件：进程对于所分配到的资源具有排它性，即一个资源只能被一个进程占用，直到被该进程释放；</p>
+<p>请求和保持条件：一个进程因请求被占用资源而发生阻塞时，对已获得的资源保持不放；</p>
+<p>不剥夺条件：任何一个资源在没被该进程释放之前，任何其他进程都无法对他剥夺占用；</p>
+<p>循环等待条件：当发生死锁时，所等待的进程必定会形成一个环路（类似于死循环），造成永久阻塞。</p>
+<h2 id="死锁的解决办法"><a href="#死锁的解决办法" class="headerlink" title="死锁的解决办法"></a>死锁的解决办法</h2><p>预防死锁：通过设置一些限制条件，去破坏产生死锁的必要条件；</p>
+<p>只要破坏死锁的四个条件之一就可以预防死锁，其中第一个条件互斥是非共享资源必须的，不能够破坏。所以只能破坏其他三个条件。</p>
+<p>破坏请求和保持条件 在进程开始运行之前，一次性获取进程运行的全部资源。缺点：因为某项资源不满足，进程无法启动，而其他已经满足了的资源也不会得到利用，严重降低了资源的利用率，造成资源浪费。容易造饥饿现象。允许进程只获得运行初期所需要的资源，便可以运行。在运行过程中逐步释放掉已经使用完毕并接下来不再需要的资源，再去请求新的资源。优点：资源的利用率会得到提高，也会减少进程的饥饿问题。</p>
+<p>破坏不可抢占条件 当一个已经持有了一些资源的进程在提出新的资源请求没有得到满足时，它必须释放已经保持的所有资源，待以后需要使用的时候再重新申请。意味着进程已占有的资源会被短暂地释放或者说是被抢占了。这种方法代价较大，反复的申请和释放资源会导致进程的执行被无限的推迟，这不仅会延长进程的周转周期，还会影响系统的吞吐量。</p>
+<p>破坏循环等待条件 系统给进程编号，按某一顺序申请资源，释放资源则反序释放。破坏循环等待条件。</p>
+<p>避免死锁：在资源分配过程中，使用某种方法避免系统进入不安全的状态，从而避免发生死锁；</p>
+<p>在使用前进行判断，只允许不会产生死锁的进程申请资源。两种方法：1：如果一个进程的请求会导致死锁，则不启动该进程；2：如果一个进程的增加资源请求会导致死锁 ，则拒绝该申请。</p>
+<p>检测死锁：允许死锁的发生，但是通过系统的检测之后，采取一些措施，将死锁清除掉；</p>
+<p>建立资源分配表和进程等待表。</p>
+<p>解除死锁：该方法与检测死锁配合使用。</p>
+<p>抢占资源：从一个或多个进程中抢占足够数量的资源分配给死锁进程，以解除死锁状态。</p>
+<p>终止（或撤销）进程：终止或撤销系统中的一个或多个死锁进程，直至打破死锁状态。</p>
+<h1 id="线程之间的通信方式"><a href="#线程之间的通信方式" class="headerlink" title="线程之间的通信方式"></a>线程之间的通信方式</h1><p>通过共享变量，线程之间通过该变量进行协作通信；</p>
+<p>通过队列（本质上也是线程间共享同一块内存）来实现消费者和生产者的模式来进行通信；</p>
+<h1 id="进程之间的通信方式"><a href="#进程之间的通信方式" class="headerlink" title="进程之间的通信方式"></a>进程之间的通信方式</h1><p>linux常用的进程间的通讯方式</p>
+<p>管道(pipe)：管道可用于具有亲缘关系的进程间的通信，是一种半双工的方式，数据只能单向流动，允许一个进程和另一个与它有共同祖先的进程之间进行通信。</p>
+<p>命名管道(named pipe)：命名管道克服了管道没有名字的限制，同时除了具有管道的功能外（也是半双工），它还允许无亲缘关系进程间的通信。命名管道在文件系统中有对应的文件名。命名管道通过命令mkfifo或系统调用mkfifo来创建。</p>
+<p>信号（signal）：信号是比较复杂的通信方式，用于通知接收进程有某种事件发生了，除了进程间通信外，进程还可以发送信号给进程本身；linux除了支持Unix早期信号语义函数sigal外，还支持语义符合Posix.1标准的信号函数sigaction（实际上，该函数是基于BSD的，BSD为了实现可靠信号机制，又能够统一对外接口，用sigaction函数重新实现了signal函数）。</p>
+<p>消息队列：消息队列是消息的链接表，包括Posix消息队列system V消息队列。有足够权限的进程可以向队列中添加消息，被赋予读权限的进程则可以读走队列中的消息。消息队列克服了信号承载信息量少，管道只能承载无格式字节流以及缓冲区大小受限等缺点。</p>
+<p>共享内存：使得多个进程可以访问同一块内存空间，是最快的可用IPC形式。是针对其他通信机制运行效率较低而设计的。往往与其它通信机制，如信号量结合使用，来达到进程间的同步及互斥。</p>
+<p>内存映射：内存映射允许任何多个进程间通信，每一个使用该机制的进程通过把一个共享的文件映射到自己的进程地址空间来实现它。</p>
+<p>信号量（semaphore）：主要作为进程间以及同一进程不同线程之间的同步手段。</p>
+<p>套接字（Socket）：更为一般的进程间通信机制，可用于不同机器之间的进程间通信。起初是由Unix系统的BSD分支开发出来的，但现在一般可以移植到其它类Unix系统上：Linux和System V的变种都支持套接字。</p>
+<h1 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h1><p>先来先去服务调度算法是一种最简单的调度算法，也称为先进先出或严格排队方案。当每个进程就绪后，它加入就绪队列。当前正运行的进程停止执行，选择在就绪队列中存在时间最长的进程运行。该算法既可以用于作业调度，也可以用于进程调度。先来先去服务比较适合于常作业（进程），而不利于段作业（进程）。</p>
+<p>时间轮转法是基于适中的抢占策略的，以一个周期性间隔产生时钟中断，当中断发生后，当前正在运行的进程被置于就绪队列中，然后基于先来先去服务策略选择下一个就绪作业的运行。这种技术也称为时间片，因为每个进程再被抢占之前都给定一片时间。</p>
+<p>最短进程优先是一个非抢占策略，他的原则是下一次选择预计处理时间最短的进程，因此短进程将会越过长作业，跳至队列头。该算法即可用于作业调度，也可用于进程调度。但是他对长作业不利，不能保证紧迫性作业（进程）被及时处理，作业的长短只是被估算出来的。</p>
+<p>最短剩余时间是针对最短进程优先增加了抢占机制的版本。在这种情况下，进程调度总是选择预期剩余时间最短的进程。当一个进程加入到就绪队列时，他可能比当前运行的进程具有更短的剩余时间，因此只要新进程就绪，调度程序就能可能抢占当前正在运行的进程。像最短进程优先一样，调度程序正在执行选择函数是必须有关于处理时间的估计，并且存在长进程饥饿的危险。</p>
+<p>最高响应比优先</p>
+<p>根据比率：R=(w+s)/s （R为响应比，w为等待处理的时间，s为预计的服务时间）如果该进程被立即调用，则R值等于归一化周转时间（周转时间和服务时间的比率）。R最小值为1.0，只有第一个进入系统的进程才能达到该值。调度规则为：当前进程完成或被阻塞时，选择R值最大的就绪进程，它说明了进程的年龄。当偏向短作业时，长进程由于得不到服务，等待时间不断增加，从而增加比值，最终在竞争中赢了短进程。和最短进程优先、最短剩余时间优先一样，使用最高响应比策略需要估计预计服务时间。</p>
+<p>反馈法</p>
+<p>如果没有关于进程相对长度的任何信息，则最短进程优先，最短剩余时间、最高响应优先比都不能使用。另一种导致偏向短作业的方法是处罚运行时间较长的作业，换句话说，如果不能获得剩余的执行时间，那就关注已执行了的时间。方法为：调度基于被抢占原则（按时间片）并使用动态优先级机制。当一个进程第一次进入系统中时，他被放置在一个优先级队列中，当第一次被抢占后并返回就绪状态时，它被放置在下一个低优先级队列中，在随后的时间里，每当被抢占时，他被降级到下一个低优先级队列中。一个短进程很快被执行完，不会在就绪队列中降很多级，一个长进程会逐渐降级。因此先到的进程和短进程优先于长进程和老进程。在每个队列中，除了优先级在最低的队列中之外，都是用简单的先来先去服务机制，一旦一个进程处于优先级最低的队列中，它就不可能在降级，但会重复的返回该队列，直到运行结束。因此，该队列课按照轮转方式调度。</p>
+<p>多级反馈队列算法，不必事先知道各种进程所需要执行的时间，他是当前被公认的一种较好的进程调度算法。其实施过程如下：</p>
+<p>　　1)设置多个就绪队列，并为各个队列赋予不同的优先级。在优先权越高的队列中，为每个进程所规定的执行时间片就越小。</p>
+<p>　　2)当一个新进程进入内存后，首先放入第一队列的末尾，按照先来先去原则排队等候调度。如果他能在一个时间片中完成，便可撤离；如果未完成，就转入第二队列的末尾，同样等待调度…..如此下去，当一个长作业（进程）从第一队列依次将到第n队列（最后队列）后，便按第n队列时间片轮转运行。</p>
+<p>　　3)仅当第一队列空闲的时候，调度程序才调度第二队列中的进程运行；仅当第1到（i-1）队列空时，才会调度第i队列中的进程运行，并执行相应的时间片轮转。</p>
+<p>　　4)如果处理机正在处理第i队列中某进程，又有新进程进入优先权较高的队列，则此新队列抢占正在运行的处理机，并把正在运行的进程放在第i队列的队尾。</p>
+<h1 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h1><p>地址映射过程中，若在页面中发现所要访问的页面不在内存中，则产生缺页中断。当发生缺页中断时，如果操作系统内存中没有空闲页面，则操作系统必须在内存选择一个页面将其移出内存，以便为即将调入的页面让出空间。而用来选择淘汰哪一页的规则叫做页面置换算法。</p>
+<h2 id="最佳置换算法（OPT）"><a href="#最佳置换算法（OPT）" class="headerlink" title="最佳置换算法（OPT）"></a>最佳置换算法（OPT）</h2><p>从主存中移出永远不再需要的页面；如无这样的页面存在，则选择最长时间不需要访问的页面。于所选择的被淘汰页面将是以后永不使用的，或者是在最长时间内不再被访问的页面，这样可以保证获得最低的缺页率。</p>
+<h2 id="先进先出置换算法（FIFO）"><a href="#先进先出置换算法（FIFO）" class="headerlink" title="先进先出置换算法（FIFO）"></a>先进先出置换算法（FIFO）</h2><p>是最简单的页面置换算法。这种算法的基本思想是：当需要淘汰一个页面时，总是选择驻留主存时间最长的页面进行淘汰，即先进入主存的页面先淘汰。其理由是：最早调入主存的页面不再被使用的可能性最大。</p>
+<h2 id="最近最久未使用算法（LRU）"><a href="#最近最久未使用算法（LRU）" class="headerlink" title="最近最久未使用算法（LRU）"></a>最近最久未使用算法（LRU）</h2><p>利用局部性原理，根据一个作业在执行过程中过去的页面访问历史来推测未来的行为。它认为过去一段时间里不曾被访问过的页面，在最近的将来可能也不会再被访问。所以，这种算法的实质是：当需要淘汰一个页面时，总是选择在最近一段时间内最久不用的页面予以淘汰。</p>
+<h2 id="时钟置换算法（CLOCK）"><a href="#时钟置换算法（CLOCK）" class="headerlink" title="时钟置换算法（CLOCK）"></a>时钟置换算法（CLOCK）</h2><p>简单的CLOCK算法是给每一帧关联一个附加位，称为使用位。</p>
+<p>当某一页首次装入主存时，该帧的使用位设置为1;</p>
+<p>当该页随后再被访问到时，它的使用位也被置为1。对于页替换算法，用于替换的候选帧集合看做一个循环缓冲区，并且有一个指针与之相关联。当某一页被替换时，该指针被设置成指向缓冲区中的下一帧。当需要替换一页时，操作系统扫描缓冲区，以查找使用位被置为0的一帧。每当遇到一个使用位为1的帧时，操作系统就将该位重新置为0；如果在这个过程开始时，缓冲区中所有帧的使用位均为0，则选择遇到的第一个帧替换；如果所有帧的使用位均为1,则指针在缓冲区中完整地循环一周，把所有使用位都置为0，并且停留在最初的位置上，替换该帧中的页。由于该算法循环地检查各页面的情况，故称为CLOCK算法，又称为最近未用(Not Recently Used, NRU)算法。</p>
+<p>CLOCK算法的性能比较接近LRU，而通过增加使用的位数目，可以使得CLOCK算法更加高效。在使用位的基础上再增加一个修改位，则得到改进型的CLOCK置换算法。这样，每一帧都处于以下四种情况之一：</p>
+<p>最近未被访问，也未被修改(u=0, m=0)。</p>
+<p>最近被访问，但未被修改(u=1, m=0)。</p>
+<p>最近未被访问，但被修改(u=0, m=1)。</p>
+<p>最近被访问，被修改(u=1, m=1)。</p>
+<p>算法执行如下操作步骤：</p>
+<p>从指针的当前位置开始，扫描帧缓冲区。在这次扫描过程中，对使用位不做任何修改。选择遇到的第一个帧(u=0, m=0)用于替换。</p>
+<p>如果第1)步失败，则重新扫描，查找(u=0, m=1)的帧。选择遇到的第一个这样的帧用于替换。在这个扫描过程中，对每个跳过的帧，把它的使用位设置成0。</p>
+<p>如果第2)步失败，指针将回到它的最初位置，并且集合中所有帧的使用位均为0。重复第1步，并且如果有必要，重复第2步。这样将可以找到供替换的帧。</p>
+<p>改进型的CLOCK算法优于简单CLOCK算法之处在于替换时首选没有变化的页。由于修改过的页在被替换之前必须写回，因而这样做会节省时间。</p>
+
+        <p class="suffix-end">__END__</p>
+        <div class="suffix-box">
+            <div class="suffix-box-left">
+                <img src="/image/avatar.jpg" alt="Aomine Daiki">
+            </div>
+            <div class="suffix-box-right">
+                <span class="suffix-box-title">文章作者</span>：Aomine Daiki
+                <br>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/07/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" target="_blank">操作系统</a>
+                <br>
+                <span class="suffix-box-title">作者签名</span>：无所求必满载而归.
+                <br>
+                <span class="suffix-box-title">关于主题</span>：<a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+                <br>
+                <span class="suffix-box-title">版权声明</span>：文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+                <br>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <div class="article-footer">
+        
+            <div class="category">
+                分类：
+                
+                    <a href="/category/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                
+            </div>
+        
+        
+        <div class="article-prev-next">
+            
+                <a href="/2021/07/28/7-28/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/07/28/7-28/" title="发布于 2021-07-28 09:42">7-28</a>
+                <br>
+            
+            
+                <a href="/2021/07/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="next-prefix">» </a> 下一篇：    <a href="/2021/07/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="发布于 2021-07-28 08:24">计算机网络</a>
+            
+        </div>
+    </div>
+    
+    <div class="article-comments">
+        <div class="comments-title">
+            评论列表
+        </div>
+        <div class="comments-content">
+        </div>
+    </div>
+
+</div>
+
+    </div>
+</div>
+    <div id="footer"></div>
+    <div id="sidebar">
+    <div class="menu-wrap" style="display:none;">
+        <nav class="menu">
+            <div class="menu-introduce"> 
+                <div class="introduce-avatar"></div> 
+                <div class="introduce-info"> 
+                    <div class="introduce-user"><span></span></div>        
+                </div> 
+            </div> 
+            <div class="menu-list">
+                <ul></ul> 
+            </div> 
+            <div class="menu-link"></div> 
+        </nav>
+        <button class="menu-button-close"></button>
+        <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+            </svg>
+        </div>
+    </div>
+    <button class="menu-button-open">MENU</button>
+    <div class="menu-cover"></div>
+</div>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/search.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/iscroll.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/instantsearch.min.js"></script>
+<div class="search-window">
+    <div class="search-content">
+        <div class="search-content-icon">
+            <i class="iconfont icon-search"></i>
+        </div>
+        <div id="search-input" class="search-input"></div>
+    </div>
+
+    <div class="search-scroll">
+        <div class="search-result">
+            <div id="search-stats" class="search-stats"></div>
+            <div id="search-hits"></div>
+            <div id="search-pagination" class="search-pagination"></div>
+        </div>
+    </div>
+
+    <span class="search-close-icon">
+        <i class="iconfont icon-close"></i>
+    </span>
+</div>
+    <div id="tools">
+    <div class="progressbar-top"></div>
+
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/APlayer.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/APlayer.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/Meting.min.js"></script>
+        <meting-js id="3778678" lrcshow="false" server="netease" type="playlist" fixed="true" autoplay="false" loop="all" order="random" preload="auto" volume="0.67" mutex="true"></meting-js>
+    
+    
+    <div class="wrap-right"></div>
+    <div class="loading"></div>
+</div>
+    <script>
+    window.config = {
+        GitHubUserName     : 'first19326',
+        GitHubRepositories : 'hexo-liveforcode',
+
+        BlogUser      : 'Aomine Daiki',
+        BlogAvatar    : '/image/avatar.jpg',
+        BlogStartDate : '2020-01-01',
+
+        WebsiteTitleBlur         : '(◍´꒳`◍) Hi, Live For Code',
+        WebsiteTitleBlurTimeOut  : 500,
+        WebsiteTitleFocus        : '(*´∇｀*) 欢迎回来!',
+        WebsiteTitleFocusTimeOut : 1000,
+        WebsiteFavicon           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/website/logo.png',
+
+        ProgressBar: {
+            id       : 'topProgressBar',
+            color    : '#77B6FF',
+            height   : '2px',
+            duration : 0.2
+        },
+
+        Loading: {
+            rebound: {
+                tension  : 16,
+                friction : 5
+            },
+            spinner: {
+                id     : 'spinner',
+                radius : 90,
+                sides  : 3,
+                depth  : 4,
+                colors : {
+                    background : '#F0F0F0',
+                    stroke     : '#272633',
+                    base       : '',
+                    child      : '#272633'
+                },
+                alwaysForward : true,
+                restAt        : 0.5,
+                renderBase    : false
+            }
+        },
+
+        HomeHeaderAnimationRendered : true,
+        HomeHeaderAnimation         : {
+            radius      : 15,
+            density     : 0.2,
+            color       : 'rgba(255, 255, 255, .2)',
+            clearOffset : 0.3
+        },
+
+        ArticleHeaderAnimationRendered : false,
+        ArticleHeaderAnimation         : {
+            triW                  : 14,
+            triH                  : 20,
+            neighbours            : [
+                
+                    'side',
+                
+                    'top',
+                
+                    'bottom',
+                
+            ],
+            speedTrailAppear      : 0.1,
+            speedTrailDisappear   : 0.1,
+            speedTriOpen          : 1,
+            trailMaxLength        : 30,
+            trailIntervalCreation : 100,
+            delayBeforeDisappear  : 2,
+            colors                : [
+                
+                    '#96EDA6',
+                
+                    '#5BC6A9',
+                
+                    '#38668C',
+                
+                    '#374D84',
+                
+                    '#BED5CB',
+                
+                    '#62ADC6',
+                
+                    '#8EE5DE',
+                
+                    '#304E7B',
+                
+            ]
+        },
+
+        BackAnimationRendered          : true,
+        IEBrowserBackAnimationRendered : false,
+        BackAnimation                  : {
+            colorSaturation  : '60%',
+            colorBrightness  : '50%',
+            colorAlpha       : 0.5,
+            colorCycleSpeed  : 5,
+            verticalPosition : 'random',
+            horizontalSpeed  : 200,
+            ribbonCount      : 3,
+            strokeSize       : 0,
+            parallaxAmount   : -0.2,
+            animateSections  : true
+        },
+
+        HomeHeaderImage : [
+            
+                'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/header/home.jpg',
+            
+                'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/header/home.jpeg',
+            
+        ],
+        HomeBannerText  : '',
+
+        ArticleHeaderImage : [
+            
+                'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/header/article.jpg',
+            
+        ],
+
+        OtherBannerText : '',
+
+        MenuList : [
+            
+                {
+                    name   : '首页',
+                    href   : '/',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '标签',
+                    href   : '/tag',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '分类',
+                    href   : '/category',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '归档',
+                    href   : '/archive',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '赞赏',
+                    href   : '/donate',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '关于',
+                    href   : '/about',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '订阅',
+                    href   : '/atom.xml',    
+                    target : '_blank',
+                    class  : ''
+                },
+            
+                {
+                    name   : '搜索',
+                    href   : '',    
+                    target : '',
+                    class  : 'search'
+                },
+            
+                {
+                    name   : '留言板',
+                    href   : '/comment',    
+                    target : '',
+                    class  : ''
+                },
+            
+                {
+                    name   : '友情链接',
+                    href   : '/friend',    
+                    target : '',
+                    class  : ''
+                },
+            
+        ],
+        MenuLink : [
+            
+                
+                    {
+                        icon : 'icon-weibo', 
+                        url  : ''
+                    },
+                
+                    {
+                        icon : 'icon-wechat', 
+                        url  : ''
+                    },
+                
+                    {
+                        icon : 'icon-qq', 
+                        url  : ''
+                    },
+                
+                    {
+                        icon : 'icon-github', 
+                        url  : 'https://github.com/first19326'
+                    },
+                
+            
+        ],
+
+        FooterStyle : 2,
+        BottomText  : {
+            icon    : 'like-fill',
+            left    : '人生若只如初见',
+            right   : '何事秋风悲画扇'
+        },
+        ThemeInfo   : true,
+
+        ConsoleList : [
+            
+                
+                    [
+                        
+                            
+                                'Based on cnblogs theme SimpleMemory.',
+                            
+                                '',
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                'SimpleMemory Author:',
+                            
+                                'BNDong',
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                'Theme:',
+                            
+                                'LiveForCode',
+                            
+                        
+                    ],
+                
+            
+        ],
+
+        FontIconExtend : '',
+
+        Donate : {
+            paypal  : '',
+            bitcoin : '',
+            alipay  : '/image/alipay.png',
+            wechat  : '/image/wechat.png'
+        },
+
+        Code : {
+            style : 'normal'
+        },  
+
+        Search : {
+            applicationID : '010C3EANT8',
+            apiKey        : 'c7abab9f11b79102b9aff7fe6d41447d',
+            indexName     : 'Notes',
+            hits          : {
+                page : 10
+            },
+            labels        : {
+                placeholder : '搜索',
+                empty       : '未发现与 「${query}」 相关的内容',
+                stats       : '${hits} 条相关条目，使用了 ${time} 毫秒',
+            }
+        }, 
+
+        Valine : {
+            switch         : true,
+            el             : '.comments-content',
+            appId          : 'srhKtvWPQTWYKh3qX8G8M7v0-gzGzoHsz',
+            appKey         : '8uVSP1q6UlALVC5igYfIfv2h',
+            placeholder    : '你是我一生只会遇见一次的惊喜...',
+            avatar         : 'mm',
+            meta           : 'nick,mail,link',
+            requiredFields : 'nick,mail',
+            pageSize       : 5,
+            lang           : 'zh-cn',
+            visitor        : true,
+            enableQQ       : true
+        },
+
+        Tocbot : {
+            switch                : true,
+            tocSelector           : '.toc',
+            contentSelector       : '.article-body',
+            headingSelector       : 'h1, h2, h3, h4, h5',
+            headingsOffset        : 0,
+            scrollSmooth          : true,
+            scrollSmoothOffset    : -5,
+            positionFixedSelector : '.toc',
+            positionFixedClass    : 'toc-fixed',
+            fixedSidebarOffset    : '',
+        },
+
+        Require : {
+            baseUrl     : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/',
+            waitSeconds : 100
+        },
+
+        Music : {
+            type : 'Meting'
+        },
+        APlayer : {
+            container : '.aplayer',
+            fixed     : true,
+            autoplay  : false,
+            loop      : 'all',
+            order     : 'random',
+            preload   : 'auto',
+            volume    : 0.67,
+            mutex     : true,
+            lrcType   : 3,
+            audio     : [
+                
+                    {
+                        name   : 'aLIEz',
+                        artist : 'mizuki（瑞葵）',
+                        cover  : '/music/cover/aLIEz.jpg',
+                        url    : '/music/song/aLIEz.mp3',
+                        lrc    : '/music/lrc/aLIEz.lrc'
+                    },
+                
+                    {
+                        name   : 'Endless Tears',
+                        artist : 'CLIFF EDGE',
+                        cover  : '/music/cover/Endless Tears.jpg',
+                        url    : '/music/song/Endless Tears.mp3',
+                        lrc    : '/music/lrc/Endless Tears.lrc'
+                    },
+                
+                    {
+                        name   : 'Miracle',
+                        artist : 'Cascada',
+                        cover  : '/music/cover/Miracle.jpg',
+                        url    : '/music/song/Miracle.mp3',
+                        lrc    : '/music/lrc/Miracle.lrc'
+                    },
+                
+                    {
+                        name   : 'Roll The Dice',
+                        artist : '高珊',
+                        cover  : '/music/cover/Roll The Dice.jpg',
+                        url    : '/music/song/Roll The Dice.mp3',
+                        lrc    : '/music/lrc/Roll The Dice.lrc'
+                    },
+                
+                    {
+                        name   : 'See You Again',
+                        artist : 'Charlie Puth, Wiz Khalifa',
+                        cover  : '/music/cover/See You Again.jpg',
+                        url    : '/music/song/See You Again.mp3',
+                        lrc    : '/music/lrc/See You Again.lrc'
+                    },
+                
+                    {
+                        name   : 'Traveling Light',
+                        artist : 'Joel Hanson, Sara Groves',
+                        cover  : '/music/cover/Traveling Light.jpg',
+                        url    : '/music/song/Traveling Light.mp3',
+                        lrc    : '/music/lrc/Traveling Light.lrc'
+                    },
+                
+                    {
+                        name   : '痴心绝对',
+                        artist : '李圣杰',
+                        cover  : '/music/cover/痴心绝对.jpg',
+                        url    : '/music/song/痴心绝对.mp3',
+                        lrc    : '/music/lrc/痴心绝对.lrc'
+                    },
+                
+                    {
+                        name   : '好想大声说爱你',
+                        artist : 'BAAD（バード）',
+                        cover  : '/music/cover/好想大声说爱你.jpg',
+                        url    : '/music/song/好想大声说爱你.mp3',
+                        lrc    : '/music/lrc/好想大声说爱你.lrc'
+                    },
+                
+            ]
+        },
+        Meting : {
+            id       : '3778678', 
+            lrcshow  : false, 
+            server   : 'netease', 
+            type     : 'playlist', 
+            fixed    : true, 
+            autoplay : false, 
+            loop     : 'all', 
+            order    : 'random', 
+            preload  : 'auto', 
+            volume   : 0.67, 
+            mutex    : true
+        },
+
+        LazyLoad : {
+            default : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/website/lazyload.svg'
+        },
+  
+        Style : {
+            aplayer          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/APlayer.css',
+            archive          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/archive.css',
+            donate           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/donate.css',
+            fancybox         : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/jquery.fancybox.css',
+            footer           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/footer.css',
+            iconfont         : 'https://at.alicdn.com/t/font_1546312_l3yohatebw.css',
+            index            : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/index.css',
+            menuBubble       : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/menu-bubble.css',
+            page             : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/page.css',
+            post             : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css',
+            search           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/search.css',
+            tocbot           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/tocbot.css',
+            normal           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css',
+            night            : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/night.css',
+            clipboard        : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/clipboard.css'
+        },
+
+        Script: {
+            aplayer          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/APlayer.min.js',
+            config           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/require.config.js',
+            index            : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/index.js',
+            instantSearch    : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/instantsearch.min.js',
+            jQuery           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js',
+            loading          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/loading.js',
+            meting           : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/Meting.min.js',
+            iscroll          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/iscroll.js',
+            require          : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/require.min.js'
+        },
+
+        Font: {
+            LongCang   : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css',
+            Monda      : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.css',
+            NotoSansSC : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/NotoSansSC.css',
+            Playball   : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Playball.css',
+            PTMono     : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/PTMono.css',
+            RobotoSlab : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/RobotoSlab.css',
+            Rosario    : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css',
+            UbuntuMono : 'https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css'
+        },
+
+        Suffix : {
+            about : '无所求必满载而归.'
+        },
+            
+        Theme : {
+            url  : 'https://github.com/first19326/Hexo-LiveForCode',
+            name : 'Hexo - Live For Code'
+        }  
+    };
+</script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/index.js"></script>
+</body>
+</html>
